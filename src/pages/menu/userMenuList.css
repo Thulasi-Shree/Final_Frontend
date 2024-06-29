@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f7f7;
+  /* Light gray background */
+}
+
+.search-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.search-input {
+  border: 2px solid #e23744;
+  /* Red border */
+  border-radius: 50px;
+  background-color: white;
+  color: #2e2e2e;
+  /* Dark gray text */
+  width: 100%;
+  padding: 12px 20px;
+  /* transition: border-color 0.3s ease; */
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ff4d58;
+  /* Lighter red when focused */
+}
+
+.no-menus-found {
+  margin: 20px auto;
+  text-align: center;
+  color: #555;
+  /* Dark gray text */
+}
+
+.menu-card {
+  width: 100%;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Light shadow */
+  border-radius: 10px;
+  overflow: hidden;
+  /* transition: transform 0.2s, box-shadow 0.3s; */
+  background-color: white;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  /* Lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  /* Slightly stronger shadow */
+}
+
+.card-img {
+  height: 175px;
+  width: 100%;
+  object-fit: cover;
+  border: 5px solid #eee;
+  /* Light gray bottom border */
+  border-radius: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0;
+  color: #2e2e2e;
+  /* Dark gray text */
+}
+
+.card-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #e23744;
+  /* Red for price */
+}
+
+.card-text {
+  font-size: 14px;
+  color: #666;
+  /* Medium gray text */
+}
+
+.quantity-button {
+  border: 1px solid #e23744;
+  background-color: transparent;
+  color: #e23744;
+  /* Red */
+  font-weight: bold;
+  /* transition: background-color 0.3s, color 0.3s; */
+}
+
+.quantity-button:hover,
+.quantity-button:focus {
+  background-color: #e23744;
+  /* Red on hover/focus */
+  color: white;
+  /* White text on hover/focus */
+}
+
+.quantity-text {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.add-to-cart-btn {
+  border: 2px solid #e23744;
+  background-color: transparent;
+  color: #e23744;
+  /* Red */
+  font-weight: 600;
+  width: 100%;
+  margin-top: 10px;
+  /* transition: background-color 0.3s, color 0.3s; */
+}
+
+.add-to-cart-btn:hover,
+.add-to-cart-btn:focus {
+  background-color: #e23744;
+  /* Red on hover/focus */
+  color: rgb(219, 154, 154);
+  /* White text on hover/focus */
+}
+
+.add-to-cart-btn h6 {
+  margin: 0;
+  font-family: 'serif';
+}
+
+.add-to-cart-btn:disabled {
+  background-color: #ccc;
+  /* Light gray when disabled */
+  border-color: #ccc;
+  color: #666;
+  /* Medium gray text */
+}
+
+.view-cart-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 10px;
+  /* background-color: #e23744; */
+  text-align: center;
+}
+
+.view-cart-button {
+  border: none;
+  background-color: green;
+  /* Red */
+  color: white;
+  border-radius: 10px;
+  width: 85%;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 15px 0;
+  /* transition: background-color 0.3s; */
+}
+
+.view-cart-button:hover {
+  background-color: green;
+  /* Lighter red on hover */
+}
+
+.cart-items-count {
+  margin-right: 10px;
+}
+
+.view-cart-text {
+  margin-left: auto;
+}
+
+.add-to-cart-btn:hover:not(:focus),
+.add-to-cart-btn:focus:not(:hover) {
+  background-color: #e23744;
+  /* Red on hover/focus */
+  color: rgb(219, 154, 154);
+  /* White text on hover/focus */
+}
+
+.add-to-cart-btn:hover:focus {
+  background-color: ;
+  /* Red on hover/focus */
+  color: rgb(219, 154, 154);
+  /* White text on hover/focus */
+}
+
+.quantity-button:hover:not(:focus),
+.quantity-button:focus:not(:hover) {
+  background-color: #e23744;
+  /* Red on hover/focus */
+  color: rgb(219, 154, 154);
+  /* White text on hover/focus */
+}
+
+.quantity-button:hover:focus {
+  background-color: #e23744;
+  /* Red on hover/focus */
+  color: rgb(219, 154, 154);
+  /* White text on hover/focus */
+}
+
+.view-cart-button:hover:not(:focus),
+.view-cart-button:focus:not(:hover) {
+  background-color: green;
+  /* Red on hover/focus */
+  color: rgb(219, 154, 154);
+  /* White text on hover/focus */
+}
+
+.view-cart-button:hover:focus {
+  background-color: green;
+  /* Red on hover/focus */
+  color: rgb(219, 154, 154);
+  /* White text on hover/focus */
+}

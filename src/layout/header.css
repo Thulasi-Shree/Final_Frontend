@@ -1,0 +1,140 @@
+.logout-login-buttons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+button,
+label,
+div {
+  font-family: "Recursive", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  font-variation-settings:
+    "slnt" 0,
+    "CASL" 0,
+    "CRSV" 0.5,
+    "MONO" 0 !important;
+}
+.back111{
+  border-radius: 10px !important;
+  border-color: red !important;
+}
+.back1:hover{
+  background-color:  #f6d6ff !important;
+  border-color: red !important;
+    border-radius: 10px;
+}
+
+.p2 {
+  font-size: 23px !important;
+  margin-top: 5px;
+  position: relative
+}
+li {
+  position: relative;
+  font-size:18px;
+  position:relative;
+
+}
+ul li a{
+  color:rgb(0, 0, 0);
+}
+ul li a.active {
+  text-decoration: none;
+  color: #070707;
+  background: radial-gradient(95% 85% at 50% 50%, #f6d6ff 0, rgba(246, 220, 255, 0) 100%);
+  transition: all 1s ease;
+}
+
+ul li a.active::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  color: #080808;
+  position: absolute;
+  left: 5px;
+  bottom: 6px;
+}
+#HomeTag::after {
+  content: '';
+  height: 2px;
+  background-color: #050505;
+  position: absolute;
+  color: #050505;
+  left: 10px;
+  bottom: -10px;
+}
+
+#HomeTag:hover::after {
+  width: 100%;
+  transition: 0.5s;
+}
+
+#HomeTag:hover {
+  color: #030303;
+}
+
+ul{
+  text-decoration: none;
+list-style: none;
+display:flex;
+flex-direction: row;
+position: relative;
+}
+
+#HomeTag{
+  text-decoration: none;
+  color:'black';
+}
+
+
+
+
+
+
+
+@media screen and (min-width:250px) and (max-width:989px){
+  ul{
+    text-decoration: none;
+  list-style: none;
+  display:flex;
+  flex-direction:column;
+  position: relative;
+  gap:5px;
+  }
+  #HomeTag::after{
+    content: '';
+    height: 2px;
+    background-color: #050505;
+    position: absolute;
+    color: #050505;
+    left: 0px;
+    bottom: 0px;
+  }
+  #HomeTag:hover::after{
+    width:50%;
+  }
+  ul li a.active::after {
+    width:25%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .logout-login-buttons {
+    margin-left: 0;
+  }
+}

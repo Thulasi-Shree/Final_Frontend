@@ -1,0 +1,28 @@
+
+#CardBackIMg1{
+  background: rgb(185, 184, 202);
+  background: linear-gradient(90deg, rgb(184, 181, 221) 18%, rgba(164, 183, 194, 0.88) 52%, rgb(116, 134, 154) 87%);
+  color: rgb(9, 8, 8) !important;
+  text-shadow: 1px 1px #d8c895 !important;
+} 
+
+#CardText{
+  color: rgb(9, 8, 8);
+  text-shadow: 1px 1px #d8c895;
+  font-size: 16px;
+ }
+
+ h1,h2,h3,h4,h5,h6,p,ul,li,button,label,div{
+  font-family: "Recursive", sans-serif !important;
+  font-optical-sizing: auto  !important;
+  font-weight: 500  !important;
+  font-style: normal  !important;
+  font-variation-settings:
+    "slnt" 0,
+    "CASL" 0,
+    "CRSV" 0.5,
+    "MONO" 0 !important;
+}
+label{
+  font-size:14px !important;
+}

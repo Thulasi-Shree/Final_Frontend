@@ -1,0 +1,63 @@
+.custom-table{
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+  background-color: #c1bca183;
+  border-radius: 10px; 
+  overflow: hidden;
+}
+td{
+  background-color: white !important;
+  color:rgb(3, 3, 3) !important;
+}
+.custom-table th{
+height: 45px;
+}
+.custom-table thead {
+border-bottom: 2px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) inset;
+border-top: 0px !important;
+border-color: #b96c7b !important;
+}
+th{
+  background-color: transparent !important;
+  color:black !important;
+  height: 60px !important;
+  font-size: large !important;
+  text-transform: uppercase !important;
+  font-weight: 600;
+ }
+th:hover{
+background-color: transparent !important;
+}
+.with-border-radius {
+border-radius: 50% !important;
+}
+.btn-custom {
+  background-color: transparent !important;
+    border: none !important;
+  border-radius: 50% !important;
+  margin: 2px;
+  }
+.custom-table th,
+.custom-table td {
+  border: none;
+  
+}
+/* #CardBackIMg1{
+  background: rgb(185, 184, 202);
+  background: linear-gradient(90deg, rgb(184, 181, 221) 18%, rgba(220, 227, 231, 0.88) 52%, rgb(255, 255, 255) 87%);
+  color: rgb(9, 8, 8) !important;
+  text-shadow: 1px 1px #d8c895 !important;
+  background-color: transparent;
+}  */
+.Cardimg123{
+    color: rgb(9, 8, 8) !important;
+  filter:drop-shadow(6px 5px 6px rgb(250, 30, 30)) !important;
+}
+#CardText{
+  color: rgb(9, 8, 8);
+  text-shadow: 1px 1px #d8c895;
+ }
+#CardBackIMg{
+    background-color: #c1bca183; 
+    color: white ;
+  }

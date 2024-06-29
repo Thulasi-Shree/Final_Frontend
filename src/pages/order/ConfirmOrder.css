@@ -1,0 +1,44 @@
+
+#CardLogText{
+    color: white;
+    text-shadow: 1px 1.7px #5a3a07;
+    background-color: transparent;
+  }
+#ConfrimOrderCard{
+    background-image: url('../../assets/img/dark-gradient-background-with-copy-space_53876-99548.avif');;
+    color: white
+}
+
+#CardBackIMg156{
+  filter:drop-shadow(6px 5px 6px rgb(250, 30, 30));
+}
+.back{
+  background-color: white !important;
+}
+
+  h1,h2,h3,h4,h5,h6,p,ul,li,button,label,div{
+    font-family: "Recursive", sans-serif !important;
+    font-optical-sizing: auto  !important;
+    font-weight: 500  !important;
+    font-style: normal  !important;
+    font-variation-settings:
+      "slnt" 0,
+      "CASL" 0,
+      "CRSV" 0.5,
+      "MONO" 0 !important;
+  /* font-family: "Abel", sans-serif;
+  font-weight: 500;
+  font-style: normal; */
+  }
+  .Font{
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+  
+
+  @import url('https://fonts.googleapis.com/css2?family=Abel&family=Dancing+Script:wght@400..700&family=Recursive:wght@300..1000&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap')
+
+
+ 

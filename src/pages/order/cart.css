@@ -1,0 +1,43 @@
+  .icon-container {
+  border: 1px solid #ccc;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 5px; 
+}
+#CardText{
+  color: rgb(9, 8, 8);
+ }
+.quantity {
+  /* border: 1px solid #ccc; */
+  width: 20px;
+  margin-top: -2px;
+  height: 20px;
+  padding: 3px;
+  margin-right: 5px; 
+}
+.back{
+  
+}
+.CardDetail{
+  background: white;
+}
+.CardDetail112{
+  background: rgb(255, 255, 255);
+  filter:drop-shadow(6px 5px 6px rgb(250, 30, 30));
+  border-radius:10px;
+
+}
+#CardBackIMg{
+  background-color: #c1bca183;
+  color: white;
+}
+#EmptyCard{
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../../assets/img/HomeThirdMainImg.jpg');
+  color:white ;
+  text-shadow: 2px 2px  #cc891d;
+  width:100%;
+}

@@ -1,0 +1,142 @@
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .address-container label {
+    text-align: left;
+    display: block;
+  }
+  /* Add this CSS to your existing stylesheet or create a new one */
+
+.address-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-label {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+h1,h2,h3,h4,h5,h6,p,ul,li,button,label{
+  font-family: "Recursive", sans-serif !important;
+  font-optical-sizing: auto  !important;
+  font-weight: 500  !important;
+  font-style: normal  !important;
+  font-variation-settings:
+    "slnt" 0,
+    "CASL" 0,
+    "CRSV" 0.5,
+    "MONO" 0 ;
+/* font-family: "Abel", sans-serif;
+font-weight: 500;
+font-style: normal; */
+}
+label{
+  font-size:14px;
+}
+.radio-custom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffdbdb; /* Adjust the border color as needed */
+  border-radius: 50%;
+  background-color: #fff; /* Adjust the background color as needed */
+  transition: background-color 0.3s;
+}
+
+.radio-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-label:hover .radio-custom {
+  background-color: #f8c5c5; /* Adjust the background color on hover as needed */
+}
+
+.radio-label input:checked + .radio-custom {
+  background-color: white; /* Adjust the background color for checked state */
+  border-color: #f7c7c7; /* Adjust the border color for checked state */
+}
+/* Add this CSS to your existing stylesheet or create a new one */
+
+.location-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-label {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.radio-custom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff2525; /* Adjust the border color as needed */
+  border-radius: 50%;
+  background-color: #fff; /* Adjust the background color as needed */
+  transition: background-color 0.3s;
+}
+
+.radio-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-label:hover .radio-custom {
+  background-color: #fedfdf; /* Adjust the background color on hover as needed */
+}
+
+.radio-label input:checked + .radio-custom {
+  background-color: rgb(255, 0, 0); /* Adjust the background color for checked state */
+  border-color: #ff0000; /* Adjust the border color for checked state */
+}
+.form-select {
+  width: 100%;
+}
+.back{
+  background-color: white !important;
+  color:black !important;
+}
+
+#PersonalBGImg{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('../../../assets/img/dark-gradient-background-with-copy-space_53876-99548.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+#CardShipText{
+  color: #f8e5c7 !important;
+  font-weight: 500;
+  background-color:transparent;
+}
+
+
+
+/* Additional styles for smaller screens */
+@media (max-width: 576px) {
+  /* Adjust the width and other styles as needed */
+  .form-select {
+    width: 100%; /* Set the width to 100% for full-width on small screens */
+    max-width: none; /* Override max-width if needed */
+  }
+}

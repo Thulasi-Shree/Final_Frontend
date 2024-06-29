@@ -1,0 +1,100 @@
+.signup-form-container {
+  max-width: auto;
+  margin: 0 auto;
+}
+
+.signup-form-container h2 {
+  text-align: center;
+}
+
+.signup-form-container form {
+  flex-direction: column;
+}
+.Cardimg123{
+background:white;
+color: rgb(9, 8, 8) !important;
+filter:drop-shadow(6px 5px 6px rgb(250, 30, 30));
+}
+.signup-form-container input {
+  margin-bottom: 10px;
+  padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-form-container button {
+  padding: 10px;
+  background-color: #ffa500;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.signup-form-container button:hover {
+    background-color: #ff9400;
+  }
+  
+  .signup-form-container a {
+    color: #ee6f00e1; 
+    text-decoration: none;
+  }
+  
+  .signup-form-container a:hover {
+    text-decoration: underline;
+    color:blueviolet;
+  }
+  .address-container label {
+    text-align: left;
+    display: block;
+  }
+  
+  #LoginMainImg{
+    background-image: linear-gradient(rgba(235, 231, 231, 0.963),rgb(234, 224, 224)),url('../../../assets/img/HomeThirdMainImg.jpg');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  #CardLogText{
+    color: white;
+    text-shadow: 1px 1.7px #5a3a07;
+    background-color: transparent;
+  }
+  #LoginImg1{
+    background: rgb(189, 187, 255);
+    background: linear-gradient(90deg, rgb(145, 141, 219) 18%, rgba(157, 157, 230, 0.88) 52%, rgb(136, 169, 213) 87%);
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  #TextColor{
+    color: #c6ac83 !important;
+  }
+  #Btn{
+  color:black
+  }
+  .email-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .email-button:hover {
+    background-color: #0056b3;
+  }
+  

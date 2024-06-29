@@ -1,0 +1,13 @@
+
+#PersonalBGImg{
+    background-image:url('../../../assets/img/dark-gradient-background-with-copy-space_53876-99548.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color:white;
+}
+#CardBackIMg{
+   color: black;
+   background-color: white;
+   filter:drop-shadow(6px 5px 6px rgb(250, 30, 30));
+  }
