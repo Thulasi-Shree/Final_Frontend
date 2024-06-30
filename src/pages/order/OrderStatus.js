@@ -67,252 +67,264 @@ const OrderStatus = () => {
         <div className="row   mx-auto mt-4 mb-4">
           <div className="col">
             <Card className='text-black Cardimg123 p-3 '>
-            <h4 className="p-3 my-4 text-black">
-              <b>Order Info</b>
-            </h4>
-            <div className="row d-flex justify-content-around text-black">
-              <div className="col-12 col-lg-4 order-details">
-                <div style={{ display: 'flex', marginBottom: '1rem' }}>
-                  <p className="mx-2 text-black">
-                    <b style={{ color: 'black' }} className='text-black'>Order Id:</b>
-                  
-                  {orderDetails?.orderid} 
-                  </p>
-                </div>
+              <h4 className="p-3 my-4 text-black">
+                <b>Order Info</b>
+              </h4>
+              <div className="row d-flex justify-content-around text-black">
+                <div className="col-12 col-lg-4 order-details">
+                  <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                    <p className="mx-2 text-black">
+                      <b style={{ color: 'black' }} className='text-black'>Order Id:</b>
 
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b style={{ color: 'black' }} className="mx-2">
-                    Name:
-                  </b>
-                  {`${orderDetails?.shipping.name} ${
-                    orderDetails?.shipping.lastName || ''
-                  }`}
-                </p>
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b style={{ color: 'black' }} className="mx-2">
-                    Phone:
-                  </b>{' '}
-                  {orderDetails?.shipping.phone || 'not found'}
-                </p>
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem',
-                    marginLeft: '7px'
-                  }}
-                >
-                  <b style={{ color: 'black' }} className="">
-                    Billing Address:
-                  </b>{' '}
-                  {orderDetails?.shipping.address.line1},{' '}
-                  {orderDetails?.shipping.address.city},{' '}
-                  {orderDetails?.shipping.address.state},{' '}
-                  {orderDetails?.shipping.address.country}
-                </p>
-                {orderDetails?.delivery && (
+                      {orderDetails?.orderId}
+                    </p>
+                  </div>
+
                   <p
                     style={{
-                      color: 'black',
                       display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b style={{ color: 'black' }} className="mx-2">
+                      Name:
+                    </b>
+                    {`${orderDetails?.shipping.name} ${orderDetails?.shipping.lastName || ''
+                      }`}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b style={{ color: 'black' }} className="mx-2">
+                      Phone:
+                    </b>{' '}
+                    {orderDetails?.shipping.phone || 'not found'}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b style={{ color: 'black' }} className="mx-2">
+                      Email:
+                    </b>{' '}
+                    {orderDetails?.shipping.email || 'not found'}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
                       marginBottom: '1rem',
                       marginLeft: '7px'
                     }}
                   >
                     <b style={{ color: 'black' }} className="">
-                      Delivery Address:
+                      Billing Address:
                     </b>{' '}
-                    {orderDetails.delivery.line1 || ''},{' '}
-                    {orderDetails.delivery.city || ''},{' '}
-                    {orderDetails.delivery.state || ''},{' '}
-                    {orderDetails.delivery.country || ''},
-                    {orderDetails.delivery.postalCode || ''}
+                    {orderDetails?.shipping.address.line1},{' '}
+                    {orderDetails?.shipping.address.city},{' '}
+                    {orderDetails?.shipping.address.state},{' '}
+                    {orderDetails?.shipping.address.country}
                   </p>
-                )}
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b className="mx-2">Restaurant:</b>{' '}
-                  {orderDetails?.restaurantBranch || 'not found'}
-                </p>
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b className="mx-2">Selected time:</b>{' '}
-                  {orderDetails?.selectedTimeSlot || 'not found'}
-                </p>
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b className="mx-2">Selected Date:</b>{' '}
-                  {orderDetails?.orderDate || 'not found'}
-                </p>
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b className="mx-2">Order Type:</b>{' '}
-                  {orderDetails?.orderType || 'not found'}
-                </p>
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b className="mx-2">Total Amount:</b> $
-                  {orderDetails?.totalPrice}
-                </p>
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b className="mx-2">Payment:</b> {orderDetails?.paymentStatus}
-                </p>
-                <p style={{ color: 'black' }}>
-                  <b className="mx-2">Payment Id: </b>{' '}
-                  {orderDetails?.paymentInfo}
-                </p>
-                <div />
-                <p
-                  style={{
-                    display: 'flex',
-                    color: 'black',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  <b className="mx-2">Paid at:</b> {orderDetails?.paidAt}
-                </p>
-                <div />
-              </div>
+                  {orderDetails?.delivery && (
+                    <p
+                      style={{
+                        color: 'black',
+                        display: 'flex',
+                        marginBottom: '1rem',
+                        marginLeft: '7px'
+                      }}
+                    >
+                      <b style={{ color: 'black' }} className="">
+                        Delivery Address:
+                      </b>{' '}
+                      {orderDetails.delivery.line1 || ''},{' '}
+                      {orderDetails.delivery.city || ''},{' '}
+                      {orderDetails.delivery.state || ''},{' '}
+                      {orderDetails.delivery.country || ''},
+                      {orderDetails.delivery.postalCode || ''}
+                    </p>
+                  )}
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b className="mx-2">Restaurant:</b>{' '}
+                    {orderDetails?.restaurantBranch || 'not found'}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b className="mx-2">Selected time:</b>{' '}
+                    {orderDetails?.selectedTimeSlot || 'not found'}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b className="mx-2">Selected Date:</b>{' '}
+                    {orderDetails?.orderDate || 'not found'}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b className="mx-2">Order Type:</b>{' '}
+                    {orderDetails?.orderType || 'not found'}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b className="mx-2">Total Amount:</b> $
+                    {orderDetails?.totalPrice}
+                  </p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b className="mx-2">Payment:</b> {orderDetails?.paymentStatus}
+                  </p>
+                  <p style={{ color: 'black' }}>
+                    <b className="mx-2">Payment Id: </b>{' '}
+                    {orderDetails?.paymentInfo}
+                  </p>
+                  <div />
+                  <p
+                    style={{
+                      display: 'flex',
+                      color: 'black',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <b className="mx-2">Paid at:</b> {orderDetails?.paidAt}
+                  </p>
+                  <div />
+                </div>
 
-              {/* <div className="col-12 col-lg-3 mt-5">
+                {/* <div className="col-12 col-lg-3 mt-5">
             
           </div> */}
-              <div className="col-12 col-lg-8 mt-2">
-                <h4 className="ms-5 px-5" style={{ color: 'black' }}>
-                  Order Items:
-                </h4>
+                <div className="col-12 col-lg-8 mt-2">
+                  <h4 className="ms-5 px-5" style={{ color: 'black' }}>
+                    Order Items:
+                  </h4>
 
-                {orderDetails?.items.length > 0 ? (
-                  orderDetails?.items.map((item) => (
-                    <Card
-                      className="cart-item my-3 container col-8"
-                      key={item._id}
+                  {orderDetails?.items.length > 0 ? (
+                    orderDetails?.items.map((item) => (
+                      <Card
+                        className="cart-item my-3 container col-8"
+                        key={item._id}
+                      >
+                        <div className="row my-2">
+                          <div className="col-2 col-lg-1">
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              height="45"
+                              width="65"
+                            />
+                          </div>
+
+                          <div className="col-xs-12 col-lg-6 ps-5 ">
+                            <Link
+                              to={`/menuDetails/${item._id}`}
+                              style={{
+                                textDecoration: 'none',
+                                color: 'black',
+                                fontSize: '18px',
+                                fontWeight: '550'
+                              }}
+                            >
+                              {item.name}
+                            </Link>
+                          </div>
+
+                          <div className="col-5 col-lg-2 mt-4 mt-lg-0">
+                            <p style={{ color: 'black' }}>${item.price}</p>
+                          </div>
+
+                          <div className="col-7 col-lg-3 mt-4 mt-lg-0">
+                            <p style={{ color: 'black' }}>
+                              {' '}
+                              Qty-{item.itemQuantity}
+                            </p>
+                          </div>
+                        </div>
+                      </Card>
+                    ))
+                  ) : (
+                    <p>Items failed to display</p>
+                  )}
+                  <div className="container col-12 col-lg-6 mx-auto">
+                    <p style={{ display: 'flex', marginBottom: '1rem' }}>
+                      <b className="mx-2 text-black">Order Instruction:</b>{' '}
+                      {orderDetails?.orderInstruction || '-'}
+                    </p>
+
+                    <h4 className="my-4 text-black">Status</h4>
+                    <p className="my-4 text-black">
+                      <b>
+                        Order Status:{' '}
+                        <span style={{ color: 'green' }}>
+                          {orderDetails?.orderStatus}
+                        </span>
+                      </b>
+                    </p>
+
+                    <div className="form-group">
+                      <select
+                        className="form-control"
+                        name="status"
+                        value={status}
+                        onChange={(e) => setStatus(e.target.value)}
+                      >
+                        <option value="">Select Order Status</option>
+                        <option value="Order Placed">Order Placed</option>
+                        <option value="Preparing">Preparing</option>
+                        <option value="Out For Delivery">Out for Delivery</option>
+                        <option value="Ready for Pickup">Ready for Pickup</option>
+                        <option value="On the Way">On the Way</option>
+                        <option value="Delivered">Delivered</option>
+                      </select>
+                    </div>
+
+                    <button
+                      type="submit"
+                      onClick={updateOrderStatus}
+                      className="btn my-5 px-4 btn border border-danger rounded bg-white w-100 text-black"
                     >
-                      <div className="row my-2">
-                        <div className="col-2 col-lg-1">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            height="45"
-                            width="65"
-                          />
-                        </div>
-
-                        <div className="col-xs-12 col-lg-6 ps-5 ">
-                          <Link
-                            to={`/menuDetails/${item._id}`}
-                            style={{
-                              textDecoration: 'none',
-                              color: 'black',
-                              fontSize: '18px',
-                              fontWeight: '550'
-                            }}
-                          >
-                            {item.name}
-                          </Link>
-                        </div>
-
-                        <div className="col-5 col-lg-2 mt-4 mt-lg-0">
-                          <p style={{ color: 'black' }}>${item.price}</p>
-                        </div>
-
-                        <div className="col-7 col-lg-3 mt-4 mt-lg-0">
-                          <p style={{ color: 'black' }}>
-                            {' '}
-                            Qty-{item.itemQuantity}
-                          </p>
-                        </div>
-                      </div>
-                    </Card>
-                  ))
-                ) : (
-                  <p>Items failed to display</p>
-                )}
-                <div className="container col-12 col-lg-6 mx-auto">
-                  <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                    <b className="mx-2 text-black">Order Instruction:</b>{' '}
-                    {orderDetails?.orderInstruction || '-'}
-                  </p>
-                  <p style={{ display: 'flex', marginBottom: '1rem' }}>
-                    <b className="mx-2 text-black">Delivery Instruction :</b>{' '}
-                    {orderDetails?.deliveryInstruction || '-'}
-                  </p>
-                  <h4 className="my-4 text-black">Status</h4>
-                  <p className="my-4 text-black">
-                    <b>
-                      Order Status:{' '}
-                      <span style={{ color: 'green' }}>
-                        {orderDetails?.orderStatus}
-                      </span>
-                    </b>
-                  </p>
-
-                  <div className="form-group">
-                    <select
-                      className="form-control"
-                      name="status"
-                      value={status}
-                      onChange={(e) => setStatus(e.target.value)}
-                    >
-                      <option value="Preparing">Preparing</option>
-                      <option value="Out For Delivery">Out for Delivery</option>
-                      <option value="Delivered">Delivered</option>
-                    </select>
+                      Update Status
+                    </button>
                   </div>
-
-                  <button
-                    type="submit"
-                    onClick={updateOrderStatus}
-                    className="btn my-5 px-4 btn border border-danger rounded bg-white w-100 text-black"
-                  >
-                    Update Status
-                  </button>
                 </div>
               </div>
-            </div>
             </Card>
           </div>
         </div>

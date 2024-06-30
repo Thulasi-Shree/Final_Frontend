@@ -17,18 +17,26 @@ import './ShippingInfo.css';
 const ShippingInfo1 = () => {
   const navigate = useNavigate();
   const isLoggedIn = JSON.parse(localStorage.getItem('isloggedIn'));
+  const delivery = JSON.parse(localStorage.getItem('deliveryAddress') || '{}');
+  const order = JSON.parse(localStorage.getItem('orderType')|| '{}');
+  const orderInstruction = JSON.parse(localStorage.getItem('orderNotes' || ''));
+  const billing = JSON.parse(localStorage.getItem('billingAddress') || '{}');
   const user = JSON.parse(localStorage.getItem('user'));
   const [enteredOtp, setOtp] = useState('');
-  const [orderType, setOrderType] = useState('');
+  const [orderType, setOrderType] = useState(order || '');
   const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
   const [timeSlots, setTimeSlots] = useState([]);
-  const [streetAddress, setStreetAddress] = useState('');
-  const [city, setCity] = useState('');
+  const [streetAddress, setStreetAddress] = useState(
+    (delivery && delivery.streetAddress) ||
+    (billing && billing.streetAddress) ||
+    ''
+  );
+  const [city, setCity] = useState(delivery.city || billing.city || '');
   const [country, setCountry] = useState('US');
-  const [state, setState] = useState('');
-  const [postal_code, setPostal_code] = useState('');
-  const [textBox1, setTextBox1] = useState('');
-  const [textBox2, setTextBox2] = useState('');
+  const [state, setState] = useState(delivery.state || billing.state || '');
+  const [postal_code, setPostal_code] = useState(delivery.postal_code ||'');
+  const [textBox1, setTextBox1] = useState(orderInstruction || '');
+  const [textBox2, setTextBox2] = useState(orderInstruction || '');
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [timeVerified, setTimeVerified] = useState(false);
@@ -174,8 +182,6 @@ const ShippingInfo1 = () => {
   const handleGetOtp = async () => {
     try {
       const apiUrl = '/api/send/otp';
-      // console.log('Mobile Number:', emailOrMobile);
-      // Check if the input is an email or a phone number
       const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
         emailOrMobile
       );
@@ -205,16 +211,33 @@ const ShippingInfo1 = () => {
   let position;
   const findMyCoordinates = async () => {
     try {
+      // if (navigator.geolocation) {
+      //   position = await new Promise((resolve, reject) => {
+      //     navigator.geolocation.getCurrentPosition(resolve, reject);
+      //   });
       if (navigator.geolocation) {
         position = await new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject);
+          const timeoutId = setTimeout(() => {
+            reject(new Error('Location request timed out'));
+          }, 30000); // 30 seconds timeout
+  
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              clearTimeout(timeoutId); // Clear the timeout if location is found
+              resolve(pos);
+            },
+            (error) => {
+              clearTimeout(timeoutId); // Clear the timeout if there's an error
+              reject(error);
+            }
+          );
         });
 
         latitude1 = position.coords.latitude; // Updated to get latitude
         longitude1 = position.coords.longitude; // Updated to get longitude
         localStorage.setItem('lat', JSON.stringify(latitude1));
         localStorage.setItem('lng', JSON.stringify(longitude1));
-        const location = ` https://api.geoapify.com/v1/geocode/reverse?lat=${latitude1}&lon=${longitude1}&apiKey=70348c75b2aa4bd0b91fcba1f9e3a0dc`;
+        const location =  ` https://api.geoapify.com/v1/geocode/reverse?lat=${latitude1}&lon=${longitude1}&apiKey=70348c75b2aa4bd0b91fcba1f9e3a0dc`;
         const response = await axios.get(location);
         const { data } = response;
         setUserLocation(data);
@@ -325,10 +348,6 @@ const ShippingInfo1 = () => {
           // Show a toast message for the 400 Bad Request error
           alert('Please check if delivery is available to your address.');
         }
-        // else {
-        //   // For other errors, show a general error message
-        //   alert('Please enter your correct address.');
-        // }
       }
     }
   };
@@ -337,10 +356,10 @@ const ShippingInfo1 = () => {
     handleAddressChange();
   };
   const [sameAsDelivery, setSameAsDelivery] = useState(false);
-  const [billingStreetAddress, setBillingStreetAddress] = useState('');
-  const [billingpostal_code, setBillingpostal_code] = useState('');
-  const [billingCity, setBillingCity] = useState('');
-  const [billingState, setBillingState] = useState('');
+  const [billingStreetAddress, setBillingStreetAddress] = useState(billing.streetAddress|| '');
+  const [billingpostal_code, setBillingpostal_code] = useState(billing.postalCode || billing.postal_code || '');
+  const [billingCity, setBillingCity] = useState(billing.city || '');
+  const [billingState, setBillingState] = useState(billing.state || '');
   const [billingCountry, setBillingCountry] = useState('US');
   const handleSameAsDeliveryChange = () => {
     setSameAsDelivery(!sameAsDelivery);
@@ -399,14 +418,6 @@ const ShippingInfo1 = () => {
         fullBillingAddress
       );
       setBillingCoordinates(billingCoordinates);
-      // setBillingVerified(true);
-      // toast.success('Address verified!');
-      // if (
-      //   (billingVerified === true && deliveryVerified === true) ||
-      //   (orderType === 'Pickup' && billingVerified === true)
-      // ) {
-      //   navigate('/order/confirm');
-      // }
     } catch (error) {
       // console.error('Error getting billing coordinates:', error.message);
       alert('Enter the correct address!');
@@ -612,6 +623,8 @@ const ShippingInfo1 = () => {
               handleTimeSlotChange={handleTimeSlotChange}
               handleTimeChange={handleTimeChange}
               time={time}
+              textBox1={textBox1}
+              handleText1={handleText1}
             />
           )}
           {orderType === 'Delivery' && (

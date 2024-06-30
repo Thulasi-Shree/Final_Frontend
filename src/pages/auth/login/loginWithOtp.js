@@ -16,32 +16,6 @@ const LoginWithOtp = () => {
   const validator = useRef(
     new SimpleReactValidator({ className: 'text-danger' })
   );
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   if (validator.current.allValid()) {
-  //     try {
-  //       setLoading(true);
-  //       const response = await axios.post('/api/login', { email, otp });
-  //       const { token, user } = response.data;
-  //       document.cookie = `token=${token}; path=/;`;
-  //       localStorage.setItem('user', JSON.stringify(user));
-  //       localStorage.setItem('isloggedIn', 'true');
-  //       setLoading(false);
-  //       if (user && user.role !== 'user') {
-  //         navigate('/admin/dashboard');
-  //         localStorage.removeItem('emailOrPhone');
-  //       } else {
-  //         navigate('/');
-  //       }
-  //     } catch (error) {
-  //       alert('Login failed. Please try again.');
-  //       setLoading(false);
-  //     }
-  //   } else {
-  //     validator.current.showMessages();
-  //   }
-  // };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     if (validator.current.allValid()) {

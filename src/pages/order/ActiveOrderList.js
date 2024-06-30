@@ -233,7 +233,7 @@ const OrdersTable = () => {
               </div>
             )}
             <h5 className="mt-2">Update order</h5>
-            <select
+            {/* <select
               className="form-control mb-2 text-black"
               value={selectedOrderStatus}
               required
@@ -243,7 +243,20 @@ const OrdersTable = () => {
               <option value="Preparing">Preparing</option>
               <option value="Out For Delivery">Out for Delivery</option>
               <option value="Delivered">Delivered</option>
-            </select>
+            </select> */}
+            <select
+      className="form-control mb-2 text-black"
+      value={selectedOrderStatus}
+      required
+      onChange={(e) => setSelectedOrderStatus(e.target.value)}
+    >
+      <option value="Order Placed">Order Placed</option>
+      <option value="Preparing">Preparing</option>
+        <option value="Out For Delivery">Out for Delivery</option>
+        <option value="Ready for Pickup">Ready for Pickup</option>
+        <option value="On the Way">On the Way</option>
+        <option value="Delivered">Delivered</option>
+    </select>
           </div>
           <div className="col-lg-12">
             <ReusableTable

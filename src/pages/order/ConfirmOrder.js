@@ -18,7 +18,7 @@ const ConfirmOrder = () => {
   const [restaurantBranch, setRestaurantBranch] = useState(null);
   const [isPickup, setIsPickup] = useState(true);
   // const { cartId } = useParams();
-
+  const orderInstruction = JSON.parse(localStorage.getItem('orderNotes' || ''));
   // Get data from session storage
   const localData = JSON.parse(localStorage.getItem('shippingInfo'));
   const emailOrMobile = JSON.parse(localStorage.getItem('emailOrMobile'));
@@ -218,6 +218,12 @@ const ConfirmOrder = () => {
                             {deliveryAddress.city}, {deliveryAddress.state},{' '}
                             {deliveryAddress.postalCode || deliveryAddress.postal_code},{' '}
                             {deliveryAddress.country}
+                          </p>
+                        </Card>
+                        <Card className="mt-3 p-2" id="CardText">
+                          <p className="mb-4" id="CardText">
+                            <b id="CardText">Order Instruction:</b>{' '}
+                            {orderInstruction}
                           </p>
                         </Card>
                       </div>

@@ -38,7 +38,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div >
+    <div className='address-container'>
       {/* Button to open modal */}
       <button
         type="button"
@@ -78,28 +78,39 @@ const ContactUs = () => {
                   <label
                     htmlFor="fullName"
                     className="form-label text-black"
+                    placeholder="Field is required"
                     required
                   >
-                    Full Name
+                    Full Name<span className="text-danger">
+                    {' '}
+                    <b>*</b>
+                    </span>
                   </label>
+                  
                   <input
                     type="text"
                     style={{ backgroundColor: 'white', color: 'black' }}
-                    className="form-control border border-black"
+                    className="form-control border "
                     id="fullName"
                     name="fullName"
+                     placeholder="Field is required"
                     onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label text-black">
-                    Email Address
+                    Email Address <span className="text-danger">
+                    {' '}
+                    <b>*</b>
+                    </span>
                   </label>
+                 
                   <input
                     type="email"
+                     placeholder="Field is required"
                     style={{ backgroundColor: 'white', color: 'black' }}
-                    className="form-control border border-black"
+                    className="form-control border "
                     id="email"
                     name="email"
                     onChange={handleChange}
@@ -108,27 +119,37 @@ const ContactUs = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="subject" className="form-label text-black">
-                    Subject
+                    Subject<span className="text-danger">
+                    {' '}
+                    <b>*</b>
+                    </span>
                   </label>
+                  
                   <input
                     type="text"
+                     placeholder="Field is required"
                     style={{ backgroundColor: 'white', color: 'black' }}
-                    className="form-control border border-black"
+                    className="form-control border "
                     id="subject"
                     name="subject"
                     onChange={handleChange}
                     required
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 ">
                   <label htmlFor="message" className="form-label text-black">
-                    Message
+                    Message<span className="text-danger">
+                    {' '}
+                    <b>*</b>
+                    </span>
                   </label>
+                  
                   <textarea
                     style={{ backgroundColor: 'white', color: 'black' }}
-                    className="form-control border border-black"
+                    className="form-control border "
                     id="message"
                     name="message"
+                     placeholder="Field is required"
                     rows="4"
                     onChange={handleChange}
                     required

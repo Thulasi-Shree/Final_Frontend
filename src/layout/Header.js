@@ -60,7 +60,7 @@ const Header = () => {
       expand="lg"
       className="header-custom custom-navbar"
       id="header"
-      style={{ backgroundColor: 'white', color: 'black' }}
+      style={{ backgroundColor: 'rgb(249, 233, 233)', color: 'black' }}
       expanded={navbarExpanded}
     >
        

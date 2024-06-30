@@ -425,7 +425,8 @@ backgroundColor: "#e6c5c5",
       <button
         id="checkout_btn"
         onClick={handlegoback}
-        className="btn back my-4 ms-md-5"
+        className="border border-dangerback my-4 ms-md-5"
+        style={{background : 'rgb(249, 233, 233)', color: 'black', border: 'red'}}
       >
         Back to Select
       </button>
@@ -455,7 +456,8 @@ backgroundColor: "#e6c5c5",
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" className="btn btn-secondary my-3 px-4 w-100" onClick={handleClose}>
+          <Button  className="border border-dangerback my-4 ms-md-5"
+        style={{background : 'rgb(249, 233, 233)', color: 'black', border: 'red'}} onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>

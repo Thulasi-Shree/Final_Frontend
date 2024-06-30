@@ -115,7 +115,7 @@ const DeliveryAddress = ({
                   )}
                 </>
               )}
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <label
                   htmlFor="deliveryInstructions"
                   className="form-label"
@@ -134,7 +134,7 @@ const DeliveryAddress = ({
                   onChange={handleText2}
                   placeholder="Delivery Instructions"
                 />
-              </div>
+              </div> */}
               <div className="address-options mt-2">
                 <label className="radio-label" id="CardText">
                   <input
@@ -322,7 +322,7 @@ const DeliveryAddress = ({
               )}
             </>
           )}
-          <label
+          {/* <label
             htmlFor="deliveryInstructions"
             id="CardText"
             className="form-label"
@@ -339,7 +339,7 @@ const DeliveryAddress = ({
               onChange={handleText2}
               placeholder="Delivery Instructions"
             />
-          </div>
+          </div> */}
           <div className="address-options mt-2">
             <label className="radio-label" id="CardText">
               <input

@@ -131,12 +131,12 @@ const OrderDetails = () => {
                 {orderDetails?.orderInstruction || '-'}
               </p>
               {/* Conditionally render delivery instruction based on orderType */}
-              {shouldShowDeliveryInfo() && (
+              {/* {shouldShowDeliveryInfo() && (
                 <p id="CardText" style={{ marginBottom: '1rem' }}>
                   <b>Delivery Instruction:</b>{' '}
                   {orderDetails?.deliveryInstruction || '-'}
                 </p>
-              )}
+              )} */}
             </div>
 
             <div className="col-12 col-lg-8 mt-5">
