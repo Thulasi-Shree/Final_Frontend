@@ -39,7 +39,8 @@ const ShippingInfo1 = () => {
   const [textBox2, setTextBox2] = useState(orderInstruction || '');
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
-  const [timeVerified, setTimeVerified] = useState(false);
+  const [locationApi, setLocationApi] = useState(null);
+  const [locationApi1, setLocationApi1] = useState(null);
   const [name, setFirstName] = useState(isLoggedIn ? user.name : '');
   const [lastName, setLastName] = useState(isLoggedIn ? user.lastName : '');
   const [email, setEmail] = useState(isLoggedIn ? user.email : '');
@@ -205,12 +206,19 @@ const ShippingInfo1 = () => {
 
   let latitude1;
   let longitude1;
-  const geoapifyApiKey = '31bc2a8978644190beec0a6f143266d3';
   let positionLat;
   let positionLng;
   let position;
-  const findMyCoordinates = async () => {
-    try {
+  
+  let isFindingCoordinates = false;
+
+const findMyCoordinates = async () => {
+  try {
+    if (isFindingCoordinates) {
+      return; // Prevent multiple calls
+    }
+
+    isFindingCoordinates = true;
       // if (navigator.geolocation) {
       //   position = await new Promise((resolve, reject) => {
       //     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -237,7 +245,7 @@ const ShippingInfo1 = () => {
         longitude1 = position.coords.longitude; // Updated to get longitude
         localStorage.setItem('lat', JSON.stringify(latitude1));
         localStorage.setItem('lng', JSON.stringify(longitude1));
-        const location =  ` https://api.geoapify.com/v1/geocode/reverse?lat=${latitude1}&lon=${longitude1}&apiKey=70348c75b2aa4bd0b91fcba1f9e3a0dc`;
+        const location =  ` https://api.geoapify.com/v1/geocode/reverse?lat=${latitude1}&lon=${longitude1}&apiKey=${locationApi}`;
         const response = await axios.get(location);
         const { data } = response;
         setUserLocation(data);
@@ -277,15 +285,88 @@ const ShippingInfo1 = () => {
       // console.error('Error getting location:', error.message);
       alert('Error getting location');
       // notifyError(error.message);
+    } finally {
+      isFindingCoordinates = false; // Reset the flag after operation completes
     }
   };
+  
+  // const findMyCoordinates = async () => {
+  //   try {
+  //     // if (navigator.geolocation) {
+  //     //   position = await new Promise((resolve, reject) => {
+  //     //     navigator.geolocation.getCurrentPosition(resolve, reject);
+  //     //   });
+  //     if (navigator.geolocation) {
+  //       position = await new Promise((resolve, reject) => {
+  //         const timeoutId = setTimeout(() => {
+  //           reject(new Error('Location request timed out'));
+  //         }, 30000); // 30 seconds timeout
+  
+  //         navigator.geolocation.getCurrentPosition(
+  //           (pos) => {
+  //             clearTimeout(timeoutId); // Clear the timeout if location is found
+  //             resolve(pos);
+  //           },
+  //           (error) => {
+  //             clearTimeout(timeoutId); // Clear the timeout if there's an error
+  //             reject(error);
+  //           }
+  //         );
+  //       });
+
+  //       latitude1 = position.coords.latitude; // Updated to get latitude
+  //       longitude1 = position.coords.longitude; // Updated to get longitude
+  //       localStorage.setItem('lat', JSON.stringify(latitude1));
+  //       localStorage.setItem('lng', JSON.stringify(longitude1));
+  //       const location =  ` https://api.geoapify.com/v1/geocode/reverse?lat=${latitude1}&lon=${longitude1}&apiKey=${locationApi}`;
+  //       const response = await axios.get(location);
+  //       const { data } = response;
+  //       setUserLocation(data);
+  //       const distanceResponse = await axios.post('/api/calculate-distance', {
+  //         latitude: latitude1,
+  //         longitude: longitude1
+  //       });
+
+  //       const result = distanceResponse;
+  //       const calculatedDistance = distanceResponse.data.distanceInKilometers;
+  //       setDistanceResult(calculatedDistance);
+  //       // setBillingVerified(true);
+  //       if (calculatedDistance < 500) {
+  //         setDeliveryVerified(true);
+  //         localStorage.setItem('orderAvailableAlertShown', 'true');
+  //       } else {
+  //         setDeliveryVerified(false);
+  //       }
+  //       localStorage.setItem('distanceResponse', JSON.stringify(result));
+  //       localStorage.setItem(
+  //         'deliveryAddress',
+  //         JSON.stringify({
+  //           streetAddress: data.features[0].properties.address_line1,
+  //           postal_code: data.features[0].properties.postcode,
+  //           city: data.features[0].properties.city,
+  //           state: data.features[0].properties.state,
+  //           country: data.features[0].properties.country
+  //         })
+  //       );
+
+  //       // console.log(data);
+  //       setToastShown(true);
+  //     } else {
+  //       alert('Geolocation is not supported by your browser');
+  //     }
+  //   } catch (error) {
+  //     // console.error('Error getting location:', error.message);
+  //     alert('Error getting location');
+  //     // notifyError(error.message);
+  //   }
+  // };
   const fullAddress = `${streetAddress}, ${city}, ${postal_code} ${state}, ${country}`;
 
   const geocodeAddressToCoordinates = async (address) => {
     try {
       const encodedAddress = encodeURIComponent(address);
       const response = await axios.get(
-        `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${geoapifyApiKey}`
+        `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${locationApi1}`
       );
       if (!response.data.features || response.data.features.length === 0) {
         throw new Error('Coordinates not found for the given address');
@@ -386,10 +467,10 @@ const ShippingInfo1 = () => {
 
     const geocodeBillingAddressToCoordinates = async (address) => {
       try {
-        const geoapifyApiKey = '31bc2a8978644190beec0a6f143266d3';
+        const locationApi = '31bc2a8978644190beec0a6f143266d3';
         const encodedAddress = encodeURIComponent(address);
         const response = await axios.get(
-          `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${geoapifyApiKey}`
+          `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${locationApi1}`
         );
 
         if (!response.data.features || response.data.features.length === 0) {
@@ -433,7 +514,7 @@ const ShippingInfo1 = () => {
       try {
         const encodedAddress = encodeURIComponent(address);
         const response = await axios.get(
-          `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${geoapifyApiKey}`
+          `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${locationApi1}`
         );
 
         if (!response.data.features || response.data.features.length === 0) {
@@ -520,6 +601,59 @@ const ShippingInfo1 = () => {
 
     fetchTimeSlots();
   }, []);
+  // useEffect(() => {
+  //   axios.get('/api/get-location-api-key')
+  //     .then(response => {
+  //       setLocationApi(response.data.apiKey);
+  //     })
+  //     .catch(error => {
+  //       alert('Error fetching API key');
+  //     });
+  //     axios.get('/api/locationApikey')
+  //     .then(response => {
+  //       setLocationApi1(response.data.apiKey);
+  //     })
+  //     .catch(error => {
+  //       alert('Error fetching API key');
+  //     });
+  // }, []);
+  useEffect(() => {
+    // Fetch encrypted API keys from backend
+    axios.get('/api/get-location-api-key')
+      .then(response => {
+        const encryptedLocationApi = response.data.apiKey;
+        const decryptedLocationApi = decryptApiKey(encryptedLocationApi);
+        setLocationApi(decryptedLocationApi);
+      })
+      .catch(error => {
+        console.error('Error fetching API key:', error);
+        alert('Error fetching API key');
+      });
+
+    axios.get('/api/locationApikey')
+      .then(response => {
+        const encryptedLocationApi1 = response.data.apiKey;
+        const decryptedLocationApi1 = decryptApiKey(encryptedLocationApi1);
+        setLocationApi1(decryptedLocationApi1);
+      })
+      .catch(error => {
+        console.error('Error fetching API key:', error);
+        alert('Error fetching API key');
+      });
+  }, []);
+
+  const decryptApiKey = (encryptedApiKey) => {
+    const secretKey = 'ghjdjdgdhddjjdhgdcdghww#hsh536'; // Replace with your decryption key
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(encryptedApiKey, secretKey);
+      const decryptedApiKey = bytes.toString(CryptoJS.enc.Utf8);
+      return decryptedApiKey;
+    } catch (error) {
+      console.error('Error decrypting API key:', error);
+      return '';
+    }
+  };
   useEffect(() => {
     if (!toastShown && useCurrentLocation) {
       findMyCoordinates();
