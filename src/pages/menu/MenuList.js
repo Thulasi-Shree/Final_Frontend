@@ -82,7 +82,7 @@ const MenuList = () => {
 
   return (
     <div className=" bg-white">
-      <div className="container-fluid">
+      <div className="col-11 mx-auto">
         <div className="row">
           <div className="col">
             <h3 className="text-center text-black mt-3">Menus</h3>

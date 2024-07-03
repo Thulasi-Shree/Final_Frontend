@@ -375,9 +375,9 @@ backgroundColor: "#e6c5c5",
   </div>
 </Col>
 <div className="Product3Comp bg-white ">
-<Button
-  className="filter-icon my-2 text-center ms-md-5 mt-4"
-  variant="light"
+<button
+  className="btn filter-icon my-2 text-center ms-md-5 mt-4"
+  // variant="light"
   onClick={handleShow}
   style={{
     position: 'sticky',
@@ -389,7 +389,7 @@ backgroundColor: "#e6c5c5",
     className="filter-icon-fa mx-auto"
     icon={faFilter}
   />
-</Button>
+</button>
 
   <Container fluid>
     <Row>
@@ -425,7 +425,7 @@ backgroundColor: "#e6c5c5",
       <button
         id="checkout_btn"
         onClick={handlegoback}
-        className="border border-dangerback my-4 ms-md-5"
+        className="btn my-4 ms-md-5"
         style={{background : 'rgb(249, 233, 233)', color: 'black', border: 'red'}}
       >
         Back to Select
@@ -456,7 +456,7 @@ backgroundColor: "#e6c5c5",
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button  className="border border-dangerback my-4 ms-md-5"
+          <Button  className="btn"
         style={{background : 'rgb(249, 233, 233)', color: 'black', border: 'red'}} onClick={handleClose}>
             Close
           </Button>

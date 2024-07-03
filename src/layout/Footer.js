@@ -107,9 +107,9 @@ const Footer = () => {
       <Container>
         <Row className="footer-row">
           <Col md={3} xs={12} className="footer-column text-center">
-            <h3 className="footer-heading">WE ARE HERE</h3>
-            <p className="footer-text">82 Place Charles de Gaulle, Paris</p>
-            <p className="footer-text">+91 801-555-99-43</p>
+            <h4 className="footer-heading">WE ARE HERE</h4>
+            <p className="footer-description">82 Place Charles de Gaulle, Paris</p>
+            <p className="footer-description">+91 801-555-99-43</p>
           </Col>
           <Col md={1} xs={12} className="footer-column">
             <hr className="footer-hr" />
@@ -135,9 +135,9 @@ const Footer = () => {
             <hr className="footer-hr" />
           </Col>
           <Col md={3} xs={12} className="footer-column text-center">
-            <h3 className="footer-heading">OPENING TIME</h3>
-            <p className="footer-text">82 Place Charles de Gaulle, Paris1</p>
-            <p className="footer-text">+91 801-555-99-433</p>
+            <h4 className="footer-heading">OPENING TIME</h4>
+            <p className="footer-descriptiont">82 Place Charles de Gaulle, Paris1</p>
+            <p className="footer-description">+91 801-555-99-433</p>
           </Col>
         </Row>
       </Container>

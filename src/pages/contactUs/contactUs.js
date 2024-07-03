@@ -61,12 +61,12 @@ const ContactUs = () => {
         <div className="modal-dialog" id="CardText1">
           <div className="modal-content bg-white CardImg114">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
+              <h5 className="modal-title btn" id="exampleModalLabel">
                 Contact Us
               </h5>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close "
                 data-bs-dismiss="modal"
                 aria-label="Close"
               />

@@ -822,7 +822,6 @@ const findMyCoordinates = async () => {
                type="submit"
                id="checkout_btn"
                className="btn back my-4"
-               style={{ backgroundColor: '#ffa500' }}
             >
               Continue
             </button>

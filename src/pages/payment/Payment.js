@@ -156,7 +156,7 @@ const Payment = () => {
   }, [error]);
 
   return (
-    <div className="bg-white p-3" >
+    <div className="bg-white p-3" style={{height: "60vh"}} >
       <div className="col-11 bg-white col-md-4 mx-auto py-3">
         <Form
           onSubmit={submitHandler}

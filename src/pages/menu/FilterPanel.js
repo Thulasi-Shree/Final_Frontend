@@ -19,9 +19,9 @@ const FilterPanel = ({
     <div className="container-fluid">
       <div className="row">
         <h4 id="products_heading">Category</h4>
-        <Button variant="link" onClick={handleClearFilter} className="clear-button text-danger">
+        <button variant="link" onClick={handleClearFilter} className="clear-button1 text-danger">
           <FaTimes /> Clear
-        </Button>
+        </button>
         {/* <hr /> */}
         {loading ? (
           <Loader />

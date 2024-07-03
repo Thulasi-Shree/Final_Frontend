@@ -113,7 +113,7 @@ const MenuList = ({ menus, searchTerm, handleSearchChange, handleShow }) => {
         <input
           type="text"
           className="form-control search-input"
-          placeholder="Search products..."
+          placeholder="Search menus..."
           value={searchTerm}
           onChange={handleSearchChange}
         />

@@ -39,14 +39,15 @@ const OrderDetails = () => {
   };
 
   return (
-    <div className="container-fluid py-5" id="ProfileMainImg">
-      <div className="row col-lg-9 custom-table mx-auto" id="CardBackIMg">
-        <div className="col">
+    <div className="container-fluid bg-white py-5" id="ProfileMainImg">
+      <div className="row container-fluild Cardimg123 bg-white custom-table mx-auto" id="CardBackIMg">
+        <div className="col-12 col-lg-10 mx-auto p-5" >
           <div className="row d-flex justify-content-around">
-            <div className="col-12 col-lg-4 order-details">
-              <h4 className="my-4">
+          <h4 className="my-4">
                 <b>Order Info</b>
               </h4>
+            <div className="col-12 col-lg-6 order-details">
+              
               <p id="CardText" style={{ marginBottom: '1rem' }}>
                 <b>Order Id:</b> {orderDetails?.orderId}
               </p>
@@ -60,7 +61,7 @@ const OrderDetails = () => {
               <p id="CardText" style={{ marginBottom: '1rem' }}>
                 <b>Phone:</b> {orderDetails?.shipping.phone || 'not found'}
               </p>
-              <Card style={{ marginBottom: '1rem', padding: '5px' }}>
+              <Card style={{ marginBottom: '1rem', padding: '10px' }}>
                 <p id="CardText">
                   <b className="">Billing Address:</b>{' '}
                   {`${orderDetails?.shipping?.address?.line1 || ''}, ${
@@ -72,7 +73,7 @@ const OrderDetails = () => {
               </Card>
               {/* Conditionally render delivery address based on orderType */}
               {shouldShowDeliveryInfo() && (
-                <Card style={{ marginBottom: '1rem', padding: '5px' }}>
+                <Card style={{ marginBottom: '1rem', padding: '10px' }}>
                   <p id="CardText">
                     <b className="">Delivery Address:</b>{' '}
                     {`${orderDetails?.delivery?.line1 || ''}, ${
@@ -83,7 +84,7 @@ const OrderDetails = () => {
                   </p>
                 </Card>
               )}
-              <Card className="mb-3">
+              <Card className="mb-3" style={{ marginBottom: '1rem', padding: '10px' }}>
                 <p id="CardText">
                   <b>Restaurant:</b>{' '}
                   {orderDetails?.restaurantBranch || 'not found'}
@@ -99,7 +100,7 @@ const OrderDetails = () => {
                   <b>Order Type:</b> {orderDetails?.orderType || 'not found'}
                 </p>
               </Card>
-              <Card className="pt-2">
+              <Card className="pt-2" style={{ marginBottom: '1rem', padding: '10px' }}>
                 <p id="CardText">
                   <b>Total Amount:</b> ${orderDetails?.totalPrice}
                 </p>
@@ -114,7 +115,7 @@ const OrderDetails = () => {
                 </p>
               </Card>
               <Card
-                style={{ marginBottom: '1rem', padding: '5px' }}
+                style={{ marginBottom: '1rem', padding: '10px' }}
                 className={`my-4 ${
                   orderDetails?.orderStatus === 'Delivered'
                     ? 'greenColor'
@@ -126,10 +127,7 @@ const OrderDetails = () => {
                   {orderDetails?.orderStatus}
                 </p>
               </Card>
-              <p id="CardText" style={{ marginBottom: '1rem' }}>
-                <b>Order Instruction:</b>{' '}
-                {orderDetails?.orderInstruction || '-'}
-              </p>
+             
               {/* Conditionally render delivery instruction based on orderType */}
               {/* {shouldShowDeliveryInfo() && (
                 <p id="CardText" style={{ marginBottom: '1rem' }}>
@@ -139,29 +137,37 @@ const OrderDetails = () => {
               )} */}
             </div>
 
-            <div className="col-12 col-lg-8 mt-5">
+            <div className="col-12 col-lg-6 mx-auto mt-4">
+            <div className="col-12 col-lg-10 mx-auto">
+            <Card className="pt-2" style={{ marginBottom: '1rem', padding: '10px' }}>
+                <p id="CardText" style={{ marginBottom: '1rem' }}>
+                <b>Order Instruction:</b>{' '}
+                {orderDetails?.orderInstruction || '-'}
+              </p>
+              </Card>
+            
+              </div>
               <div className="col-9 px-5 mx-auto">
+                
                 <h3 className="my-4">Order Items:</h3>
               </div>
-              <div className="col-12">
+              <div className="col-12 col-lg-10 mx-auto">
                 {orderDetails?.items.length > 0 ? (
                   orderDetails?.items.map((item) => (
-                    <Card
-                      className="cart-item my-3 container col-8"
-                      key={item._id}
-                    >
-                      <div className="row my-2">
-                        <div className="col-12 col-lg-6">
-                          <p id="CardText">{item.name}</p>
-                        </div>
-                        <div className="col-5 col-lg-2 mt-4 mt-lg-0">
-                          <p id="CardText">${item.price}</p>
-                        </div>
-                        <div className="col-7 col-lg-3 mt-4 mt-lg-0">
-                          <p id="CardText">Qty-{item.itemQuantity}</p>
-                        </div>
+                    <Card className="cart-item my-3 container-fluid col-12" key={item._id}>
+                    <div className="row my-2 d-flex align-items-center">
+                      <div className="col-6 col-lg-6 d-flex align-items-center">
+                        <p id="CardText" className="mb-0">{item.name}</p>
                       </div>
-                    </Card>
+                      <div className="col-3 col-lg-2 mt-4 mt-lg-0 d-flex align-items-center">
+                        <p id="CardText" className="mb-0">${item.price}</p>
+                      </div>
+                      <div className="col-3 col-lg-3 mt-4 mt-lg-0 d-flex align-items-center">
+                        <p id="CardText" className="mb-0">Qty-{item.itemQuantity}</p>
+                      </div>
+                    </div>
+                  </Card>
+                  
                   ))
                 ) : (
                   <p>Items failed to display</p>

@@ -123,7 +123,7 @@ const RestaurantSelection = () => {
     }
   }, [restaurantId]);
   return (
-    <div className="OrdCard py-2" style={{ height: "80vh" }}>
+    <div className="OrdCard py-2 bg-white" style={{ height: "80vh" }}>
       <Container>
         <Row>
           <Col
@@ -179,23 +179,24 @@ const RestaurantSelection = () => {
                   {/* You would generate the following buttons dynamically based on available dates */}
                   <div className="date-buttons">
                     {availableDates.map((date) => (
-                      <Button
+                      <button
                         key={date}
                         className="text-black"
                         onClick={() => handleDateSelection(date)}
                         variant="outline-danger"
                         style={{
+                          borderRadius: '10px',
                           backgroundColor:
                             selectedDate === date ? 'white' : 'transparent',
                           color: selectedDate === date ? 'black' : 'white',
                           border:
                             selectedDate === date
-                              ? '2px solid black'
+                              ? '2px solid red'
                               : '1px solid #ccc'
                         }}
                       >
                         {date}
-                      </Button>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -231,7 +232,7 @@ const RestaurantSelection = () => {
               <div className="d-flex justify-content-end mb-4  px-4">
                 <button
                   // className="btn my-global-button"
-                   className='btn btn my-color text-black'
+                   className='btn'
                   onClick={handleContinue}
                 >
                   Continue

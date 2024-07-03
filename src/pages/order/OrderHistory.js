@@ -118,7 +118,7 @@ const OrdersHistory = () => {
   }, []);
   return (
     <div className="bg-white text-black">
-      <div className="container-fluid" id="CardText">
+      <div className="col-11 mx-auto" id="CardText">
         <div className="row">
           <h4 className="mt-4 mb-4 text-center " style={{ fontWeight: 'bold' }}>
             ORDER HISTORY

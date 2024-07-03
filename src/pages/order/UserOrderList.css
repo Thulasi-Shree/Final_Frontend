@@ -9,12 +9,7 @@
   color: rgb(0, 0, 0);
   text-shadow: 1px 1px #d8c895;
 }
-#ProfileMainImg{
-  background-image: linear-gradient(rgba(235, 231, 231, 0.963),rgb(234, 224, 224)),url('../../assets/img/HomeThirdMainImg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
+
 .Cardimg123{
   color: rgb(9, 8, 8) !important;
   filter:drop-shadow(6px 5px 6px rgb(250, 30, 30)) !important;

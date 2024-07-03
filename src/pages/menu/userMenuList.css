@@ -12,9 +12,9 @@ body {
 }
 
 .search-input {
-  border: 2px solid #e23744;
+  border: 1px solid red;
   /* Red border */
-  border-radius: 50px;
+  border-radius: 10px;
   background-color: white;
   color: #2e2e2e;
   /* Dark gray text */
@@ -151,10 +151,10 @@ body {
 }
 
 .view-cart-button {
-  border: none;
-  background-color: green;
+  background-color: green !important;
+  border: none !important;
   /* Red */
-  color: white;
+  color: white !important;
   border-radius: 10px;
   width: 85%;
   font-weight: 600;
@@ -164,7 +164,8 @@ body {
 }
 
 .view-cart-button:hover {
-  background-color: green;
+  background-color: green !important;
+  border: none !important;
   /* Lighter red on hover */
 }
 
@@ -185,7 +186,7 @@ body {
 }
 
 .add-to-cart-btn:hover:focus {
-  background-color: ;
+  
   /* Red on hover/focus */
   color: rgb(219, 154, 154);
   /* White text on hover/focus */
@@ -208,15 +209,15 @@ body {
 
 .view-cart-button:hover:not(:focus),
 .view-cart-button:focus:not(:hover) {
-  background-color: green;
+  background-color: green !important;
   /* Red on hover/focus */
-  color: rgb(219, 154, 154);
+  color: white !important;
   /* White text on hover/focus */
 }
 
 .view-cart-button:hover:focus {
-  background-color: green;
+  background-color: green !important;
   /* Red on hover/focus */
-  color: rgb(219, 154, 154);
+  color: white!important;
   /* White text on hover/focus */
 }

@@ -71,7 +71,7 @@ const RestaurantTable = () => {
           <h1 className=" mt-3" style={{ fontWeight: 'bold' }}>
             Restaurants
           </h1>
-          <div className="col">
+          <div className="col bg-white">
             {loading ? (
               <p>Loading...</p>
             ) : (

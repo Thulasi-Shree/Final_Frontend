@@ -278,7 +278,7 @@ const Cart = () => {
             <button
               id=""
               onClick={checkoutHandler}
-              className="btn back  my-4 "
+              className="btn  my-4 "
             >
               Check out
             </button>

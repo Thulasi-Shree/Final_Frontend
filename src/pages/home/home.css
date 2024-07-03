@@ -34,13 +34,12 @@
   color: black; /* White text color */
 }
 .filter-icon {
-  background-color: #e6c5c5;
-  color: #ffffff;
-  border: none;
-  border-radius: 50px;
+  background-color: transparent !important;
+  color: black !important;
+  border-radius: 50px !important;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  padding: 10px 20px;
+  padding: 10px 20px !important;
   transition: background-color 0.3s ease;
 }
 
@@ -49,8 +48,8 @@
 }
 
 .filter-icon-fa {
-  color: #ffffff;
-  margin-left: 8px;
+  color: #020000;
+  /* margin-left: 8px; */
 }
 
 #checkout_btn {

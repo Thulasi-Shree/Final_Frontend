@@ -32,3 +32,18 @@
 //   background-color: #3c4d85 !important;
 // }
 }
+.btn {
+  background-color: transparent !important;
+  color: black !important;
+  border: 1px solid red !important; /* Added "1px solid" to make the border visible */
+  border-radius: 10px !important;
+}
+.fixed-header {
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's above other elements */
+  background-color: #fff; /* Set a background color to make it visible */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+  
+}

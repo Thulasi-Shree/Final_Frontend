@@ -151,7 +151,7 @@ const OrdersTable = () => {
 
   return (
     <div className="bg-white text-black" style={{ minHeight: '58vh' }}>
-      <div className="container-fluid py-2">
+      <div className="col-11 mx-auto py-2">
         <h4 className="text-center">Current orders</h4>
         <div className="row justify-content-end">
           {/* <div className="col-lg-4" /> */}

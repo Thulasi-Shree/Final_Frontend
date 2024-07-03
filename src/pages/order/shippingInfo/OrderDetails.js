@@ -30,7 +30,7 @@ const OrderDetails = ({
           style={{ backgroundColor: 'white', color: 'black' }}
           required
         >
-          <option value="" disabled>
+          <option value="" >
             Select
           </option>
           <option value="Pickup" className="text-black">
