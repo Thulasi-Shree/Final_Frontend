@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Card, ListGroup, Modal } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import MenuList from '../menu/userMenuList';
 import FilterPanel from '../menu/FilterPanel';
-import './home.css';
+// import './home.css';
+import Cart from 'pages/cart/cartDetails';
 
 const Home = () => {
   const branch = localStorage.getItem('branch');
@@ -40,6 +41,21 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const [items, setItems] = useState(0);
+  const [screenSize, setScreenSize] = useState('large');
+
+  const handleResize = () => {
+    if (window.innerWidth <= 947) {
+      setScreenSize('small');
+    } else {
+      setScreenSize('large');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Check the size on initial render
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleStorage = () => {
@@ -149,30 +165,6 @@ const Home = () => {
     setSearchTerm('');
   };
 
-  // const handleAdd = (item) => {
-  //   if (item.isAvailable === false) return;
-
-  //   const updatedQuantities = {
-  //     ...localQuantities,
-  //     [item._id]: (localQuantities[item._id] || 0) + 1
-  //   };
-
-  //   setLocalQuantities(updatedQuantities);
-
-  //   const updatedCartItems = cartItems.map((cartItem) => {
-  //     if (cartItem._id === item._id) {
-  //       return { ...cartItem, quantity: (cartItem.quantity || 0) + 1 };
-  //     }
-  //     return cartItem;
-  //   });
-
-  //   setCartItems(updatedCartItems);
-
-  //   // Update localStorage
-  //   localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-  //   localStorage.setItem('localQuantities', JSON.stringify(updatedQuantities));
-  // };
-
   const handleAdd = (item) => {
     if (item.isAvailable === false) return;
 
@@ -195,38 +187,6 @@ const Home = () => {
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     localStorage.setItem('localQuantities', JSON.stringify(updatedQuantities));
   };
-
-
-  // const handleMinus = (item) => {
-  //   if (item.isAvailable === false) return;
-
-  //   const updatedQuantities = {
-  //     ...localQuantities,
-  //     [item._id]: Math.max((localQuantities[item._id] || 0) - 1, 0)
-  //   };
-
-  //   setLocalQuantities(updatedQuantities);
-
-  //   const updatedCartItems = cartItems
-  //     .map((cartItem) => {
-  //       if (cartItem._id === item._id) {
-  //         return {
-  //           ...cartItem,
-  //           quantity: Math.max((cartItem.quantity || 0) - 1, 0)
-  //         };
-  //       }
-  //       return cartItem;
-  //     })
-  //     .filter((cartItem) => cartItem.quantity > 0);
-  //   setCartItems(updatedCartItems);
-
-  //   setCartItems(updatedCartItems);
-
-  //   // Update localStorage
-  //   localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-  //   localStorage.setItem('localQuantities', JSON.stringify(updatedQuantities));
-  // };
-
 
   const handleMinus = (item) => {
     if (item.isAvailable === false) return;
@@ -345,129 +305,178 @@ const Home = () => {
 
   return (
     <>
-     <Col md={12} lg={12} xs={12} sm={12}>
-     <div className="Product2Comp text-center" style={{ 
-//  backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${img1})`,
-backgroundColor: "#e6c5c5",
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  padding: '20px',
-  borderRadius: '8px',
-  // opacity:'0.8',
-  zIndex: -1,
-  // boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-}}>
-    <h3 className="py-4" id="Product2H3">
-      What food do we have in our restaurant?
-    </h3>
-    <h2 className="my-4">
-      FROM OUR MENU
-    </h2>
-    <p className="mt-2">
-      We always give our customers a feeling of peace of mind and comfort
-      when dining at our restaurant
-    </p>
-    <p style={{ paddingBottom: '30px' }}>
-      Sed ut perspiciatis unde omnis iste natus error voluptate
-      accusantium
-    </p>
-  </div>
-</Col>
-<div className="Product3Comp bg-white ">
-<button
-  className="btn filter-icon my-2 text-center ms-md-5 mt-4"
-  // variant="light"
-  onClick={handleShow}
-  style={{
-    position: 'sticky',
-    top: 4, // Adjust this value based on your layout needs
-    zIndex: 100
-  }}
->
-  <FontAwesomeIcon
-    className="filter-icon-fa mx-auto"
-    icon={faFilter}
-  />
-</button>
+      {screenSize === 'small' ? (
+        <div className='bg-white'>
+          <div className=" bg-white">
+            <button
+              className="btn my-2 text-center bg-white p-3 mx-3  mt-4"
+              onClick={handleShow}
+              style={{
+                position: 'sticky',
+                border: 'none',
+                top: 4,
+                zIndex: 100
+              }}
+            >
+              <FontAwesomeIcon
+                className="filter-icon-fa  mx-auto"
+                icon={faFilter}
+                style={{
+                  position: 'sticky',
+                  height: '1.5rem',
+                  zIndex: 100
+                }}
+              />
+            </button>
 
-  <Container fluid>
-    <Row>
-      {showFilterPanel && (
-        <FilterPanel
-          dietaryCategories={dietaryCategories}
-          mealCategories={mealCategories}
-          mealTypeCategory={mealTypeCategory}
-          setMealTypeCategory={setMealTypeCategory}
-          dietaryPreferenceCategory={dietaryPreferenceCategory}
-          setDietaryPreferenceCategory={setDietaryPreferenceCategory}
-          handleClearFilter={handleClearFilter}
-        />
+            <Container fluid>
+              <Row>
+                {showFilterPanel && (
+                  <Col xs={12} sm={12} md={3} lg={3} className="mb-5">
+                    <FilterPanel
+                      dietaryCategories={dietaryCategories}
+                      mealCategories={mealCategories}
+                      mealTypeCategory={mealTypeCategory}
+                      setMealTypeCategory={setMealTypeCategory}
+                      dietaryPreferenceCategory={dietaryPreferenceCategory}
+                      setDietaryPreferenceCategory={setDietaryPreferenceCategory}
+                      handleClearFilter={handleClearFilter}
+                    />
+                  </Col>
+                )}
+                <Col xs={12} sm={12} md={showFilterPanel ? 9 : 9} lg={showFilterPanel ? 9 : 12} className="mb-5 mx-auto">
+                  <MenuList
+                    menus={menus}
+                    handleViewDetails={handleViewDetails}
+                    handleAddToCart={handleAddToCart}
+                    handleSearchChange={handleSearchChange}
+                    handleSearchSubmit={handleSearchSubmit}
+                    handlePageChange={handlePageChange}
+                    searchTerm={searchTerm}
+                    handleCloseModal={handleCloseModal}
+                    showModal={showModal}
+                    show={showModal}
+                    onHide={handleCloseModal}
+                    selectedMenuItem={selectedMenuItem}
+                  />
+                </Col>
+              </Row>
+              <div className="col-12 d-flex justify-content-center">
+                <button
+                  id="checkout_btn"
+                  onClick={handlegoback}
+                  className="btn my-4 ms-md-5"
+                  style={{ background: 'rgb(249, 233, 233)', color: 'black', border: 'red' }}
+                >
+                  Back to Select
+                </button>
+              </div>
+              <Modal
+                show={showModal}
+                onHide={handleClose}
+                className="CardImg12 modal fade bg-transparent"
+                style={{ backgroundColor: 'transparent' }}
+                tabIndex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Filter Panel</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <FilterPanel
+                    dietaryCategories={dietaryCategories}
+                    mealCategories={mealCategories}
+                    mealTypeCategory={mealTypeCategory}
+                    setMealTypeCategory={setMealTypeCategory}
+                    dietaryPreferenceCategory={dietaryPreferenceCategory}
+                    setDietaryPreferenceCategory={setDietaryPreferenceCategory}
+                    handleClearFilter={handleClearFilter}
+                  />
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    className="btn"
+                    style={{ background: 'rgb(249, 233, 233)', color: 'black', border: 'red' }}
+                    onClick={handleClose}
+                  >
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </Container>
+          </div>
+        </div>
+
+      ) : (
+        <div className="container-fluid">
+          <Col md={12} lg={12} xs={12} sm={12}>
+            <div className="product-page row bg-white">
+              <aside className="sidebar col-md-3 col-lg-3 col-xl-2 col-12 fixed-sidebar">
+                <Card style={{ fontSize: '1rem' }}>
+                  <Card.Body>
+                    <Card.Header className="delivery-card-header" style={{ fontSize: '1.2rem' }}>
+                      <p className="delivery-card-title mb-2" style={{ fontSize: '1.2rem' }}>Categories</p>
+                    </Card.Header>
+                    <ListGroup className="mt-2">
+                      <ListGroup.Item style={{ fontSize: '1rem', textAlign: "center" }}>All</ListGroup.Item>
+                      <FilterPanel
+                        dietaryCategories={dietaryCategories}
+                        mealCategories={mealCategories}
+                        mealTypeCategory={mealTypeCategory}
+                        setMealTypeCategory={setMealTypeCategory}
+                        dietaryPreferenceCategory={dietaryPreferenceCategory}
+                        setDietaryPreferenceCategory={setDietaryPreferenceCategory}
+                        handleClearFilter={handleClearFilter}
+                      />
+                    </ListGroup>
+                  </Card.Body>
+                </Card>
+              </aside>
+              <div className="main-content col-12 col-lg-5 col-xl-7 col-md-5" style={{ height: '90vh', overflow: 'auto' }}>
+                <MenuList
+                  menus={menus}
+                  handleViewDetails={handleViewDetails}
+                  handleAddToCart={handleAddToCart}
+                  handleSearchChange={handleSearchChange}
+                  handleSearchSubmit={handleSearchSubmit}
+                  handlePageChange={handlePageChange}
+                  searchTerm={searchTerm}
+                  handleCloseModal={handleCloseModal}
+                  showModal={showModal}
+                  show={showModal}
+                  onHide={handleCloseModal}
+                  selectedMenuItem={selectedMenuItem}
+                />
+              </div>
+              <aside className="col-md-4 col-lg-4 col-xl-3 col-12" style={{ height: "90vh" }}>
+                <Card className='p-3 delivery-card' style={{ fontSize: '1rem' }}>
+                  <Card.Header className='delivery-card-header' style={{ fontSize: '1.2rem' }}>
+                    <p className='delivery-card-title' style={{ fontSize: '1.2rem' }}>Delivery Information</p>
+                  </Card.Header>
+                  <Card.Body>
+                    <div className="delivery-info" style={{ fontSize: '1rem' }}>
+                      <b>Branch:</b> {branch}
+                    </div>
+                    <div className="delivery-info" style={{ fontSize: '1rem' }}>
+                      <b>Date:</b> {date}
+                    </div>
+                  </Card.Body>
+                  <div className="cart-items">
+                    <Cart
+                      handleAdd={handleAdd}
+                      handleMinus={handleMinus}
+                    />
+                  </div>
+                </Card>
+              </aside>
+            </div>
+          </Col>
+        </div>
       )}
-      <Col className="mb-5" xs={12} md={12} lg={12} sm={12}>
-        <MenuList
-          menus={menus}
-          handleViewDetails={handleViewDetails}
-          handleAddToCart={handleAddToCart}
-          handleSearchChange={handleSearchChange}
-          handleSearchSubmit={handleSearchSubmit}
-          handlePageChange={handlePageChange}
-          searchTerm={searchTerm}
-          handleCloseModal={handleCloseModal}
-          showModal={showModal}
-          show={showModal}
-          onHide={handleCloseModal}
-          selectedMenuItem={selectedMenuItem}
-        />
-      </Col>
-    </Row>
-    <div className="col-12 d-flex justify-content-center">
-      <button
-        id="checkout_btn"
-        onClick={handlegoback}
-        className="btn my-4 ms-md-5"
-        style={{background : 'rgb(249, 233, 233)', color: 'black', border: 'red'}}
-      >
-        Back to Select
-      </button>
-    </div>
-    <div>
-      <Modal
-        show={showModal}
-        onHide={handleClose}
-        className="CardImg12 modal fade bg-transparent"
-        style={{ backgroundColor: 'transparent' }}
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Filter Panel</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <FilterPanel
-            dietaryCategories={dietaryCategories}
-            mealCategories={mealCategories}
-            mealTypeCategory={mealTypeCategory}
-            setMealTypeCategory={setMealTypeCategory}
-            dietaryPreferenceCategory={dietaryPreferenceCategory}
-            setDietaryPreferenceCategory={setDietaryPreferenceCategory}
-            handleClearFilter={handleClearFilter}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button  className="btn"
-        style={{background : 'rgb(249, 233, 233)', color: 'black', border: 'red'}} onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  </Container>
-</div>
-
     </>
   );
 };
 
 export default Home;
+

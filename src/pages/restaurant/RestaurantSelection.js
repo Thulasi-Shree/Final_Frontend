@@ -177,11 +177,11 @@ const RestaurantSelection = () => {
                     <h5>Order Date</h5>
                   </Card.Title>
                   {/* You would generate the following buttons dynamically based on available dates */}
-                  <div className="date-buttons">
+                  <div className="date-buttons my-2">
                     {availableDates.map((date) => (
                       <button
                         key={date}
-                        className="text-black"
+                        className="text-black mx-2 p-2"
                         onClick={() => handleDateSelection(date)}
                         variant="outline-danger"
                         style={{

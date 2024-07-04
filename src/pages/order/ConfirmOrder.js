@@ -19,6 +19,7 @@ const ConfirmOrder = () => {
   const [isPickup, setIsPickup] = useState(true);
   // const { cartId } = useParams();
   const orderInstruction = JSON.parse(localStorage.getItem('orderNotes' || ''));
+  const cartTotal = JSON.parse(localStorage.getItem('cart'));
   // Get data from session storage
   const localData = JSON.parse(localStorage.getItem('shippingInfo'));
   const emailOrMobile = JSON.parse(localStorage.getItem('emailOrMobile'));
@@ -52,7 +53,7 @@ const ConfirmOrder = () => {
     : (Number(minDeliveryCharge) + Number(distanceResponse.data.distanceInKilometers * deliveryChargePerKm)).toFixed(2);
 
   // Calculate total price without shipping
-  const cartItemsTotal = JSON.parse(localStorage.getItem('cartItemsTotal'));
+  const cartItemsTotal = JSON.parse(localStorage.getItem('cartTotal'));
   const totalPriceWithoutShipping = Number(cartItemsTotal);
   // Calculate tax price
   const taxPrice = Number(tax * totalPriceWithoutShipping).toFixed(2);
@@ -83,7 +84,7 @@ const ConfirmOrder = () => {
   useEffect(() => {
     fetchRestaurantBranch();
     fetchdata()
-  }, [restaurantId]);
+  }, [restaurantId, cartTotal, cartItems, totalPrice]);
   // Map shipping information
   const mapData = () => {
     return {
@@ -124,7 +125,10 @@ const ConfirmOrder = () => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     setCartItems(storedCartItems);
     setIsPickup(mappedData.orderType === 'Pickup');
-  }, []);
+    if (storedCartItems.length === 0) {
+      navigate('/select');
+    }
+  }, [cartTotal, cartItems]);
 
   return (
     <div className="ConfirmOrderMainImg bg-white">

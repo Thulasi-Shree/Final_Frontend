@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f7f7f7;
-  /* Light gray background */
-}
+/*  */
 
 .search-container {
-  margin-top: 30px;
+  /* margin-top: 10px; */
   text-align: center;
 }
 
@@ -36,9 +32,14 @@ body {
   /* Dark gray text */
 }
 
+#cart_btn{
+  font-size: 0.8rem !important;
+}
+
 .menu-card {
   width: 100%;
   border: none;
+  height: auto !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* Light shadow */
   border-radius: 10px;
@@ -55,7 +56,7 @@ body {
 }
 
 .card-img {
-  height: 175px;
+  height: 125px !important;
   width: 100%;
   object-fit: cover;
   border: 5px solid #eee;
@@ -66,7 +67,7 @@ body {
 .card-title {
   font-size: 18px;
   font-weight: 600;
-  margin: 5px 0;
+  /* margin: 5px 0; */
   color: #2e2e2e;
   /* Dark gray text */
 }
@@ -83,6 +84,13 @@ body {
   color: #666;
   /* Medium gray text */
 }
+#cart_btn:hover,
+#cart_btn:focus {
+  background-color: transparent;
+  cursor: pointer;
+  color: black;
+  /* White text on hover/focus */
+}
 
 .quantity-button {
   border: 1px solid #e23744;
@@ -95,7 +103,7 @@ body {
 
 .quantity-button:hover,
 .quantity-button:focus {
-  background-color: #e23744;
+  background-color: transparent;
   /* Red on hover/focus */
   color: white;
   /* White text on hover/focus */
@@ -108,28 +116,25 @@ body {
 }
 
 .add-to-cart-btn {
-  border: 2px solid #e23744;
   background-color: transparent;
-  color: #e23744;
-  /* Red */
-  font-weight: 600;
-  width: 100%;
-  margin-top: 10px;
-  /* transition: background-color 0.3s, color 0.3s; */
+  border: 1px solid red;
+  position: absolute; /* Positioning the button absolutely */
+  right: 0; /* Aligning the button to the right side */
 }
+
 
 .add-to-cart-btn:hover,
 .add-to-cart-btn:focus {
-  background-color: #e23744;
+  background-color: transparent;
   /* Red on hover/focus */
   color: rgb(219, 154, 154);
   /* White text on hover/focus */
 }
 
-.add-to-cart-btn h6 {
+/* .add-to-cart-btn h6 {
   margin: 0;
   font-family: 'serif';
-}
+} */
 
 .add-to-cart-btn:disabled {
   background-color: #ccc;
@@ -169,9 +174,9 @@ body {
   /* Lighter red on hover */
 }
 
-.cart-items-count {
+/* .cart-items-count {
   margin-right: 10px;
-}
+} */
 
 .view-cart-text {
   margin-left: auto;
@@ -179,7 +184,7 @@ body {
 
 .add-to-cart-btn:hover:not(:focus),
 .add-to-cart-btn:focus:not(:hover) {
-  background-color: #e23744;
+  background-color: transparent;
   /* Red on hover/focus */
   color: rgb(219, 154, 154);
   /* White text on hover/focus */
@@ -220,4 +225,199 @@ body {
   /* Red on hover/focus */
   color: white!important;
   /* White text on hover/focus */
+}
+
+/* userMenuList.css */
+
+/* Container for the menu list */
+.product-page {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 20px;
+}
+
+/* .sidebar {
+  margin-right: 20px;
+} */
+
+.main-content {
+  flex-grow: 1;
+}
+
+/* .cart-summary {
+  margin-left: 20px;
+} */
+
+/* Search input styling */
+.search-container {
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Card styling */
+.menu-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  color: #555;
+}
+
+/* .card-text {
+  margin: 10px 0;
+} */
+
+/* Buttons styling */
+.quantity-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quantity-button {
+  background-color: transparent !important;
+  border: 1px solid red;
+  cursor: pointer;
+  padding: 5px 10px;
+   /* Smooth transition effect */
+}
+
+.quantity-button:hover,
+.quantity-button:active {
+  background-color: transparent !important;
+  border: 1px solid red;
+}
+
+/* Optional: Styles for the quantity text */
+.quantity-text {
+  margin: 0 10px;
+}
+
+.quantity-text {
+  font-size: 1.2em;
+  margin: 0 10px;
+}
+
+.cart {
+  background-color: transparent;
+  border: 1px solid red;
+  border-radius: 10px;
+  color: black;
+  height: 1.5rem;
+  padding: auto;
+  font-size: small;
+
+ 
+}
+.quantity-button{
+  background-color: transparent;
+  border: 1px solid red;
+  border-radius: 10px;
+  /* position: absolute;  */
+  color: black;
+  height: 20px;
+}
+
+.view-cart-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.view-cart-button {
+  background-color: #ffc107;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-items-count {
+  margin-right: 10px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .product-page {
+    flex-direction: column;
+  }
+
+  /* .sidebar, .cart-summary {
+    margin: 0 0 20px 0;
+  } */
+
+  .main-content {
+    margin: 0;
+  }
+}
+.quantity-button {
+  background-color: transparent;
+  border: 1px solid red;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition effect */
+}
+
+.quantity-button:hover,
+.quantity-button:active {
+  background-color: transparent;
+  border: 1px solid red;
+}
+
+/* Optional: Styles for the quantity text */
+.quantity-text {
+  margin: 0 10px;
+}
+
+/* Ensure the cart button has transparent background and border on hover and click */
+.cart {
+  background-color: transparent;
+  border: 1px solid red;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition effect */
+}
+
+.cart:hover,
+.cart:active {
+  background-color: transparent;
+  border: 1px solid red;
+}
+
+/* Ensure the card has proper styling */
+.menu-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card .row {
+  flex: 1;
+}
+
+.menu-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

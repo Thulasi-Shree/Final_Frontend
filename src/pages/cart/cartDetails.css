@@ -4,3 +4,61 @@
     overflow-x:hidden;
 
 }
+/* cartDetails.css */
+
+.cart-message {
+    color: black;
+    background-color: transparent;
+    font-weight: 500;
+  }
+  
+  .cart-card {
+    color: black;
+    background-color: transparent;
+    font-weight: 500;
+  }
+  
+  .cart-item {
+    margin-bottom: 10px;
+  }
+  
+  .item-name {
+    color: black;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 1em !important; /* Adjust font size as needed */
+  }
+  
+  .item-quantity {
+    color: black;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 0.9em !important; /* Adjust font size as needed */
+  }
+  
+  .item-price {
+    color: black;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 1em !important; /* Adjust font size as needed */
+  }
+  
+  .cart-divider {
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .order-total {
+    color: black;
+    background-color: transparent;
+    font-size: 1em !important; /* Adjust font size as needed */
+    font-weight: 500;
+  }
+  
+  .order-summary-values {
+    color: black;
+    background-color: transparent;
+    font-weight: 500;
+  }
+  

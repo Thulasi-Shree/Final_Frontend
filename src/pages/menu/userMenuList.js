@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-const MenuList = ({ menus, searchTerm, handleSearchChange, handleShow }) => {
+const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
   const [quantities, setQuantities] = useState({});
   const [cartItems, setCartItems] = useState([]);
 
@@ -21,7 +21,7 @@ const MenuList = ({ menus, searchTerm, handleSearchChange, handleShow }) => {
     }, {});
     setQuantities(initialQuantities);
     setCartItems(storedCartItems);
-  }, []);
+  }, [cartItems]);
 
   const updatelocalStorage = (updatedCartItems) => {
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
@@ -103,115 +103,112 @@ const MenuList = ({ menus, searchTerm, handleSearchChange, handleShow }) => {
   };
   return (
     <div className='bg-white'>
-    <Col
-      lg={{ span: 4, offset: 4 }}
-      md={{ span: 6, offset: 3 }}
-      sm={{ span: 10, offset: 1 }}
-      xs={12}
-    >
-      <div className="search-container">
-        <input
-          type="text"
-          className="form-control search-input"
-          placeholder="Search menus..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-      </div>
-    </Col>
+      <Col className='col-11 mx-auto'  >
+        <div className="search-container mb-3">
+          <input
+            type="text"
+            className="form-control search-input"
+            placeholder="Search menus..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
+      </Col>
 
-    {menus.length === 0 ? (
-      <div className="no-menus-found">
-        <p>No menus found.</p>
-      </div>
-    ) : (
-      <Container className='bg-white'>
-        <Row id="RowFourthComp" xs={12} sm={2} lg={3} xl={4} md={3} className="mt-5">
-          {menus.map((menuItem) => (
-            <Col key={menuItem._id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-              <Card className="menu-card">
-                <Card.Img
-                  variant="top"
-                  src={
-                    menuItem.images.length > 0
-                      ? menuItem.images[0].image
-                      : 'https://via.placeholder.com/285x200'
-                  }
-                  alt={menuItem.name}
-                  className="card-img"
-                />
-                <Card.Body>
-                  <Card.Title className="text-center card-title">
-                    {menuItem.name}
-                  </Card.Title>
-                  <Card.Subtitle className="mb-2 text-center card-subtitle">
-                    ${menuItem.price}
-                  </Card.Subtitle>
-                  <Card.Text className="text-center card-text">
-                    {menuItem.mealTypeCategory}
-                  </Card.Text>
-                  <Card.Text className="text-center card-text">
-                    {menuItem.description}
-                  </Card.Text>
-                  {quantities[menuItem._id] ? (
-                    <div className="d-flex justify-content-center align-items-center">
-                      <Button
-                        className="quantity-button"
-                        onClick={() => handleMinus(menuItem)}
-                      >
-                        -
-                      </Button>
-                      <span className="quantity-text">
-                        {quantities[menuItem._id]}
-                      </span>
-                      <Button
-                        className="quantity-button"
-                        onClick={() => handleAdd(menuItem)}
-                      >
-                        +
-                      </Button>
-                    </div>
-                  ) : (
-                    <Button
-                      id="cart_btn"
-                      disabled={!menuItem.isAvailable}
-                      onClick={() => handleAddToCartClick(menuItem)}
-                      className="btn add-to-cart-btn"
-                    >
-                      {!menuItem.isAvailable ? (
-                        <h6>Sold Out</h6>
-                      ) : (
-                        <h6>Add to Cart</h6>
-                      )}
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-
-        {/* View Cart Button */}
-        <div className="view-cart-button-container mx-auto">
-  <Button
-    as={Link}
-    to="/cart"
-    className="view-cart-button d-flex justify-content-center align-items-center mx-auto px-3"
-  >
-    <div className="cart-items-count col-auto">
-      {cartItems && cartItems.length > 1 ? (
-        <div>{cartItems.length} items added</div>
+      {menus.length === 0 ? (
+        <div className="no-menus-found">
+          <p>No menus found.</p>
+        </div>
       ) : (
-        <div>{cartItems.length} item added</div>
+        <Container className='bg-white'>
+
+          <Row id="RowFourthComp">
+            {menus.map((menuItem) => (
+              <Col key={menuItem._id} className="col-xl-6 col-12 ">
+                <Card className="menu-card mb-3">
+                  <Row noGutters>
+                    <Col xs={6}>
+                      <Card.Img
+                        variant="top"
+                        src={
+                          menuItem.images.length > 0
+                            ? menuItem.images[0].image
+                            : 'https://via.placeholder.com/285x200'
+                        }
+                        alt={menuItem.name}
+                        className="card-img"
+                      />
+                    </Col>
+                    <Col xs={6}>
+                      <div className='p-2'>
+                        <div className='row'>
+                          <div className='col-8' style={{ fontSize: '1rem' }}>{menuItem.name}</div>
+                          <div className="col-4" style={{ fontSize: '0.9rem', color: 'red' }}>${menuItem.price}</div>
+                        </div>
+
+                        <div style={{ fontSize: '0.9rem' }}>{menuItem.mealTypeCategory}</div>
+                        <div className="mb-2" style={{ fontSize: '0.8rem' }}>{menuItem.description}</div>
+                        {quantities[menuItem._id] ? (
+                          <div className="d-flex justify-content-center align-items-center">
+                            <button
+                              className="quantity-button"
+                              onClick={() => handleMinus(menuItem)}
+                            >
+                              -
+                            </button>
+                            <span style={{ fontSize: '0.9rem' }} className="quantity-text">
+                              {quantities[menuItem._id]}
+                            </span>
+                            <button
+                              className="quantity-button"
+                              onClick={() => handleAdd(menuItem)}
+                            >
+                              +
+                            </button>
+                          </div>
+                        ) : (
+                          <div
+                            id="cart_btn"
+                            disabled={!menuItem.isAvailable}
+                            onClick={() => handleAddToCartClick(menuItem)}
+                            className=" bg-white border  border-danger text-center py-2 pb-4"
+                            style={{ width: '65%', height: '25px', borderRadius: '10px' }}
+                          >
+                            {!menuItem.isAvailable ? (
+                              <> Sold Out</>
+                            ) : (
+                              <>Add to Cart</>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+
+
+          <div className="view-cart-button-container mx-auto">
+            <Button
+              as={Link}
+              to="/cart"
+              className="view-cart-button d-flex justify-content-center align-items-center mx-auto px-3"
+            >
+              <div className="cart-items-count col-auto">
+                {cartItems && cartItems.length > 1 ? (
+                  <div>{cartItems.length} items added</div>
+                ) : (
+                  <div>{cartItems.length} item added</div>
+                )}
+              </div>
+              <div className="view-cart-text col-auto">View cart</div>
+            </Button>
+          </div>
+        </Container>
       )}
     </div>
-    <div className="view-cart-text col-auto">View cart</div>
-  </Button>
-</div>
-
-      </Container>
-    )}
-  </div>
-);
+  );
 };
 export default MenuList;

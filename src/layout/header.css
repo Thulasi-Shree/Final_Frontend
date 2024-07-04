@@ -37,7 +37,7 @@ div {
 }
 
 .p2 {
-  font-size: 23px !important;
+  
   margin-top: 5px;
   position: relative
 }
@@ -101,6 +101,7 @@ position: relative;
 
 .header-custom{
   background-color: rgb(249, 233, 233) !important;
+
 }
 
 
@@ -137,6 +138,7 @@ position: relative;
 
 @media (max-width: 991.98px) {
   .logout-login-buttons {
-    margin-left: 0;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
   }
 }

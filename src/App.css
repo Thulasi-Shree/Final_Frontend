@@ -1,4 +1,4 @@
-
+/* 
 #CardBackIMg1{
   background: rgb(185, 184, 202);
   background: linear-gradient(90deg, rgb(184, 181, 221) 18%, rgba(164, 183, 194, 0.88) 52%, rgb(116, 134, 154) 87%);
@@ -25,4 +25,18 @@
 }
 label{
   font-size:14px !important;
+} */
+/* Assuming your header class is defined like this */
+.header {
+  margin-right:0 !important; /* Ensure no unwanted margins */
+  margin-left: 0; /* Ensure no unwanted margins */
+  background-color: #f8f9fa;
+}
+
+/* Adjusting for responsiveness */
+@media (max-width: 768px) {
+  .header {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

@@ -58,9 +58,9 @@ const Header = () => {
   return (
     <Navbar
       expand="lg"
-      className="header-custom custom-navbar"
+      className="container-fluid header-custom custom-navbar"
       id="header"
-      style={{ backgroundColor: 'rgb(249, 233, 233)', color: 'black' }}
+      style={{ backgroundColor: 'rgb(249, 233, 233)', color: 'black', }}
       expanded={navbarExpanded}
     >
        

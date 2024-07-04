@@ -302,6 +302,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import axios from 'axios';
+import "./App.css";
 
 const OrdersHistory = lazy(() => import('pages/order/OrderHistory'))
 const UsersList = lazy(() => import('pages/user/UserList'))
@@ -361,11 +362,10 @@ function App() {
 
   return (
     <Router>
-      <div className="App bg-dark" >
+      <div className="App" >
         <HelmetProvider>
-          <div className="header">
             <Header />
-          </div>
+         
           <Suspense fallback={<div className='text-white'>Loading...</div>}>
             <Routes>
               <Route element={loggedIn ? <HomePage /> : <LoginPage />} />
