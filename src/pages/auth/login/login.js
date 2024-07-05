@@ -67,7 +67,7 @@ const LoginPage = () => {
   }, [error, isAuthenticated, navigate]);
 
   return (
-    <div className="container-fluid bg-white" style={{ height: "90vh" }}>
+    <div className="container-fluid bg-white">
       <div className="signup-form-container col-lg-7 col-xl-6  mx-auto pt-5 bg-white">
         <Card className='Cardimg123 bg-white'>
         <form onSubmit={handleLogin}>

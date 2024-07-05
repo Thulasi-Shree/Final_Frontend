@@ -51,7 +51,7 @@
 .menu-card:hover {
   transform: translateY(-5px);
   /* Lift on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
   /* Slightly stronger shadow */
 }
 
@@ -115,32 +115,13 @@
   margin: 0 5px;
 }
 
-.add-to-cart-btn {
-  background-color: transparent;
-  border: 1px solid red;
-  position: absolute; /* Positioning the button absolutely */
-  right: 0; /* Aligning the button to the right side */
-}
 
-
-.add-to-cart-btn:hover,
-.add-to-cart-btn:focus {
-  background-color: transparent;
-  /* Red on hover/focus */
-  color: rgb(219, 154, 154);
-  /* White text on hover/focus */
-}
-
-/* .add-to-cart-btn h6 {
-  margin: 0;
-  font-family: 'serif';
-} */
 
 .add-to-cart-btn:disabled {
   background-color: #ccc;
   /* Light gray when disabled */
   border-color: #ccc;
-  color: #666;
+  color: #666 !important;
   /* Medium gray text */
 }
 
@@ -182,35 +163,6 @@
   margin-left: auto;
 }
 
-.add-to-cart-btn:hover:not(:focus),
-.add-to-cart-btn:focus:not(:hover) {
-  background-color: transparent;
-  /* Red on hover/focus */
-  color: rgb(219, 154, 154);
-  /* White text on hover/focus */
-}
-
-.add-to-cart-btn:hover:focus {
-  
-  /* Red on hover/focus */
-  color: rgb(219, 154, 154);
-  /* White text on hover/focus */
-}
-
-.quantity-button:hover:not(:focus),
-.quantity-button:focus:not(:hover) {
-  background-color: #e23744;
-  /* Red on hover/focus */
-  color: rgb(219, 154, 154);
-  /* White text on hover/focus */
-}
-
-.quantity-button:hover:focus {
-  background-color: #e23744;
-  /* Red on hover/focus */
-  color: rgb(219, 154, 154);
-  /* White text on hover/focus */
-}
 
 .view-cart-button:hover:not(:focus),
 .view-cart-button:focus:not(:hover) {
@@ -421,3 +373,31 @@
   flex-direction: column;
   justify-content: space-between;
 }
+@keyframes move-to-cart {
+  0% {
+    transform: translate(0, 0);
+    height: auto;
+    width: auto;
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(0) translateY(85vh);
+    height: 30px;
+    width: auto;
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0) translateY(100vh);
+    height: 30px;
+    width: auto;
+    opacity: 0;
+  }
+}
+
+.move-to-cart-animation {
+  animation: move-to-cart 2s ease-in-out forwards;
+  position: absolute;
+  z-index: 999;
+}
+
+

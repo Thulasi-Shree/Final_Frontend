@@ -210,7 +210,7 @@ export default function Cart() {
                       <div className="col-4">
                         {/* <p className="" style={{ fontSize: '0.8rem' }}>Qty: {item.quantity || 1}</p> */}
                         <div className="col-12 border">
-                          <div className="row align-items-center ">
+                          <div className="row align-items-center "  style={{ cursor: 'pointer' }} >
                             <div className="d-flex  justify-content-between w-100" style={{ fontSize: '0.8rem' }}>
                               
                               <span

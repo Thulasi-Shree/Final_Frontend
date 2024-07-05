@@ -343,6 +343,7 @@ const ProtectedRoute = lazy(() => import('routes/protectedRoute'))
 const PrivateRoute = lazy(() => import('components/PrivateRoute'))
 const PaymentPage = lazy(() => import('./pages/payment/Payment'))
 const Settings = lazy(() => import('./pages/admin/Settings'))
+const LandingPageMain = lazy(() => import('pages/home/LandingPageMain/Main'))
 
 function App() {
   const loggedIn = window.localStorage.getItem('isloggedIn' || null);
@@ -362,20 +363,22 @@ function App() {
 
   return (
     <Router>
-      <div className="App" >
+      <div className="App " style={{minHeight: '100vh'}}>
         <HelmetProvider>
             <Header />
-         
+            <div style={{ display: 'flex', flexDirection: 'column', minHeight: '64vh' }}>
+            <div style={{ flex: '1' }}>
           <Suspense fallback={<div className='text-white'>Loading...</div>}>
             <Routes>
               <Route element={loggedIn ? <HomePage /> : <LoginPage />} />
               <Route path="/select" element={<HomePage />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/" element={<LandingPageMain />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/login/otp" element={<SendLoginOtp />} />
               <Route path="/loginWithOtp" element={<LoginWithOtp />} />
               <Route path="/signup" element={<SignUpForm />} />
-              <Route path="/" element={<Landing />} />
+              <Route path="/home1" element={<Landing />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/password/forgot" element={<ForgotPasswordPage />} />
               <Route path="/api/verify-email/:token" element={<RegistrationSuccess />} />
@@ -421,7 +424,12 @@ function App() {
               )}
             </Routes>
           </Suspense>
-          <Footer />
+          </div>
+          </div>
+          <div className=''>
+             <Footer />
+          </div>
+         
         </HelmetProvider>
       </div>
     </Router>

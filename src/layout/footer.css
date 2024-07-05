@@ -53,7 +53,7 @@ p{
 
 .footer-heading {
   color: black;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .footer-text {
@@ -64,13 +64,13 @@ p{
   border: 0;
   border-top: 1px solid #ffffff;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .footer-logo {
   height: 70px;
   width: 190px;
-  margin-left: 60px; /* Adjust logo position */
+  margin: auto; /* Adjust logo position */
 }
 
 .footer-description {
@@ -79,7 +79,7 @@ p{
 }
 
 .footer-icons {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .icon {

@@ -1,0 +1,132 @@
+/* styles.module.css */
+
+/* Contact section styles */
+.contact {
+    background-color: #f2f2f2;
+    padding: 50px 20px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .contactContent {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contactForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  
+  .contactForm input,
+  .contactForm textarea,
+  .contactForm button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .contactForm textarea {
+    height: 150px;
+  }
+  
+  .contactForm button {
+    background-color: #ff6600;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contactForm button:hover {
+    background-color: #e65100;
+  }
+  
+  /* About section styles */
+  .about {
+    background-color: #ffffff;
+    /* padding: 50px 20px; */
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  .about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .aboutContent {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+ 
+  /* Client Testimonials section styles */
+  .testimonials {
+    /* background-color: #ffffff; */
+    padding: 50px 20px;
+    text-align: center;
+    /* opacity: 0; */
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  .testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .testimonialItems {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .testimonial {
+    width: 300px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* opacity: 0; */
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .testimonial p {
+    font-style: italic;
+    color: #666666;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial span {
+    font-weight: bold;
+  }
+  
+  .testimonial.loaded {
+    /* opacity: 1; */
+    transform: translateY(0);
+  }
+  

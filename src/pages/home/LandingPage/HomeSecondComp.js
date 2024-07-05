@@ -12,24 +12,24 @@ const HomeSecondComp = () => {
     <div>
       <Container
         className="col-lg-10 col-xxl-9 col-11 mx-auto "
-        style={{ paddingTop: '10px', paddingBottom: '10px' }}
+        style={{ paddingTop: '10px', paddingBottom: '' }}
         fluid
       >
         <Row className="my-2 col-12 d-flex justify-content-center mx-auto">
-          <Col className="col-12 col-lg-5">
+          <Col className="col-12 mx-auto col-lg-4 d-flex align-items-center animated-slide-in justify-content-left">
             <Image
               style={{
-                height: '35rem',
-                width: 'auto',
+                height: '400px',
+                width: '300px',
                 borderRadius: '30px'
               }}
               src={require('../../../assets/img/IndB5.jpeg')}
-              className="HomeSecondImg mx-auto d-block col-lg-12 col-12 "
+              className="HomeSecondImg mx-auto col-lg-12 col-12 "
               fluid
             />
           </Col>
           <Col
-            className="col-lg-6  d-flex align-items-center col-12"
+            className="col-lg-8 animated-slide-in  d-flex align-items-center col-12"
             id="HomeSecRightMain"
           >
             <Col>
@@ -41,7 +41,7 @@ const HomeSecondComp = () => {
               </h3>
               <hr className="text-black " />
               <br />
-              <h2 className="HomeSecH2 text-center mt-2 text-black">
+              <h2 style={{ fontSize: 'calc(1.1rem + 1vw)',  color:'#FE828C', lineHeight: '1.1' }} className="HomeSecH2 text-center mt-2 ">
                 ENJOY AN EXCEPTIONAL JOURNEY OF TASTE
               </h2>
               <p style={{ color: 'black', fontSize: '16px' }}>

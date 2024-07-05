@@ -134,7 +134,7 @@ const ConfirmOrder = () => {
     <div className="ConfirmOrderMainImg bg-white">
       <div className="py-5">
         <Card
-          className="row d-flex justify-content-between col-12 col-md-10 col-sm-12 col-xs-12 col-lg-8 mx-auto"
+          className="row d-flex CardImg114 justify-content-between col-12 col-md-10 col-sm-12 col-xs-12 col-lg-8 mx-auto"
           id="CardBackIMg1"
         >
           <div className=" order-confirm " style={{ textAlign: 'left' }}>

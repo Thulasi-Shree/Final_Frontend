@@ -584,8 +584,7 @@ const findMyCoordinates = async () => {
       alert('Error submitting form. Please try again later.');
     }
   };
-
-  useEffect(() => {
+   useEffect(() => {
     // Fetch time slots from the API
     const fetchTimeSlots = async () => {
       try {
@@ -727,7 +726,7 @@ const findMyCoordinates = async () => {
 
   return (
     <div id="ShippingInfo" className="py-5 bg-white">
-      <div className="container col-md-5 py-3 custom-table my-4" id="CardBackIMg">
+      <div className="container col-11 mx-auto col-lg-6 py-3 custom-table my-4" id="CardBackIMg">
         <form className="checkout-form" onSubmit={handleSubmit}>
           {!isLoggedIn && (
             <PersonalDetails

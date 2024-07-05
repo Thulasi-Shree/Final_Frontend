@@ -123,7 +123,7 @@ const RestaurantSelection = () => {
     }
   }, [restaurantId]);
   return (
-    <div className="OrdCard py-2 bg-white" style={{ height: "80vh" }}>
+    <div className="OrdCard py-5 bg-white " >
       <Container>
         <Row>
           <Col
@@ -132,7 +132,7 @@ const RestaurantSelection = () => {
             xs={12}
             sm={12}
           >
-            <Card className=" mx-auto mt-lg-5 mt-md-2 py-3" id="CardBackIMg122">
+            <Card className=" mx-auto mt-lg-5 mt-md-2 py-3 CardImg114" id="CardBackIMg122">
               <Card.Body>
                 <Card.Title className='my-3' id="CardTextLog">
                   <h5>Select Restaurant</h5>
@@ -181,7 +181,7 @@ const RestaurantSelection = () => {
                     {availableDates.map((date) => (
                       <button
                         key={date}
-                        className="text-black mx-2 p-2"
+                        className="text-black mx-2 my-2 p-2"
                         onClick={() => handleDateSelection(date)}
                         variant="outline-danger"
                         style={{

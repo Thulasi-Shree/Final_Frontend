@@ -51,7 +51,7 @@ const LoginWithOtp = () => {
   };
 
   return (
-    <div className=" bg-white py-4" style={{ height: "75vh" }}>
+    <div className=" bg-white py-4" >
       <div className="signup-form-container mx-auto col-md-5 py-4 my-5">
         <Card className='bg-white Cardimg123'>
         <form onSubmit={handleLogin}>

@@ -38,16 +38,16 @@ const ContactUs = () => {
   };
 
   return (
-    <div className='address-container'>
+    <div className='mx-auto address-container'>
       {/* Button to open modal */}
-      <button
+      <div
         type="button"
         data-bs-toggle="modal"
         className="btn my-3 px-4 btn border border-danger rounded bg-white text-black"
         data-bs-target="#contactModal"
       >
         Contact Us
-      </button>
+      </div>
 
       {/* Modal */}
       <div
@@ -61,7 +61,7 @@ const ContactUs = () => {
         <div className="modal-dialog" id="CardText1">
           <div className="modal-content bg-white CardImg114">
             <div className="modal-header">
-              <h5 className="modal-title btn" id="exampleModalLabel">
+              <h5 className="modal-title " id="exampleModalLabel">
                 Contact Us
               </h5>
               <button

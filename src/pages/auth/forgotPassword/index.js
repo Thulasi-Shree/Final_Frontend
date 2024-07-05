@@ -60,7 +60,7 @@ const ForgotPasswordPage = () => {
   }, []);
 
   return (
-    <div className="container-fluid bg-white" style={{ height: "100vh" }}>
+    <div className="container-fluid bg-white">
       <div className='row '>
         <div className='col-lg-5 col-xs-12 col-md-9 mx-auto my-5'>
         <Card className='Cardimg123'>

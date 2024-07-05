@@ -1,0 +1,36 @@
+.offer {
+    /* padding: 60px 20px; */
+    background: linear-gradient(to right, #f9f7f8, #f9d3dc);
+  }
+  
+  .offerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .heading {
+    font-size: 2.5rem;
+    /* margin-bottom: 40px; */
+    color: #333; /* Dark grey text color */
+    position: relative;
+    /* opacity: 0; */
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+  
+
+  
+  .fadeIn {
+    /* opacity: 1 !important; */
+    transform: translateY(0) !important;
+  }
+  .offerItem {
+    transition: transform 0.3s ease-out;
+    border-radius: 40px !important;
+  }
+  
+  .offerItem:hover {
+    transform: translateY(-10px);
+  }
+  

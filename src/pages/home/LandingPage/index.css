@@ -152,20 +152,22 @@ p {
   padding-top: 100px;
 }
 
+/* index.css */
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.animated-slide-in {
+  animation: slideInFromLeft 1s ease-out;
+}
 
 
 @media screen and (min-width:220px) and (max-width:600px) {

@@ -354,7 +354,7 @@ const navigate = useNavigate();
   };
 
   return (
-    <div className="container-fluid py-5 bg-white" style={{ height: "75vh" }}>
+    <div className="container-fluid py-5 bg-white" >
       <Card className="Cardimg123 col-lg-5 mx-auto">
         <form onSubmit={handleSubmit}>
           <div className="col-11 col-md-8 col-lg-12 mx-auto custom-table mx-3 mt-4 bg-white">

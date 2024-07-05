@@ -156,18 +156,18 @@ const Payment = () => {
   }, [error]);
 
   return (
-    <div className="bg-white p-3" style={{height: "60vh"}} >
-      <div className="col-11 bg-white col-md-4 mx-auto py-3">
+    <div className="bg-white p-5" >
+      <div className="col-11 CardImg114 bg-white col-lg-6 mx-auto py-3">
         <Form
           onSubmit={submitHandler}
-          className="shadow-lg custom-table"
+          className="shadow-lg  custom-table"
           id="CardBackIMg1"
         >
-          <div className="m-3 py-3">
+          <div className="m-5 p-3">
             <h4 className="mb-4 " id="CardText">
               Card Info
             </h4>
-            <div className="form-group">
+            <div className="form-group my-3">
               <label htmlFor="card_num_field" id="CardText">
                 Card Number
               </label>
@@ -179,7 +179,7 @@ const Payment = () => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group my-3">
               <label htmlFor="card_exp_field" id="CardText">
                 Card Expiry
               </label>

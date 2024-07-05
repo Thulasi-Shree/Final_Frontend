@@ -19,7 +19,7 @@ const OrderSuccess = () => {
   }, []);
 
   return (
-    <div id="OrderSuccessMainImg">
+    <div id="OrderSuccessMainImg bg-white" style={{height: '70vh'}}>
       <div className="row justify-content-center mx-auto">
         <div className="col-12 mt-5 text-center">
           <img

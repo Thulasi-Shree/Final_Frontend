@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
   const [quantities, setQuantities] = useState({});
   const [cartItems, setCartItems] = useState([]);
+  const [animationId, setAnimationId] = useState(null);
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -86,6 +87,8 @@ const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
 
     const updatedCartItems = [...cartItems, { ...menuItem, quantity: 1 }];
     updatelocalStorage(updatedCartItems);
+    setAnimationId(menuItem._id);
+        setTimeout(() => setAnimationId(null), 1000); // Remove animation class after 1000ms
   };
 
   const handleDelete = (menuItem) => {
@@ -103,7 +106,7 @@ const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
   };
   return (
     <div className='bg-white'>
-      <Col className='col-11 mx-auto'  >
+      <Col className='col-11 mx-auto'>
         <div className="search-container mb-3">
           <input
             type="text"
@@ -121,11 +124,10 @@ const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
         </div>
       ) : (
         <Container className='bg-white'>
-
           <Row id="RowFourthComp">
             {menus.map((menuItem) => (
-              <Col key={menuItem._id} className="col-xl-6 col-12 ">
-                <Card className="menu-card mb-3">
+              <Col key={menuItem._id} className="col-xl-6 col-12">
+                <Card className={`menu-card mb-3 ${animationId === menuItem._id ? 'move-to-cart-animation' : ''}`}>
                   <Row noGutters>
                     <Col xs={6}>
                       <Card.Img
@@ -167,19 +169,19 @@ const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
                             </button>
                           </div>
                         ) : (
-                          <div
+                          <button
                             id="cart_btn"
                             disabled={!menuItem.isAvailable}
                             onClick={() => handleAddToCartClick(menuItem)}
                             className=" bg-white border  border-danger text-center py-2 pb-4"
-                            style={{ width: '65%', height: '25px', borderRadius: '10px' }}
+                            style={{ width: '70%', height: '25px', borderRadius: '10px' }}
                           >
                             {!menuItem.isAvailable ? (
                               <> Sold Out</>
                             ) : (
                               <>Add to Cart</>
                             )}
-                          </div>
+                          </button>
                         )}
                       </div>
                     </Col>
@@ -188,7 +190,6 @@ const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
               </Col>
             ))}
           </Row>
-
 
           <div className="view-cart-button-container mx-auto">
             <Button
