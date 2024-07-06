@@ -49,9 +49,6 @@ h1,h2,h3,h4,h5,h6,p,ul,li,button{
 font-weight: 500;
 font-style: normal; */
 }
-p {
-  /* font-family: serif; */
-}
 
 p {
   font-size: 19px;
@@ -97,11 +94,6 @@ p {
   background: rgb(249, 233, 233) !important;
   color:black ;
   text-shadow: 1px 1px  #cc891d;
-}
-
-.HomeSecH2 {
-  /* font-family: serif; */
-  /* font-size: 45px; */
 }
 
 .HomeThirdComp {
@@ -171,10 +163,7 @@ p {
 
 
 @media screen and (min-width:220px) and (max-width:600px) {
-  .HomeMainFirst {
-    /* height: 130vh; */
-  }
-
+ 
   .HomeImg2 {
     display: none;
   }
@@ -191,7 +180,6 @@ p {
     display: none;
   }
 
-  .HomeSecondMain {}
 
   .HomeSecondImg {
     height:60vh !important;
@@ -218,33 +206,18 @@ p {
     font-size: 30px;
   }
 
-  #HomeThirdImg {
-    /* margin-left: -20px; */
-  }
+  
 
-  /* .HomeForthComp {
-      height: 80vh;
-    } */
   #HomeFourthInput {
     /* margin-left: 30px; */
     width: 260px;
   }
 
-  /* .FooterComp{
-      height:190vh;
-    } */
-  .FooterMainRow {
-    /* margin-left: 0px; */
-  }
-
-  #FooterH3 {
+   #FooterH3 {
     /* margin-left: 60px; */
     padding-top: 60px;
   }
 
-  #FooterOpenPara {
-    /* margin-left: 50px; */
-  }
 }
 
 
