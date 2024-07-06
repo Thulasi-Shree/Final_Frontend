@@ -52,11 +52,10 @@ margin: 2px;
   text-shadow: 1px 1px #d8c895;
  }
 .ActiveOrders{
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('../../assets/img/Bg5.jpg');
+  /* background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('../../assets/img/Bg5.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.MenuHeaderMain1{
-}
+
 

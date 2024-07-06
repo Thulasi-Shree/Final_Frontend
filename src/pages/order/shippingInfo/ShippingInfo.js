@@ -726,8 +726,8 @@ const findMyCoordinates = async () => {
 
   return (
     <div id="ShippingInfo" className="py-5 bg-white">
-      <div className="container col-11 mx-auto col-lg-6 py-3 custom-table my-4" id="CardBackIMg">
-        <form className="checkout-form" onSubmit={handleSubmit}>
+      <div className="container col-11 mx-auto bg-white col-lg-6 py-3 custom-table my-4" id="CardBackIMg">
+        <form className="checkout-form bg-white" onSubmit={handleSubmit}>
           {!isLoggedIn && (
             <PersonalDetails
               name={name}

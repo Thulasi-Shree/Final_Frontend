@@ -117,7 +117,7 @@ p {
 }
 
 .HomeForthComp {
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../../../assets/img/HomeThirdMainImg.jpg');
+  /* background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../../../assets/img/HomeThirdMainImg.jpg'); */
   /* height: 50vh; */
   color:black ;
   text-shadow: 1px 1px  #cc891d;

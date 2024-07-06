@@ -19,9 +19,7 @@
   padding: 3px;
   margin-right: 5px; 
 }
-.back{
-  
-}
+
 .CardDetail{
   background: white;
 }
@@ -36,7 +34,7 @@
   color: white;
 }
 #EmptyCard{
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../../assets/img/HomeThirdMainImg.jpg');
+  /* background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../../assets/img/HomeThirdMainImg.jpg'); */
   color:white ;
   text-shadow: 2px 2px  #cc891d;
   width:100%;

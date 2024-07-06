@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './ConfirmOrder.css';
+import Cart1 from 'pages/cart/cart1';
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
@@ -18,8 +19,7 @@ const ConfirmOrder = () => {
   const [restaurantBranch, setRestaurantBranch] = useState(null);
   const [isPickup, setIsPickup] = useState(true);
   // const { cartId } = useParams();
-  const orderInstruction = JSON.parse(localStorage.getItem('orderNotes' || ''));
-  const cartTotal = JSON.parse(localStorage.getItem('cart'));
+
   // Get data from session storage
   const localData = JSON.parse(localStorage.getItem('shippingInfo'));
   const emailOrMobile = JSON.parse(localStorage.getItem('emailOrMobile'));
@@ -53,7 +53,7 @@ const ConfirmOrder = () => {
     : (Number(minDeliveryCharge) + Number(distanceResponse.data.distanceInKilometers * deliveryChargePerKm)).toFixed(2);
 
   // Calculate total price without shipping
-  const cartItemsTotal = JSON.parse(localStorage.getItem('cartTotal'));
+  const cartItemsTotal = JSON.parse(localStorage.getItem('cartItemsTotal'));
   const totalPriceWithoutShipping = Number(cartItemsTotal);
   // Calculate tax price
   const taxPrice = Number(tax * totalPriceWithoutShipping).toFixed(2);
@@ -84,7 +84,7 @@ const ConfirmOrder = () => {
   useEffect(() => {
     fetchRestaurantBranch();
     fetchdata()
-  }, [restaurantId, cartTotal, cartItems, totalPrice]);
+  }, [restaurantId]);
   // Map shipping information
   const mapData = () => {
     return {
@@ -128,7 +128,7 @@ const ConfirmOrder = () => {
     if (storedCartItems.length === 0) {
       navigate('/select');
     }
-  }, [cartTotal, cartItems]);
+  }, []);
 
   return (
     <div className="ConfirmOrderMainImg bg-white">
@@ -238,7 +238,7 @@ const ConfirmOrder = () => {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                   <div className="row">
                     <div className="col-lg-12 col-sm-12 col-xs-12 col-md-6 col-lg-6">
-                      <Cart />
+                      <Cart1 />
                     </div>{' '}
                     {/* </Card> */}
                     <div className="col-lg-12 col-sm-12 col-md-6 col-lg-6">

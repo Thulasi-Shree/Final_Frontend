@@ -1,10 +1,11 @@
 .btn-custom {
   background-color: #ffa500 !important;
   border: none !important;
-border-radius: 0 !important;
-margin: 2px;
+  border-radius: 0 !important;
+  margin: 2px;
   /* Add other styles as needed */
 }
+
 .address-container label {
   text-align: left;
   display: block;
@@ -31,9 +32,9 @@ margin: 2px;
   text-decoration: none !important;
 }
 
-.pagination li a{
+.pagination li a {
   color: #afafaf;
-  font-size:18px;
+  font-size: 18px;
 }
 
 .pagination li.active {
@@ -46,21 +47,21 @@ margin: 2px;
   text-decoration: none !important;
 }
 
-#CardBackIMg{
+#CardBackIMg {
   background-color: #908e8583;
   color: white;
 }
 
-.ActiveOrders{
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('../../assets/img/Bg5.jpg');
+.ActiveOrders {
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/Bg5.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.MenuHeaderMain1{
-}
 
-#CardBackIMg1{
+/* .MenuHeaderMain1 {} */
+
+#CardBackIMg1 {
   /* background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(230, 45, 45, 0.7)), url('../../assets/img/Gradient-colorBG.webp'); */
   /* background-color: #c1bca183; */
   background: rgb(185, 184, 202);
@@ -68,10 +69,9 @@ margin: 2px;
   color: rgb(9, 8, 8) !important;
   text-shadow: 1px 1px #d8c895 !important;
   background-color: transparent;
-} 
+}
 
-#CardText{
+#CardText {
   color: rgb(9, 8, 8);
   text-shadow: 1px 1px #d8c895;
- }
-
+}

@@ -64,7 +64,7 @@ const OrdersTable1 = () => {
         <div className="row">
           <div className="col p-4 my-2">
             {!noCurrentOrders && (
-              <div>
+              <div className=''>
                 <h3
                   style={{
                     backgroundColor: 'white',
@@ -74,6 +74,7 @@ const OrdersTable1 = () => {
                   Current Orders
                 </h3>
                 <ReusableTable
+                className="CardImg114"
                   data={currentOrders}
                   headers={headers}
                   onViewDetails={handleView}

@@ -102,7 +102,7 @@ export default function Profile() {
                 <figure className="my-4 avatar avatar-profile" id="CardText">
                   <img
                     className="rounded-circle img-fluid"
-                    src={avatar ?? require('../../assets/img/ProfilePic.png')}
+                    src={avatar ?? require('../../assets/img/avatar.jpeg')}
                     alt="Profile"
                   />
                 </figure>

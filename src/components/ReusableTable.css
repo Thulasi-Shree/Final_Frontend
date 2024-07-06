@@ -1,6 +1,6 @@
 .custom-table{
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
-  background-color: #c1bca183;
+  background-color: #b96c7b;
   border-radius: 10px; 
   overflow: hidden;
 }
@@ -12,21 +12,22 @@ td{
 height: 45px;
 }
 .custom-table thead {
+  background-color: #e6c5c5 !important;
 border-bottom: 2px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) inset;
 border-top: 0px !important;
-border-color: #b96c7b !important;
+border-color: #e6c5c5 !important;
 }
 th{
-  background-color: transparent !important;
-  color:black !important;
+  background-color: #e6c5c5 !important;
+  color:#060606 !important;
   height: 60px !important;
   font-size: large !important;
   text-transform: uppercase !important;
   font-weight: 600;
  }
 th:hover{
-background-color: transparent !important;
+background-color: #e6c5c5 !important;
 }
 .with-border-radius {
 border-radius: 50% !important;

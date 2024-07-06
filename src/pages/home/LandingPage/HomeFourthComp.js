@@ -8,7 +8,7 @@ import ContactUs from 'pages/contactUs/contactUs';
 
 const HomeFourthComp = () => {
   return (
-    <div className="home-fourth-comp my-4 py-4 bg-white col-12 col-md-6 mx-auto">
+    <div className="home-fourth-comp mt-4 pt-4 bg-white col-12 col-md-6 mx-auto">
       <Container>
         <Row className="text-center justify-content-center">
           <Col lg={10} md={10} xs={12}>
