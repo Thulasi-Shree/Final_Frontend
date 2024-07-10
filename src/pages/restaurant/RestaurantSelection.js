@@ -94,8 +94,12 @@ const RestaurantSelection = () => {
       try {
         const response = await axios.get('/api/restaurant/get');
         const restaurant = response.data.data;
+        const latitude = restaurant[0].address.latitude;
+        const longitude = restaurant[0].address.longitude;
+        localStorage.setItem('restaurantLatitude', latitude);
+        localStorage.setItem('restaurantLongitude', longitude);
         // const timeSlotsData = Array.isArray(response.data) ? response.data : [];
-        // console.log(restaurant);
+        console.log(restaurant);
         setRestaurant(restaurant);
       } catch (error) {
         // console.error('Error fetching time slots:', error.message);

@@ -18,11 +18,13 @@ const ConfirmOrder = () => {
   const [cartItems, setCartItems] = useState([]);
   const [restaurantBranch, setRestaurantBranch] = useState(null);
   const [isPickup, setIsPickup] = useState(true);
-  // const { cartId } = useParams();
+  const orderType = JSON.parse(localStorage.getItem('orderType'));
+  // const [orderType, setOrderType] = useState(orderType1)
 
   // Get data from session storage
   const localData = JSON.parse(localStorage.getItem('shippingInfo'));
   const emailOrMobile = JSON.parse(localStorage.getItem('emailOrMobile'));
+  const orderInstruction = JSON.parse(localStorage.getItem('orderNotes'));
   // const name = JSON.parse(localStorage.getItem('name'));
   const billingAddress = JSON.parse(localStorage.getItem('billingAddress'));
   const deliveryAddress = JSON.parse(localStorage.getItem('deliveryAddress'));
@@ -50,7 +52,7 @@ const ConfirmOrder = () => {
   };
   const shippingPrice = isPickup
     ? 0
-    : (Number(minDeliveryCharge) + Number(distanceResponse.data.distanceInKilometers * deliveryChargePerKm)).toFixed(2);
+    : (Number(minDeliveryCharge) + Number(distanceResponse * deliveryChargePerKm)).toFixed(2);
 
   // Calculate total price without shipping
   const cartItemsTotal = JSON.parse(localStorage.getItem('cartItemsTotal'));
@@ -84,13 +86,15 @@ const ConfirmOrder = () => {
   useEffect(() => {
     fetchRestaurantBranch();
     fetchdata()
+    // setOrderType(mappedData.orderType)
+    console.log(orderType)
   }, [restaurantId]);
   // Map shipping information
   const mapData = () => {
     return {
       userName: localData.name,
       city: billingAddress.city,
-      orderType: localData.orderType,
+      orderType: orderType,
       selectedTimeSlot: `${time}`,
       state: billingAddress.state,
       streetAddress: billingAddress.streetAddress,
@@ -124,7 +128,7 @@ const ConfirmOrder = () => {
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     setCartItems(storedCartItems);
-    setIsPickup(mappedData.orderType === 'Pickup');
+    setIsPickup(orderType === 'Pickup');
     if (storedCartItems.length === 0) {
       navigate('/select');
     }
@@ -172,7 +176,7 @@ const ConfirmOrder = () => {
                         <hr />
                       </>
                     )}
-                    {mappedData.orderType === 'Pickup' ? (
+                    {orderType === 'Pickup' ? (
                       <div id="CardText">
                         <p id="CardText">
                           <b>Type:</b> Pickup
@@ -258,7 +262,7 @@ const ConfirmOrder = () => {
                           </span>
                         </p>
 
-                        {mappedData.orderType === 'Delivery' ? (
+                        {orderType === 'Delivery' ? (
                           <p id="CardText">
                             Delivery:{' '}
                             <span className="order-summary-values">

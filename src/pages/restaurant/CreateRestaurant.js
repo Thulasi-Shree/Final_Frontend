@@ -14,12 +14,34 @@ const CreateRestaurant = () => {
       city: '',
       state: '',
       postalCode: '',
-      country: ''
+      country: '',
+      latitude: '',
+      longitude: ''
     },
     cuisineTypeCategory: '',
     openingHours: ''
   });
-
+  const resetFormData = () => {
+    setFormData({
+      restaurantName: '',
+      restaurantBranch: '',
+      restaurantId: '',
+      description: '',
+      address: {
+        line1: '',
+        line2: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        country: '',
+        latitude: '',
+        longitude: ''
+      },
+      cuisineTypeCategory: '',
+      openingHours: ''
+    });
+  };
+  
   const handleChange = (e) => {
     // setFormData({ ...formData, [e.target.name]: e.target.value });
     if (e.target.name.startsWith('address.')) {
@@ -44,9 +66,10 @@ const CreateRestaurant = () => {
       await axios.post('/api/restaurant/create', formData);
       console.log('Restaurant created successfully!');
       alert('Restaurant created Successfully!');
+      resetFormData();
     } catch (error) {
       console.error('Error creating restaurant:', error);
-      alert('Error creating restaurant!');
+      alert('Error creating restaurant. Please ensure the provided data is unique and try again.');
     }
   };
 
@@ -256,10 +279,9 @@ const CreateRestaurant = () => {
             />
           </div>
 
-          <div className="mb-3">
-            {' '}
+          <div className="mb-4">
             <label>
-              Point:{' '}
+              Latitude:
               <span className="text-danger">
                 {' '}
                 <b>*</b>
@@ -268,8 +290,29 @@ const CreateRestaurant = () => {
             <input
               style={{ backgroundColor: 'white', color: 'black' }}
               type="text"
-              name="point"
-              value={formData.point}
+              name="address.latitude"
+              value={formData.address.latitude}
+              onChange={handleChange}
+              required
+              placeholder="Field is required"
+              className={`form-control `}
+            />
+          </div>
+
+          <div className="mb-3">
+            {' '}
+            <label>
+              Longitude:{' '}
+              <span className="text-danger">
+                {' '}
+                <b>*</b>
+              </span>
+            </label>
+            <input
+              style={{ backgroundColor: 'white', color: 'black' }}
+              type="text"
+              name="address.longitude"
+              value={formData.address.longitude}
               onChange={handleChange}
               required
               placeholder="Field is required"

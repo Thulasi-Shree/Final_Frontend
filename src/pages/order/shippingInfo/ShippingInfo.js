@@ -10,6 +10,7 @@ import axios from 'axios';
 import PersonalDetails from './PersonalDetails';
 import OrderDetails from './OrderDetails';
 import DeliveryAddress from './DeliveryAddress';
+import { getDistance } from 'geolib';
 import BillingAddress from './BillingAddress';
 import CryptoJS from 'crypto-js';
 import './ShippingInfo.css';
@@ -22,6 +23,8 @@ const ShippingInfo1 = () => {
   const orderInstruction = JSON.parse(localStorage.getItem('orderNotes' || ''));
   const billing = JSON.parse(localStorage.getItem('billingAddress') || '{}');
   const user = JSON.parse(localStorage.getItem('user'));
+  const restaurantLongitude = JSON.parse(localStorage.getItem('restaurantLongitude'));
+  const restaurantLatitude = JSON.parse(localStorage.getItem('restaurantLatitude'));
   const [enteredOtp, setOtp] = useState('');
   const [orderType, setOrderType] = useState(order || '');
   const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
@@ -40,6 +43,7 @@ const ShippingInfo1 = () => {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [locationApi, setLocationApi] = useState(null);
+  const [deliveryKm, setDeliveryKm] = useState('');
   const [locationApi1, setLocationApi1] = useState(null);
   const [name, setFirstName] = useState(isLoggedIn ? user.name : '');
   const [lastName, setLastName] = useState(isLoggedIn ? user.lastName : '');
@@ -69,17 +73,10 @@ const ShippingInfo1 = () => {
   const location = useLocation();
   const oldState = location.state;
 
+ 
   const handleTimeChange = (newTime) => {
     setTime(newTime);
     // console.log(time);
-  };
-
-  const handleUseCurrentLocationChange = () => {
-    setUseCurrentLocation(!useCurrentLocation);
-    // setUserLocation(false);
-    setDeliveryVerified(false);
-    setBillingVerified(false);
-    setDistanceResult(null);
   };
 
   // Function to handle user name change
@@ -119,6 +116,8 @@ const ShippingInfo1 = () => {
   };
   // Function to handle order type change
   const handleOrderTypeChange = (e) => {
+     setBillingVerified(false);
+     setDeliveryVerified(false);
     const selectedOrderType = e.target.value;
     localStorage.setItem('orderType', JSON.stringify(selectedOrderType));
     setOrderType(selectedOrderType);
@@ -203,239 +202,6 @@ const ShippingInfo1 = () => {
       alert(`Error sending OTP!`);
     }
   };
-
-  let latitude1;
-  let longitude1;
-  let positionLat;
-  let positionLng;
-  let position;
-  
-  let isFindingCoordinates = false;
-
-const findMyCoordinates = async () => {
-  try {
-    if (isFindingCoordinates) {
-      return; // Prevent multiple calls
-    }
-
-    isFindingCoordinates = true;
-      // if (navigator.geolocation) {
-      //   position = await new Promise((resolve, reject) => {
-      //     navigator.geolocation.getCurrentPosition(resolve, reject);
-      //   });
-      if (navigator.geolocation) {
-        position = await new Promise((resolve, reject) => {
-          const timeoutId = setTimeout(() => {
-            reject(new Error('Location request timed out'));
-          }, 30000); // 30 seconds timeout
-  
-          navigator.geolocation.getCurrentPosition(
-            (pos) => {
-              clearTimeout(timeoutId); // Clear the timeout if location is found
-              resolve(pos);
-            },
-            (error) => {
-              clearTimeout(timeoutId); // Clear the timeout if there's an error
-              reject(error);
-            }
-          );
-        });
-
-        latitude1 = position.coords.latitude; // Updated to get latitude
-        longitude1 = position.coords.longitude; // Updated to get longitude
-        localStorage.setItem('lat', JSON.stringify(latitude1));
-        localStorage.setItem('lng', JSON.stringify(longitude1));
-        const location =  ` https://api.geoapify.com/v1/geocode/reverse?lat=${latitude1}&lon=${longitude1}&apiKey=${locationApi}`;
-        const response = await axios.get(location);
-        const { data } = response;
-        setUserLocation(data);
-        const distanceResponse = await axios.post('/api/calculate-distance', {
-          latitude: latitude1,
-          longitude: longitude1
-        });
-
-        const result = distanceResponse;
-        const calculatedDistance = distanceResponse.data.distanceInKilometers;
-        setDistanceResult(calculatedDistance);
-        // setBillingVerified(true);
-        if (calculatedDistance < 500) {
-          setDeliveryVerified(true);
-          localStorage.setItem('orderAvailableAlertShown', 'true');
-        } else {
-          setDeliveryVerified(false);
-        }
-        localStorage.setItem('distanceResponse', JSON.stringify(result));
-        localStorage.setItem(
-          'deliveryAddress',
-          JSON.stringify({
-            streetAddress: data.features[0].properties.address_line1,
-            postal_code: data.features[0].properties.postcode,
-            city: data.features[0].properties.city,
-            state: data.features[0].properties.state,
-            country: data.features[0].properties.country
-          })
-        );
-
-        // console.log(data);
-        setToastShown(true);
-      } else {
-        alert('Geolocation is not supported by your browser');
-      }
-    } catch (error) {
-      // console.error('Error getting location:', error.message);
-      alert('Error getting location');
-      // notifyError(error.message);
-    } finally {
-      isFindingCoordinates = false; // Reset the flag after operation completes
-    }
-  };
-  
-  // const findMyCoordinates = async () => {
-  //   try {
-  //     // if (navigator.geolocation) {
-  //     //   position = await new Promise((resolve, reject) => {
-  //     //     navigator.geolocation.getCurrentPosition(resolve, reject);
-  //     //   });
-  //     if (navigator.geolocation) {
-  //       position = await new Promise((resolve, reject) => {
-  //         const timeoutId = setTimeout(() => {
-  //           reject(new Error('Location request timed out'));
-  //         }, 30000); // 30 seconds timeout
-  
-  //         navigator.geolocation.getCurrentPosition(
-  //           (pos) => {
-  //             clearTimeout(timeoutId); // Clear the timeout if location is found
-  //             resolve(pos);
-  //           },
-  //           (error) => {
-  //             clearTimeout(timeoutId); // Clear the timeout if there's an error
-  //             reject(error);
-  //           }
-  //         );
-  //       });
-
-  //       latitude1 = position.coords.latitude; // Updated to get latitude
-  //       longitude1 = position.coords.longitude; // Updated to get longitude
-  //       localStorage.setItem('lat', JSON.stringify(latitude1));
-  //       localStorage.setItem('lng', JSON.stringify(longitude1));
-  //       const location =  ` https://api.geoapify.com/v1/geocode/reverse?lat=${latitude1}&lon=${longitude1}&apiKey=${locationApi}`;
-  //       const response = await axios.get(location);
-  //       const { data } = response;
-  //       setUserLocation(data);
-  //       const distanceResponse = await axios.post('/api/calculate-distance', {
-  //         latitude: latitude1,
-  //         longitude: longitude1
-  //       });
-
-  //       const result = distanceResponse;
-  //       const calculatedDistance = distanceResponse.data.distanceInKilometers;
-  //       setDistanceResult(calculatedDistance);
-  //       // setBillingVerified(true);
-  //       if (calculatedDistance < 500) {
-  //         setDeliveryVerified(true);
-  //         localStorage.setItem('orderAvailableAlertShown', 'true');
-  //       } else {
-  //         setDeliveryVerified(false);
-  //       }
-  //       localStorage.setItem('distanceResponse', JSON.stringify(result));
-  //       localStorage.setItem(
-  //         'deliveryAddress',
-  //         JSON.stringify({
-  //           streetAddress: data.features[0].properties.address_line1,
-  //           postal_code: data.features[0].properties.postcode,
-  //           city: data.features[0].properties.city,
-  //           state: data.features[0].properties.state,
-  //           country: data.features[0].properties.country
-  //         })
-  //       );
-
-  //       // console.log(data);
-  //       setToastShown(true);
-  //     } else {
-  //       alert('Geolocation is not supported by your browser');
-  //     }
-  //   } catch (error) {
-  //     // console.error('Error getting location:', error.message);
-  //     alert('Error getting location');
-  //     // notifyError(error.message);
-  //   }
-  // };
-  const fullAddress = `${streetAddress}, ${city}, ${postal_code} ${state}, ${country}`;
-
-  const geocodeAddressToCoordinates = async (address) => {
-    try {
-      const encodedAddress = encodeURIComponent(address);
-      const response = await axios.get(
-        `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${locationApi1}`
-      );
-      if (!response.data.features || response.data.features.length === 0) {
-        throw new Error('Coordinates not found for the given address');
-      }
-
-      const firstFeature = response.data.features[0];
-      const { lat, lon } = firstFeature.properties;
-      positionLat = firstFeature.properties.lat;
-      positionLng = firstFeature.properties.lon;
-      // console.log(`-------------${positionLat}`);
-
-      localStorage.setItem('lat', JSON.stringify(lat));
-      localStorage.setItem('lng', JSON.stringify(lon));
-      return { latitude: lat, longitude: lon };
-    } catch (error) {
-      throw error;
-    }
-  };
-  const handleAddressChange = async (e) => {
-    if (useCurrentLocation) {
-      try {
-        findMyCoordinates();
-      } catch (error) {
-        // console.log(error);
-        alert('Error in finding coordinates');
-      }
-    } else {
-      try {
-        const newCoordinates = await geocodeAddressToCoordinates(fullAddress);
-        setCoordinates(newCoordinates);
-        const distanceResponse = await axios.post('/api/calculate-distance', {
-          latitude: positionLat,
-          longitude: positionLng
-        });
-
-        const result = distanceResponse;
-        const calculatedDistance = distanceResponse.data.distanceInKilometers;
-        setDistanceResult(calculatedDistance);
-        // setBillingVerified(true);
-        if (calculatedDistance < 500) {
-          setDeliveryVerified(true);
-          alert('Order availabe for your location');
-        } else {
-          setDeliveryVerified(false);
-          if (orderType !== 'Pickup') {
-            alert('Order not availabe for your location');
-          }
-        }
-
-        localStorage.setItem('distanceResponse', JSON.stringify(result));
-      } catch (error) {
-        setDeliveryVerified(false);
-
-        // Check if the error is an AxiosError and the status code is 400
-        if (
-          error.isAxiosError &&
-          error.response &&
-          error.response.status === 400
-        ) {
-          // Show a toast message for the 400 Bad Request error
-          alert('Please check if delivery is available to your address.');
-        }
-      }
-    }
-  };
-  const handleButtonClick = () => {
-    // setUserLocation(false);
-    handleAddressChange();
-  };
   const [sameAsDelivery, setSameAsDelivery] = useState(false);
   const [billingStreetAddress, setBillingStreetAddress] = useState(billing.streetAddress|| '');
   const [billingpostal_code, setBillingpostal_code] = useState(billing.postalCode || billing.postal_code || '');
@@ -467,7 +233,6 @@ const findMyCoordinates = async () => {
 
     const geocodeBillingAddressToCoordinates = async (address) => {
       try {
-        const locationApi = '31bc2a8978644190beec0a6f143266d3';
         const encodedAddress = encodeURIComponent(address);
         const response = await axios.get(
           `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${locationApi1}`
@@ -541,19 +306,67 @@ const findMyCoordinates = async () => {
       );
 
       setBillingCoordinates(billingCoordinates);
-      // isValid(true);
-
-      // Additional logic if needed
-      // if (
-      //   (billingVerified === true && deliveryVerified === true) ||
-      //   (orderType === 'Pickup' && billingVerified === true)
-      // ) {
-      //   navigate('/order/confirm');
-      // }
     } catch (error) {
       setBillingVerified(false);
       alert('Please enter the address correctly');
       // Handle the error accordingly, you might want to set an error state
+    }
+  };
+  const handleDeliveryAddressChange = async (event) => {
+    event.preventDefault();
+  
+    const fullDeliveryAddress = `${streetAddress}, ${city}, ${state}, ${postal_code}, ${country}`;
+  
+    const geocodeDeliveryAddressToCoordinates = async (address) => {
+      try {
+        const encodedAddress = encodeURIComponent(address);
+        const response = await axios.get(
+          `https://api.geoapify.com/v1/geocode/search?text=${encodedAddress}&apiKey=${locationApi1}`
+        );
+  
+        if (!response.data.features || response.data.features.length === 0) {
+          throw new Error('Coordinates not found for the given delivery address');
+        }
+  
+        const firstFeature = response.data.features[0];
+        const { lat, lon } = firstFeature.properties;
+        setDeliveryVerified(true);
+        localStorage.setItem('deliveryLat', JSON.stringify(lat));
+        localStorage.setItem('deliveryLng', JSON.stringify(lon));
+  
+        return { latitude: lat, longitude: lon };
+      } catch (error) {
+        throw error;
+      }
+    };
+  
+    try {
+      const deliveryCoordinates = await geocodeDeliveryAddressToCoordinates(
+        fullDeliveryAddress
+      );
+      
+      const restaurantCoordinates = {
+        latitude: restaurantLatitude,
+        longitude: restaurantLongitude
+      };
+  
+      const distance = getDistance(restaurantCoordinates, deliveryCoordinates);
+      const distanceInKm = distance / 1000;
+      console.log(distanceInKm);
+      setDistanceResult(distanceInKm);
+  
+      if (distanceInKm <= deliveryKm) {
+        alert(`Order Available for your location!`);
+        setDeliveryVerified(true);
+      } else {
+        setDeliveryVerified(false);
+        alert(`Delivery address is too far. Maximum delivery distance is ${deliveryKm} km.`);
+      }
+  
+      setCoordinates(deliveryCoordinates);
+    } catch (error) {
+      setDeliveryVerified(false);
+      alert('Please enter the address correctly');
     }
   };
 
@@ -574,7 +387,13 @@ const findMyCoordinates = async () => {
         await handleBillingAddressChange(e);
       } else {
         await handleDeliveryBillingAddressChange(e);
-        await handleButtonClick();
+        // await handleButtonClick();
+      }
+      if (orderType === 'Delivery') {
+        await handleDeliveryAddressChange(e);
+      } else {
+        await handleDeliveryBillingAddressChange(e);
+        // await handleButtonClick();
       }
 
       localStorage.setItem('shippingInfo', JSON.stringify(addressData));
@@ -597,25 +416,21 @@ const findMyCoordinates = async () => {
         alert('Error fetching time slots');
       }
     };
+    const fetchdata = async () => {
+      try {
+        const response = await axios.get(`/api/admin/settings/get`);
+        setDeliveryKm(response.data.data[0].deliveryKm);
+      } catch (error) {
+        console.error('Error fetching restaurant details:', error);
+        alert('Error fetching delivery & tax charges');
+      }
+    };
+
+    fetchdata();
 
     fetchTimeSlots();
-  }, []);
-  // useEffect(() => {
-  //   axios.get('/api/get-location-api-key')
-  //     .then(response => {
-  //       setLocationApi(response.data.apiKey);
-  //     })
-  //     .catch(error => {
-  //       alert('Error fetching API key');
-  //     });
-  //     axios.get('/api/locationApikey')
-  //     .then(response => {
-  //       setLocationApi1(response.data.apiKey);
-  //     })
-  //     .catch(error => {
-  //       alert('Error fetching API key');
-  //     });
-  // }, []);
+  }, [deliveryKm]);
+  
   useEffect(() => {
     // Fetch encrypted API keys from backend
     axios.get('/api/get-location-api-key')
@@ -653,12 +468,7 @@ const findMyCoordinates = async () => {
       return '';
     }
   };
-  useEffect(() => {
-    if (!toastShown && useCurrentLocation) {
-      findMyCoordinates();
-      setToastShown(true);
-    }
-  }, [toastShown, useCurrentLocation]);
+ 
   useEffect(() => {
     // This useEffect will run whenever any of the billing address state values change
     // and it will update localStorage accordingly.
@@ -775,11 +585,11 @@ const findMyCoordinates = async () => {
               handleStateChange={handleStateChange}
               handleCountryChange={handleCountryChange}
               handleText2={handleText2}
-              handleButtonClick={handleButtonClick}
+              // handleButtonClick={handleButtonClick}
               toastShown={toastShown}
               setToastShown={setToastShown}
               useCurrentLocation={useCurrentLocation}
-              findMyCoordinates={findMyCoordinates}
+              // findMyCoordinates={findMyCoordinates}
               userLocation={userLocation}
               sameAsDelivery={sameAsDelivery}
               billingCity={billingCity}
@@ -794,7 +604,7 @@ const findMyCoordinates = async () => {
               setBillingState={setBillingState}
               setBillingCountry={setBillingCountry}
               coordinates={coordinates}
-              handleUseCurrentLocationChange={handleUseCurrentLocationChange}
+              // handleUseCurrentLocationChange={handleUseCurrentLocationChange}
               distanceResult={distanceResult}
             />
           )}
@@ -806,7 +616,7 @@ const findMyCoordinates = async () => {
               state={state}
               country={country}
               textBox1={textBox1}
-              handleBillingAddressChange={handleButtonClick}
+              // handleBillingAddressChange={handleButtonClick}
               handleStreetAddressChange={handleStreetAddressChange}
               handleZipCodeChange={handleZipCodeChange}
               handleCityChange={handleCityChange}

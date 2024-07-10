@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Settings = ({token}) => {
     const [settings, setSettings] = useState({
@@ -50,20 +51,21 @@ const Settings = ({token}) => {
         <Card className='p-4 col-xl-4 col-xs-12 col-sm-12 col-lg-6 col-md-8 Cardimg123'>
             <h2>Tax & Delivery Charges</h2>
         <form onSubmit={handleSubmit}>
-        <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Minimum Delivery Charges</label>
-  <input type="number" class="form-control" name="minDeliveryCharge" value={settings.minDeliveryCharge} onChange={handleChange} placeholder="Min Delivery Charge" required/>
+        <div className="mb-3">
+  <label htmlFor="exampleFormControlInput1" className="form-label">Minimum Delivery Charges</label>
+  <input type="number" className="form-control" name="minDeliveryCharge" value={settings.minDeliveryCharge} onChange={handleChange} placeholder="Min Delivery Charge" required/>
 </div>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Tax Amount</label>
-  <input type="number" class="form-control" name="taxAmount" value={settings.taxAmount} onChange={handleChange} placeholder="Tax Amount" required/>
+<div className="mb-3">
+  <label htmlFor="exampleFormControlInput1" className="form-label">Tax Amount</label>
+  <input type="number" className="form-control" name="taxAmount" value={settings.taxAmount} onChange={handleChange} placeholder="Tax Amount" required/>
 </div>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Delivery Charges per KM</label>
-  <input type="number" class="form-control" name="deliveryChargePerKm" value={settings.deliveryChargePerKm} onChange={handleChange} placeholder="Delivery Charge Per Km" required/>
+<div className="mb-3">
+  <label htmlFor="exampleFormControlInput1" className="form-label">Delivery Charges per KM</label>
+  <input type="number" className="form-control" name="deliveryChargePerKm" value={settings.deliveryChargePerKm} onChange={handleChange} placeholder="Delivery Charge Per Km" required/>
 </div>
 
         <button className='btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black' type="submit">Update</button>
+        <Link to="/timeSlot" className='btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black' type="button">Time slot</Link>
       </form>
         </Card>
     </div>

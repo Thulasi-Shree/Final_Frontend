@@ -392,6 +392,7 @@ function App() {
               <Route path="/myProfile/:id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               <Route path="/updateProfile/:id" element={<ProtectedRoute><UpdateProfile /></ProtectedRoute>} />
               <Route path="/admin/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+              <Route path="/timeSlot" element={<ProtectedRoute><TimeSlotManager /></ProtectedRoute>} />
               <Route path="/admin/orderHistory" element={<ProtectedRoute><OrdersHistory /></ProtectedRoute>} />
               <Route path="/admin/orders" element={<ProtectedRoute><OrdersTable /></ProtectedRoute>} />
               <Route path="/admin/order/:id" element={<ProtectedRoute><OrderStatus /></ProtectedRoute>} />
@@ -437,6 +438,7 @@ function App() {
 }
 import { loadStripe } from '@stripe/stripe-js';
 import OpenEmailAppLink from 'pages/auth/register/RegistrationVerification';
+import TimeSlotManager from 'pages/admin/TimeSlot';
 
 const LazyLoadedPayment = ({ stripeApiKey }) => {
   const Elements = lazy(() => import('@stripe/react-stripe-js').then(module => ({ default: module.Elements })));

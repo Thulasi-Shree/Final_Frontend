@@ -44,30 +44,6 @@ const DeliveryAddress = ({
   return (
     <Card className="my-3 p-3" id="CardBackIMg">
       <h4 id="CardText">Delivery Address</h4>
-      <div className="location-options mt-2">
-        <label className="radio-label" id="CardText">
-          <input
-            style={{ color: 'black', backgroundColor: 'white' }}
-            type="radio"
-            name="locationOption"
-            checked={useCurrentLocation}
-            onChange={handleUseCurrentLocationChange}
-          />
-          <span className="radio-custom" />
-          Use current location
-        </label>
-        <label className="radio-label" id="CardText">
-          <input
-            type="radio"
-            name="locationOption"
-            style={{ color: 'black', backgroundColor: 'white' }}
-            checked={!useCurrentLocation}
-            onChange={handleUseCurrentLocationChange}
-          />
-          <span className="radio-custom" />
-          Enter address manually
-        </label>
-      </div>
 
       {useCurrentLocation ? (
         <div>
