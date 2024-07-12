@@ -13,7 +13,6 @@ const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
@@ -42,16 +41,10 @@ const Select = styled.select`
 `;
 
 const Button = styled.button`
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
+   background-color: white;
+  color: black;
   cursor: pointer;
 
-  &:hover {
-    background-color: #0056b3;
-  }
 `;
 
 const Table = styled.table`
@@ -60,8 +53,9 @@ const Table = styled.table`
 `;
 
 const TableHeader = styled.th`
-  background-color: #007bff;
-  color: white;
+  background-color: white;
+  color: black;
+   border: 1px solid #ddd;
   padding: 10px;
 `;
 
@@ -184,7 +178,7 @@ const TimeSlotManager = () => {
   };
 
   return (
-    <Container className='m-5 mx-auto'>
+    <Container className='m-5 bg-white mx-auto Cardimg123'>
       <Title>Time Slot Manager</Title>
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
@@ -211,7 +205,7 @@ const TimeSlotManager = () => {
           placeholder="Enter Branch name"
           readOnly
         />
-        <Button onClick={addTimeSlot} disabled={loading}>
+        <Button className='btn my-3' onClick={addTimeSlot} disabled={loading}>
           {loading ? 'Adding...' : 'Add Time Slot'}
         </Button>
       </Section>
@@ -221,7 +215,7 @@ const TimeSlotManager = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <Table>
+          <Table> 
             <thead>
               <tr>
                 <TableHeader>Time Slot</TableHeader>
@@ -235,8 +229,8 @@ const TimeSlotManager = () => {
                   <TableCell>{slot.slot}</TableCell>
                   <TableCell>{slot.restaurantName}</TableCell>
                   <TableCell>
-                    <Button onClick={() => deleteTimeSlot(slot._id)}>Delete</Button>
-                    <Button onClick={() => setSelectedTimeSlot(slot)}>Update</Button>
+                    <Button className='border border-warning rounded m-2' onClick={() => deleteTimeSlot(slot._id)}>Delete</Button>
+                    <Button className='border border-warning rounded' onClick={() => setSelectedTimeSlot(slot)}>Update</Button>
                   </TableCell>
                 </tr>
               ))}
@@ -254,7 +248,7 @@ const TimeSlotManager = () => {
             onChange={(e) => setUpdatedTimeSlot(e.target.value)}
             placeholder="Enter updated time slot"
           />
-          <Button onClick={() => updateTimeSlot(selectedTimeSlot._id)} disabled={loading}>
+          <Button className='btn ' onClick={() => updateTimeSlot(selectedTimeSlot._id)} disabled={loading}>
             {loading ? 'Updating...' : 'Update Time Slot'}
           </Button>
         </Section>

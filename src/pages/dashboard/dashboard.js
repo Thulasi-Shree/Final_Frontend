@@ -118,6 +118,25 @@ const DashboardPage = () => {
                   </Link>
                 </div>
               </div>
+              <div className="col-xl-4 col-sm-6 mb-3">
+                <div className="card text-white o-hidden">
+                  <div className="card-body">
+                    <div className="text-center card-font-size mt-4">
+                      <h2  className='text-black'>Time slots</h2>
+                      {/* <br /> <b>5</b> */}
+                    </div>
+                  </div>
+                  <Link
+                    to="/timeSlot"
+                   
+                    className="card-footer text-white clearfix small z-1"
+                  >
+                    <span className="float-left">
+                      <h5  className='text-black'>View Details</h5>
+                    </span>
+                  </Link>
+                </div>
+              </div>
             </div>
             </Card>
           </div>

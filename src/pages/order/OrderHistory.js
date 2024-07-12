@@ -213,24 +213,17 @@ const OrdersHistory = () => {
             data={nonActiveOrders}
             onViewDetails={onViewDetails}
           />
-
+   
           <ReactPaginate
-            className="pagination text-black"
-            pageCount={totalPages}
-            pageRangeDisplayed={1}
-            marginPagesDisplayed={1}
-            onPageChange={handlePageClick}
-            containerClassName="pagination"
-            activeClassName="active"
-            pageClassName="page"
-            previousLabel={
-              <span className="custom-label text-black">Previous</span>
-            }
-            nextLabel={<span className="custom-label text-black">next</span>}
-            breakLabel={<span className="custom-label">...</span>}
-            pageLinkClassName="page-link"
-            breakLinkClassName="break-link"
-          />
+              className="pagination"
+              pageCount={totalPages}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={2}
+              onPageChange={handlePageClick}
+              containerClassName="pagination"
+              activeClassName="active"
+            />
+         
         </div>
       </div>
     </div>

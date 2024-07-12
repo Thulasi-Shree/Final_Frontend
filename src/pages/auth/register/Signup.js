@@ -359,7 +359,7 @@ const navigate = useNavigate();
         <form onSubmit={handleSubmit}>
           <div className="col-11 col-md-8 col-lg-12 mx-auto custom-table mx-3 mt-4 bg-white">
             <div className="col-md-12 col-12 px-4">
-              <h1 className="text-center mt-3 fs-1" id="CardText">
+              <h1 className="text-center mt-3 signup-form-container fs-1" id="CardText">
                 Sign up
               </h1>
 
@@ -529,21 +529,21 @@ const navigate = useNavigate();
                 />
               </div>
 
-              <div className="my-3 d-flex justify-content-center">
+              <div className="my-3 d-flex col-md-3  rounded mx-auto justify-content-center">
                 <button
                   type="submit"
-                  className="px-4 btn mt-4 className=' btn border border-danger w-100 rounded bg-white text-black '"
+                  className="px-4 btn mt-4 w-100 rounded "
                   style={{ borderRadius: '30px' }}
                 >
                   Sign up
                 </button>
               </div>
-              <p className="float-center my-4">
+              <p className="float-center my-4" style={{ fontSize: '17px' }}>
                 If you have an account?{' '}
-                <Link to="/login" id="CardText" className="text-black fs-5">
-                  <button className="btn border border-danger rounded bg-white text-black">
+                <Link to="/login" id="CardText" style={{ fontSize: '17px' }} className="signup-form-container">
+                  {/* <button className="btn rounded "> */}
                     Login
-                  </button>
+                  {/* </button> */}
                 </Link>
               </p>
             </div>

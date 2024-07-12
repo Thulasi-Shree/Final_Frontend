@@ -1,6 +1,7 @@
 .offer {
     /* padding: 60px 20px; */
-    background: linear-gradient(to right, #f9f7f8, #f9d3dc);
+    background: linear-gradient(to right, #f9f7f8, #e0dee3);
+    /* background: radial-gradient(circle, #dbc3ed 0%, #dbc3ed 50%, #f6dcff 50%, #f6dcff 100%) !important; */
   }
   
   .offerContent {

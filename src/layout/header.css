@@ -16,7 +16,7 @@ li,
 button,
 label,
 div {
-  font-family: "Recursive", sans-serif !important;
+  font-family: 'Arial', 'Helvetica', sans-serif !important;
   font-optical-sizing: auto !important;
   font-weight: 500 !important;
   font-style: normal !important;
@@ -28,11 +28,11 @@ div {
 }
 .back111{
   border-radius: 10px !important;
-  border-color: red !important;
+  border-color: #dbc3ed !important;
 }
 .back1:hover{
-  background-color:  #f6d6ff !important;
-  border-color: red !important;
+  /* background-color:  #dbc3ed !important; */
+  /* border-color: #dbc3ed !important; */
     border-radius: 10px;
 }
 
@@ -53,7 +53,7 @@ ul li a{
 ul li a.active {
   text-decoration: none;
   color: #070707;
-  background: radial-gradient(95% 85% at 50% 50%, #f6d6ff 0, rgba(246, 220, 255, 0) 100%);
+  /* background: radial-gradient(95% 85% at 50% 50%, #dbc3ed 0, rgba(246, 220, 255, 0) 100%) !important; */
   transition: all 1s ease;
 }
 
@@ -83,7 +83,7 @@ ul li a.active::after {
 
 #HomeTag:hover {
   color: #030303;
-}
+} 
 
 ul{
   text-decoration: none;
@@ -100,7 +100,9 @@ position: relative;
 
 
 .header-custom{
-  background-color: rgb(249, 233, 233, 0.5) !important;
+  background-color: rgb(239, 212, 162) !important;
+  color: white !important;
+  /* background: radial-gradient(circle, #e2cef1 0%, rgba(246, 220, 255, 0) 100%) !important; */
 
 }
 

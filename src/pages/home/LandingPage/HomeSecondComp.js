@@ -12,7 +12,7 @@ const HomeSecondComp = () => {
     <div>
       <Container
         className="col-lg-10 col-xxl-9 col-11 mx-auto "
-        style={{ paddingTop: '10px', paddingBottom: '' }}
+        style={{ paddingTop: '10px', paddingBottom: '',  }}
         fluid
       >
         <Row className="my-2 col-12 d-flex justify-content-center mx-auto">
@@ -41,7 +41,7 @@ const HomeSecondComp = () => {
               </h3>
               <hr className="text-black " />
               <br />
-              <h2 style={{ fontSize: 'calc(1.1rem + 1vw)',  color:'#FE828C', lineHeight: '1.1' }} className="HomeSecH2 text-center mt-2 ">
+              <h2 style={{ fontSize: 'calc(1.1rem + 1vw)',  color:'#a290b0', lineHeight: '1.1' }} className="HomeSecH2 text-center mt-2 ">
                 ENJOY AN EXCEPTIONAL JOURNEY OF TASTE
               </h2>
               <p style={{ color: 'black', fontSize: '16px' }}>

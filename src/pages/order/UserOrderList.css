@@ -2,15 +2,15 @@
   background: rgb(185, 184, 202);
   background: linear-gradient(90deg, rgb(169, 167, 189) 18%, rgba(163, 174, 180, 0.88) 52%, rgb(218, 211, 211) 87%);
   color: rgb(9, 8, 8) !important;
-  text-shadow: 1px 1px #d8c895 !important;
+  /* text-shadow: 1px 1px #d8c895 !important; */
   background-color: transparent;
 } 
 #CardText1{
   color: rgb(0, 0, 0);
-  text-shadow: 1px 1px #d8c895;
+  /* text-shadow: 1px 1px #d8c895; */
 }
 
 .Cardimg123{
   color: rgb(9, 8, 8) !important;
-  filter:drop-shadow(6px 5px 6px rgb(250, 30, 30)) !important;
+  filter:drop-shadow(6px 5px 6px orange) !important;
 }

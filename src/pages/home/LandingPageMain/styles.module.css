@@ -51,7 +51,7 @@
   }
   
   .contactForm button {
-    background-color: #ff6600;
+    background-color: orange;
     color: #ffffff;
     border: none;
     cursor: pointer;
@@ -59,7 +59,7 @@
   }
   
   .contactForm button:hover {
-    background-color: #e65100;
+    background-color: orange;
   }
   
   /* About section styles */
@@ -107,7 +107,7 @@
     width: 300px;
     padding: 20px;
     margin: 10px;
-    background-color: #f2f2f2;
+    background-color: #dbc3ed;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* opacity: 0; */

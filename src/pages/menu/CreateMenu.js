@@ -536,7 +536,7 @@ export default function CreateMenu() {
                       id="login_button"
                       type="submit"
                       disabled={loading}
-                      className="btn my-3 px-4 btn  border border-danger rounded bg-white  text-black px-5 mx-5"
+                      className="btn my-3 px-4 btn rounded px-5 mx-5"
                     >
                       CREATE
                     </button>

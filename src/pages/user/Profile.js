@@ -109,7 +109,7 @@ export default function Profile() {
                 <div className="row-buttons col-9 mx-auto">
                   <div>
                     <button
-                      className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black my-2"
+                      className="btn my-3 px-4 btn rounded  w-100 my-2"
                       onClick={handleEdit}
                     >
                       Edit profile
@@ -117,7 +117,7 @@ export default function Profile() {
                   </div>
                   <div>
                     <Link to="/userOrderList">
-                      <button className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black my-2">
+                      <button className="btn my-3 px-4 btn rounded w-100 my-2">
                         My Orders
                       </button>
                     </Link>
@@ -125,7 +125,7 @@ export default function Profile() {
                 </div>
                 <div className="mx-auto">
                   <button
-                    className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black mx-auto mb-4 "
+                    className="btn my-3 px-4 btn rounded w-100 mx-auto mb-4 "
                     onClick={handleEditProfile }
                   >
                     Reset Password

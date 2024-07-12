@@ -342,7 +342,7 @@ const EditRestaurant = () => {
               />
             </div>
             <div className="d-flex justify-content-center">
-              <button type="submit" className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black my-4">
+              <button type="submit" className="btn my-3 px-4 btn rounded w-100 my-4">
                 Update Restaurant
               </button>
             </div>

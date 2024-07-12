@@ -43,7 +43,7 @@ const ContactUs = () => {
       <div
         type="button"
         data-bs-toggle="modal"
-        className="btn my-3 px-4 btn border border-danger rounded bg-white text-black"
+        className="btn my-3 px-4 btn rounded"
         data-bs-target="#contactModal"
       >
         Contact Us
@@ -158,7 +158,7 @@ const ContactUs = () => {
                 <button
                   type="submit"
                   id="contact"
-                  className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black"
+                  className="btn my-3 px-4 btn border rounded w-100"
                 >
                   Send
                 </button>

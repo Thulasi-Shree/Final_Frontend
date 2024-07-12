@@ -173,7 +173,7 @@ const MenuList = ({ menus, searchTerm, handleSearchChange }) => {
                             id="cart_btn"
                             disabled={!menuItem.isAvailable}
                             onClick={() => handleAddToCartClick(menuItem)}
-                            className=" bg-white border  border-danger text-center py-2 pb-4"
+                            className=" bg-white border  border-warning text-center py-2 pb-4"
                             style={{ width: '70%', height: '25px', borderRadius: '10px' }}
                           >
                             {!menuItem.isAvailable ? (

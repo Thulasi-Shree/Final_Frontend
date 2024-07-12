@@ -64,8 +64,7 @@ const Settings = ({token}) => {
   <input type="number" className="form-control" name="deliveryChargePerKm" value={settings.deliveryChargePerKm} onChange={handleChange} placeholder="Delivery Charge Per Km" required/>
 </div>
 
-        <button className='btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black' type="submit">Update</button>
-        <Link to="/timeSlot" className='btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black' type="button">Time slot</Link>
+        <button className='btn my-3 px-4 btn rounded w-100 ' type="submit">Update</button>
       </form>
         </Card>
     </div>

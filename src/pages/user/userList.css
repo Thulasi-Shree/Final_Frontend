@@ -1,5 +1,5 @@
 .btn-custom {
-  background-color: #ffa500 !important;
+  background-color: orange !important;
   border: none !important;
   border-radius: 0 !important;
   margin: 2px;
@@ -43,12 +43,12 @@
 }
 
 .pagination li:hover {
-  background-color: #151414;
+  /* background-color: #151414; */
   text-decoration: none !important;
 }
 
 #CardBackIMg {
-  background-color: #908e8583;
+  /* background-color: #908e8583; */
   color: white;
 }
 
@@ -67,11 +67,11 @@
   background: rgb(185, 184, 202);
   background: linear-gradient(90deg, rgb(184, 181, 221) 18%, rgba(220, 227, 231, 0.88) 52%, rgb(255, 255, 255) 87%);
   color: rgb(9, 8, 8) !important;
-  text-shadow: 1px 1px #d8c895 !important;
+  /* text-shadow: 1px 1px #d8c895 !important; */
   background-color: transparent;
 }
 
 #CardText {
   color: rgb(9, 8, 8);
-  text-shadow: 1px 1px #d8c895;
+  /* text-shadow: 1px 1px #d8c895; */
 }

@@ -205,7 +205,7 @@ const Payment = () => {
               <button
                 id="pay_btn"
                 type="submit"
-                className='btn btn border-danger my-color mt-3 text-black'
+                className='btn btn my-color mt-3'
               >
                 Pay -{' '}
                 {` $${

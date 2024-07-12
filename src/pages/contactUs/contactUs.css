@@ -4,12 +4,11 @@ h5{
 
 .CardImg114{
   color: rgb(9, 8, 8) !important;
-  filter:drop-shadow(6px 5px 6px rgb(235, 41, 41));
+  filter:drop-shadow(6px 5px 6px orange);
 
   } 
   #CardText1{
     color: rgb(0, 0, 0);
-    text-shadow: 1px 1px #d8c895;
   }
   .back:hover{
   color: black;

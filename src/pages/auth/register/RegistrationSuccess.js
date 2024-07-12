@@ -52,7 +52,7 @@ const RegistrationSuccess = () => {
 
           {verificationStatus === 'Email verified successfully!' && (
             <Link to="/login" style={{textDecoration:'none', color:'black'}}>
-              <Button className="my-global-button  mb-5 mt-3">
+              <Button className="my-global-button btn mb-5 mt-3">
               Login
               </Button>{' '}
               </Link>

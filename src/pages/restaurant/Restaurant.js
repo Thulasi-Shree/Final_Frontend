@@ -78,7 +78,7 @@ const RestaurantTable = () => {
               <div style={{ display: 'flex' }}>
                 <h5 className="mt-2 text-black">Create a new restaurant - </h5>
                 <button
-                  className="btn  px-4 btn border border-danger rounded bg-white ms-2  text-black m-1"
+                  className="btn  px-4 btn rounded ms-2 m-1"
                   onClick={handleAdd}
                 >
                   Create

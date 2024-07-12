@@ -246,7 +246,7 @@ const CreateAdmin = () => {
             />
           </div>
           <div className="mb-3 d-flex justify-content-center">
-            <Button type="submit" className=" btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black mb-4 mt-3">
+            <Button type="submit" className=" btn my-3 px-4 btn rounded w-100 mb-4 mt-3">
               Create Admin
             </Button>
           </div>

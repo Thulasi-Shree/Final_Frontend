@@ -96,7 +96,7 @@ const ForgotPasswordPage = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn my-3 px-4 btn border border-danger rounded bg-white w-100"
+                  className="btn my-3 px-4 btn rounded w-100"
                   style={{ borderRadius: '30px' }}
                 >
                   Submit

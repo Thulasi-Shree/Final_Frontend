@@ -127,11 +127,12 @@ const ConfirmOrder = () => {
   // Fetch cart items from session storage
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    // console.log('data missing')
     setCartItems(storedCartItems);
     setIsPickup(orderType === 'Pickup');
-    if (storedCartItems.length === 0) {
-      navigate('/select');
-    }
+    // if (storedCartItems.length === 0) {
+    //   navigate('/select');
+    // }
   }, []);
 
   return (
@@ -291,7 +292,7 @@ const ConfirmOrder = () => {
                   <button
                     type="submit"
                     id="checkout_btn"
-                     className='btn btn border-danger my-color my-3 text-black'
+                     className='btn btn my-color my-3'
                     onClick={processPayment}
                   >
                     Proceed to Payment

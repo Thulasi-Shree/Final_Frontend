@@ -60,7 +60,7 @@ const Header = () => {
       expand="lg"
       className="container-fluid header-custom custom-navbar"
       id="header"
-      style={{ backgroundColor: 'rgb(249, 233, 233)', color: 'black', }}
+      style={{ backgroundColor: 'brown', color: 'black', }}
       expanded={navbarExpanded}
     >
        
@@ -95,7 +95,7 @@ const Header = () => {
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
             onClick={handleNavbarToggle}
-            style={{ border: '2px solid #8D4527' }}
+            style={{ border: '2px solid #dbc3ed' }}
           >
             {' '}
             <FontAwesomeIcon icon={faBars} style={{ color: '#8D4527' }} />
@@ -104,7 +104,7 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
        
             <Nav
-              style={{ fontSize: '17px', fontWeight: '600', color: '#2a206b' }}
+              style={{ fontSize: '17px', fontWeight: '600', color: '#2a206b'}}
               className="col-md-7 col-lg-11 col-xl-10 mx-auto "
             >
               {isloggedIn === 'true' ? (
@@ -113,7 +113,7 @@ const Header = () => {
                     <>
                       <ul>
                         <li>
-                          <NavLink to="/" id="HomeTag" className="ms-lg-4">
+                          <NavLink to="/" id="HomeTag" style={{background: 'none'}} className="ms-lg-4">
                             Home
                           </NavLink>
                         </li>
@@ -122,6 +122,7 @@ const Header = () => {
                             id="HomeTag"
                             className="ms-lg-4"
                             to="/select"
+                            style={{background: 'none'}}
                           >
                             Order
                           </NavLink>
@@ -270,12 +271,8 @@ const Header = () => {
                   >
                     {!isLoggedIn ? (
                       <Nav.Link
-                        style={{
-                          width: '100px',
-                          textAlign: 'center',
-                          display: 'inline-block'
-                        }}
-                        className="btn border border-danger rounded mx-auto"
+                       
+                        className="btn border rounded mx-auto"
                         onClick={handleLogout}
                       >
                         Logout
@@ -284,12 +281,8 @@ const Header = () => {
                       <>
                         <Stack direction="horizontal" gap={3} />
                         <Nav.Link
-                          style={{
-                            width: '100px',
-                            textAlign: 'center',
-                            display: 'inline-block',
-                          }}
-                          className="btn border border-danger rounded mx-auto"
+                        
+                          className="btn border rounded mx-auto"
                           as={Link}
                           to="/login"
                         >
@@ -314,21 +307,13 @@ const Header = () => {
                     </li>
                   </ul>
                   <div
-                    className="logout-login-buttons"
+                    className="logout-login-buttons "
                     style={{ marginRight: '-5rem' }}
                   >
                     <Stack direction="horizontal" gap={3} />
                     {isLoggedIn ? (
                       <Nav.Link
-                        className="btn border border-danger rounded mx-auto"
-                        style={{
-                          width: '100px',
-                          textAlign: 'center',
-                          display: 'inline-block',
-                          borderRadius:'10px',
-                          backgroundColor:'white',
-                          borderColor: 'red'
-                        }}
+                        className="btn border rounded mx-auto"
                         onClick={handleLogout}
                       >
                         Logout
@@ -340,11 +325,10 @@ const Header = () => {
                           style={{
                             width: '100px',
                             textAlign: 'center',
-                            display: 'inline-block',
-                            border:'red',
+                            display: 'inline-block'
 
                           }}
-                          className="btn border border-danger rounded  mx-auto mt-lg-n1"
+                          className="btn border rounded  mx-auto mt-lg-n1"
                           as={Link}
                           to="/login"
                         >

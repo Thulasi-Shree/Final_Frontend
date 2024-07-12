@@ -318,7 +318,7 @@ const OrderStatus = () => {
                     <button
                       type="submit"
                       onClick={updateOrderStatus}
-                      className="btn my-5 px-4 btn border border-danger rounded bg-white w-100 text-black"
+                      className="btn my-5 px-4 btn rounded w-100"
                     >
                       Update Status
                     </button>

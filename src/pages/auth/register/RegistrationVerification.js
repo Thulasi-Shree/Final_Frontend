@@ -13,7 +13,7 @@ const OpenEmailAppLink = () => {
         Registration link has been sent to your email successfully! <br/> Please verify your email to login!
       </h2>
     </div>
-      <button onClick={openEmailApp} className="email-button">
+      <button onClick={openEmailApp} className=" btn email-button">
         Open Email App
       </button>
     </div>

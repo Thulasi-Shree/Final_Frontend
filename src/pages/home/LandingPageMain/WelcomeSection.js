@@ -4,10 +4,10 @@ import './WelcomeSection.css'; // Import your CSS file for animations
 
 const WelcomeSection = () => {
   return (
-    <div className='bg-white container mx-auto row pb-4'>
+    <div className='bg-white welcome container mx-auto row pb-4'>
       <div className='col-11 col-md-6 col-lg-8 d-flex mx-auto  col justify-content-center align-items-center'>
         <div className='text-animation'>
-          <div className='col-12 mb-3 ' style={{ fontSize: 'calc(1.1rem + 1vw)',  color:'#FE828C', lineHeight: '1.1' }}>NURTURE YOUR PASSION FOR FOOD AND LIFE...</div>
+          <div className='col-12 mb-3 ' style={{ fontSize: 'calc(1.1rem + 1vw)',  color:'#a290b0', lineHeight: '1.1' }}>NURTURE YOUR PASSION FOR FOOD AND LIFE...</div>
           <div className='col-12'>
             <p style={{ fontSize: '1.1rem' }}>
               Cuisine is a teamwork of Cuisine Restaurant Cafe, aiming to promote

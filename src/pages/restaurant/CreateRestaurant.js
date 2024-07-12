@@ -366,7 +366,7 @@ const CreateRestaurant = () => {
             />
           </div>
           <div className="d-flex justify-content-center">
-            <button className=" btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black" type="submit">
+            <button className=" btn my-3 px-4 btn rounded w-100" type="submit">
               Create Restaurant
             </button>
           </div>

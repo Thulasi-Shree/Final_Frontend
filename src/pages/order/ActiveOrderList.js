@@ -181,30 +181,29 @@ const OrdersTable = () => {
               <span>Delivery</span>
             </label>{' '}
             <button
-              className="btn my-3 px-4 btn border border-danger rounded bg-white text-black mb-2 ms-2"
+              className=" my-3 px-4 border border-warning rounded "
               onClick={handleClear}
-              style={{ backgroundColor: 'transparent', border: 'none' }}
+              style={{ backgroundColor: 'white', border: 'none' }}
             >
               <FontAwesomeIcon icon={faTrash} />
             </button>
             <div className="date-buttons col-8  my-2">
               {availableDates.map((date) => (
-                <Button
+                <button
                   key={date}
-                  className="btn my-3 px-4 btn border border-danger rounded bg-white  text-black"
+                  className=" my-3 mx-2 px-2 rounded"
                   value={date}
                   onClick={() => handleDateSelection(date)}
                   style={{
-                    backgroundColor:
-                      selectedDate === date ? 'danger' : 'inherit',
+                    backgroundColor: selectedDate === date ? 'orange' : 'white',
                     border:
                       selectedDate === date
-                        ? '2px solid black'
-                        : '1px solid #ccc'
+                        ? '2px solid orange'
+                        : '1px solid orange'
                   }}
                 >
                   {date}
-                </Button>
+                </button>
               ))}
             </div>
           </div>
@@ -258,7 +257,7 @@ const OrdersTable = () => {
         <option value="Delivered">Delivered</option>
     </select>
           </div>
-          <div className="col-lg-12">
+          <div className="col-lg-12 btn bg-white">
             <ReusableTable
               data={orders}
               headers={headers}
@@ -266,7 +265,7 @@ const OrdersTable = () => {
               onEdit={handleEdit}
             />
             <ReactPaginate
-              className="pagination"
+              className="pagination bg-white"
               id="CardText"
               pageCount={totalPages}
               pageRangeDisplayed={5}

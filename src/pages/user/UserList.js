@@ -145,7 +145,7 @@ const UsersList = () => {
               </div>
               <div className="col-lg-3 col-xs-6 col-md-4 mx-auto ">
                 <Link
-                  className="btn my-3 px-4 btn border border-danger rounded bg-white  text-black mt-3"
+                  className="btn my-3 px-4 btn rounded mt-3"
                   style={{ background: '#51bc8fb5' }}
                   to="/admin/customer/list"
                 >
@@ -153,7 +153,7 @@ const UsersList = () => {
                 </Link>
               </div>
               <div className="col-lg-3 col-md-4 col-xs-6 mt-3 ">
-                <button className="btn my-1 px-4 btn border border-danger rounded bg-white  text-black" onClick={handleAdd}>
+                <button className="btn my-1 px-4 btn rounded " onClick={handleAdd}>
                   Create Admin
                 </button>
               </div>
@@ -169,7 +169,7 @@ const UsersList = () => {
                   actions: (
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <Button
-                        className="btn my-1 px-3 btn border border-danger rounded bg-white  text-black"
+                        className="btn my-1 px-3 btn  rounded "
                         onClick={() => handleDelete(user._id)}
                       >
                         <FontAwesomeIcon icon={faTrash} />
@@ -178,11 +178,13 @@ const UsersList = () => {
                   )
                 }))}
               />
-              <div className="pagination col-md-12 col-xs-3 mx-auto">
+              {/* <div className="pagination col-md-12 col-xs-3 mx-auto">
                 <div className="page-item">
-                  <div className="page-link">
+                  <div className="page-link"> */}
                     <Pagination
+                      className="pagination btn bg-white"
                       activePage={currentPage}
+                       containerClassName="pagination"
                       itemsCountPerPage={resPerPage}
                       totalItemsCount={productsCount}
                       onChange={handlePageChange}
@@ -192,9 +194,9 @@ const UsersList = () => {
                       itemClass="page-item"
                       linkClass="page-link"
                     />
-                  </div>
+                  {/* </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <Modal show={showEditModal} onHide={handleCloseEditModal}>

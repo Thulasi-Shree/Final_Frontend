@@ -53,19 +53,19 @@ const LoginWithOtp = () => {
   return (
     <div className=" bg-white py-4" >
       <div className="signup-form-container mx-auto col-md-5 py-4 my-5">
-        <Card className='bg-white Cardimg123'>
+        <Card className='bg-white p-3 Cardimg123'>
         <form onSubmit={handleLogin}>
           <div className="row mx-3 custom-table" id="CardBackIMg1">
             <div className="col-11 mx-auto">
-              <h1 className="text-center mt-3 font-regular-29" id="CardText">
-                Log in
+              <h1 className="text-center mt-3 signup-form-container" id="CardText">
+                Login
               </h1>
               <div className="mt-4 text-black">
                 Do not have an account?
                 <Link to="/signup" className="ms-2" id="CardText">
-                <button className='btn my-3 px-4 btn border border-danger rounded bg-white text-black'>
+                {/* <button className='btn my-3 px-4 btn rounded'> */}
                   Sign Up
-                  </button>
+                  {/* </button> */}
                 </Link>
               </div>
               <div className="mb-3" style={{ display: 'none' }}>
@@ -110,30 +110,31 @@ const LoginWithOtp = () => {
                 />
                 {validator.current.message('otp', otp, 'required')}
               </div>
-            </div>
-            <div>
+              <div>
               <button
                 type="submit"
                 disabled={loading}
-                className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 my-3 text-black "
+                className="btn my-3 px-4 btn rounded w-100 my-3"
 
               >
                 {loading ? 'Logging in...' : 'Submit'}
               </button>
             </div>
+            </div>
+           
             <div className='row my-2 mx-auto'>
             <div className='col-6'>
-              <Link to="/login" id="CardText">
-              <button className='btn my-3 px-4 btn border border-danger rounded bg-white my-3 text-black'>
+              <Link className='signup-form-container' to="/login" id="CardText">
+              {/* <button className='btn my-3 px-4 btn rounded my-3'> */}
                 Back to login
-                </button>
+                {/* </button> */}
               </Link>
             </div>
             <div className=" col-6">
-              <Link to="/" id="CardText">
-              <button className='btn my-3 px-4 btn border border-danger rounded bg-white my-3 text-black'>
+              <Link to="/" className='signup-form-container' id="CardText">
+              {/* <button className='btn my-3 px-4 btn rounded my-3'> */}
                 Continue as Guest
-                </button>
+                {/* </button> */}
               </Link>
             </div>
             </div>

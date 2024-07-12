@@ -195,7 +195,7 @@ const Footer = () => {
           </Col>
           <Col md={3} xs={12} className=" text-center">
             <h4 className="footer-heading">OPENING TIME</h4>
-            <p className="footer-descriptiont">82 Place Charles de Gaulle, Paris1</p>
+            <p className="footer-description">82 Place Charles de Gaulle, Paris1</p>
             <p className="footer-description">+91 801-555-99-433</p>
           </Col>
         </Row>

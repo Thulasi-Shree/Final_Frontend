@@ -79,7 +79,7 @@ const SendLoginOtp = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className=' btn border px-4 py-2 mt-3 border-danger rounded bg-white text-black '
+                  className=' btn  px-4 py-2 mt-3 rounded'
                  
                 >
                   Submit

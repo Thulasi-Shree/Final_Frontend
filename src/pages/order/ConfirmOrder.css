@@ -1,7 +1,7 @@
 
 #CardLogText{
     color: white;
-    text-shadow: 1px 1.7px #5a3a07;
+    /* text-shadow: 1px 1.7px #5a3a07; */
     background-color: transparent;
   }
 #ConfrimOrderCard{
@@ -10,7 +10,7 @@
 }
 
 #CardBackIMg156{
-  filter:drop-shadow(6px 5px 6px rgb(250, 30, 30));
+  filter:drop-shadow(6px 5px 6px orange);
 }
 .back{
   background-color: white !important;

@@ -71,10 +71,10 @@ const LoginPage = () => {
       <div className="signup-form-container col-lg-7 col-xl-6  mx-auto pt-5 bg-white">
         <Card className='Cardimg123 bg-white'>
         <form onSubmit={handleLogin}>
-          <div className="row mx-auto mt-5">
+          <div className="row mx-auto p-3">
             <div className="col-md-12 ">
-              <h1 className="text-center mt-3 fs-1 text-black">
-                Log in
+              <h1 className="text-center mt-3 fs-1 signup-form-container">
+                Login
               </h1>
               <div className="mb-3 address-container">
                 <p
@@ -134,11 +134,11 @@ const LoginPage = () => {
               </div>
             </div>
             <div>
-              <div className="d-flex justify-content-center">
+              <div className="d-flex col-md-3  rounded mx-auto justify-content-center">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 "
+                  className="btn my-3 px-4 btn rounded w-100 "
                   id="Btn"
                 >
                   Submit
@@ -146,7 +146,7 @@ const LoginPage = () => {
               </div>
             
               <div className="links-container row mb-4 ms-md-4 my-4">
-                <p className='col-md-4 col-12 '>
+                <p className='col-md-4 col-12 signup-form-container' style={{ fontSize: '17px' }}>
                   <Link
                     to="/"
                     id="CardText"
@@ -154,13 +154,13 @@ const LoginPage = () => {
                       backgroundColor: 'transparent'
                     }}
                   >
-                   <button className=' btn border border-danger rounded bg-white text-black'>
+                   {/* <button className=' btn rounded'> */}
                     Go to HomePage
-                    </button>
+                    {/* </button> */}
                   </Link>
                 </p>
 
-                <p className='col-md-4 col-12'>
+                <p className='col-md-4 col-12 signup-form-container' style={{ fontSize: '17px' }}>
                   <Link
                     to="/password/forgot"
                     id="CardText"
@@ -168,13 +168,13 @@ const LoginPage = () => {
                       backgroundColor: 'transparent'
                     }}
                   >
-                      <button className=' btn border border-danger rounded bg-white text-black'>
+                      {/* <button className=' btn rounded'> */}
                     {' '}
                     Forgot password?
-                    </button>
+                    {/* </button> */}
                   </Link>
                 </p>
-                <p className='col-md-4 col-12'>
+                <p className='col-md-4 col-12 signup-form-container' style={{ fontSize: '17px' }}>
                   <Link
                     to="/login/otp"
                     id="CardText"
@@ -182,18 +182,18 @@ const LoginPage = () => {
                       backgroundColor: 'transparent'
                     }}
                   >
-                    <button className=' btn border border-danger rounded bg-white text-black '>
+                    {/* <button className=' btn rounded'> */}
                     Login with OTP
-                    </button>
+                    {/* </button> */}
                   </Link>
                 </p>
               </div>
-              <p className="mt-4 text-black" style={{ fontSize: '19px' }}>
+              <p className="mt-4 text-black" style={{ fontSize: '17px' }}>
                 Do not have account?
-                <Link to="/signup" className="ms-2">
-                <button className=' btn border border-danger rounded bg-white text-black '>
+                <Link to="/signup" className="ms-2 signup-form-container">
+                
                   Sign Up
-                  </button>
+              
                 </Link>
               </p>
             </div>

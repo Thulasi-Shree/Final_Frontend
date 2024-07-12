@@ -89,7 +89,7 @@ const PersonalDetails = ({
         </div>
         <Button
           type="button"
-          className="my-global-button my-2"
+          className="my-global-button btn my-2"
           onClick={handleGetOtp}
           style={{ display: otpVerified ? 'none' : 'block' }}
         >

@@ -1,14 +1,10 @@
-.signup-form-container {
- 
-}
+
 
 .signup-form-container h2 {
   text-align: center;
 }
 
-.signup-form-container form {
 
-}
 
 .signup-form-container input {
   margin-bottom: 10px;
@@ -27,7 +23,7 @@
 
 .signup-form-container button:hover {
     // background-color: #ff9400;
-    background-color: #fae2e2;
+    background-color: blue;
 
   }
   
@@ -37,6 +33,9 @@
   
   .signup-form-container a:hover {
     text-decoration: underline;
+  }
+  .signup-form-container{
+    color: orange;
   }
   
 .guest-button {
@@ -50,13 +49,13 @@
 .Cardimg123{
   background:white;
   color: rgb(9, 8, 8) !important;
-  filter:drop-shadow(6px 5px 6px rgb(250, 30, 30));
+  filter:drop-shadow(6px 5px 6px orange);
 }
 
 
 #CardLogText{
   color: white;
-  text-shadow: 1px 1.7px #5a3a07;
+  // text-shadow: 1px 1.7px #5a3a07;
   background-color: transparent;
 }
 

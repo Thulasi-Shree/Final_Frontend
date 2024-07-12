@@ -9,16 +9,10 @@
 #CardBackIMg{
    color: black;
    background-color: white;
-   filter:drop-shadow(6px 5px 6px rgb(250, 30, 30));
+   filter:drop-shadow(6px 5px 6px orange);
   }
 
-    
-  #checkout_btn:hover,
-  #checkout_btn:focus {
-    background-color: transparent !important;
-    color: black; /* text color on hover and focus */
-    border: 1px solid red; /* border on hover and focus, optional */
-  }
+ 
   #ShippingInfo{
     background-color: white !important;
   }

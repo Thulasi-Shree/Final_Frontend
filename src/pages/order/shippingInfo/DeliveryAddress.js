@@ -42,7 +42,7 @@ const DeliveryAddress = ({
   handleText2
 }) => {
   return (
-    <Card className="my-3 p-3" id="CardBackIMg">
+    <Card className="my-3 p-3" id="">
       <h4 id="CardText">Delivery Address</h4>
 
       {useCurrentLocation ? (

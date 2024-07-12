@@ -203,14 +203,14 @@ export default function UpdateProfile() {
           <div className="px-3">
             <button
               type="submit"
-              className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black mb-3"
+              className="btn my-3 px-4 btn rounded w-100 mb-3"
             >
               Update
             </button>
             <Link to="/myProfile/:id">
               <button
                 type="submit"
-                className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black"
+                className="btn my-3 px-4 btn rounded w-100 "
               >
                 Back
               </button>

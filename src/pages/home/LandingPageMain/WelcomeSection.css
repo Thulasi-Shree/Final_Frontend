@@ -9,6 +9,7 @@
     100% { transform: scale(1); }
   }
   
+  
   .text-animation {
     animation: moveText 1s ease forwards;
   }

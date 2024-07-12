@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
+import '../user/Profile.css';
 
 const UpdateProduct = () => {
   const [name, setName] = useState('');
@@ -131,43 +132,43 @@ const UpdateProduct = () => {
             >
               <h1 className="mb-4">Update Product</h1>
 
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="name_field">Name</label>
                 <input
                   style={{ backgroundColor: 'white', color: 'black' }}
                   type="text"
                   id="name_field"
-                  className="form-control"
+                  className="form-control mt-2"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="price_field">Price</label>
                 <input
                   style={{ backgroundColor: 'white', color: 'black' }}
                   type="text"
                   id="price_field"
-                  className="form-control"
+                  className="form-control mt-2"
                   onChange={(e) => setPrice(e.target.value)}
                   value={price}
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="description_field">Description</label>
                 <textarea
                   style={{ backgroundColor: 'white', color: 'black' }}
-                  className="form-control"
+                  className="form-control mt-2"
                   id="description_field"
-                  rows="8"
+                  rows="4"
                   onChange={(e) => setDescription(e.target.value)}
                   value={description}
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="category_field">
                   Dietary Preference Category
                 </label>
@@ -175,7 +176,7 @@ const UpdateProduct = () => {
                   style={{ backgroundColor: 'white', color: 'black' }}
                   value={dietaryPreferenceCategory}
                   onChange={(e) => setDietaryPreferenceCategory(e.target.value)}
-                  className="form-control"
+                  className="form-control mt-2"
                   id="category_field"
                 >
                   <option value="">Select</option>
@@ -186,7 +187,7 @@ const UpdateProduct = () => {
                   ))}
                 </select>
               </div>
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="category_field">Meal Type Category</label>
                 <select
                   style={{ backgroundColor: 'white', color: 'black' }}
@@ -203,47 +204,47 @@ const UpdateProduct = () => {
                   ))}
                 </select>
               </div>
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="stock_field">Is Available</label>
                 <input
                   style={{ backgroundColor: 'white', color: 'black' }}
                   type="checkbox"
                   id="stock_field"
-                  className="form-check-input"
+                  className="form-check-input mt-2"
                   onChange={onIsAvailableChange}
                   checked={isAvailable}
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="seller_field">Restaurant Id</label>
                 <input
                   style={{ backgroundColor: 'white', color: 'black' }}
                   type="text"
                   id="seller_field"
-                  className="form-control"
+                  className="form-control mt-2"
                   readOnly
                   onChange={(e) => setRestaurantId(e.target.value)}
                   value={restaurantId}
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label htmlFor="seller_field">Restaurant Branch</label>
                 <input
                   style={{ backgroundColor: 'white', color: 'black' }}
                   type="text"
                   id="seller_field"
-                  className="form-control"
+                  className="form-control mt-2"
                   readOnly
                   onChange={(e) => setRestaurantBranch(e.target.value)}
                   value={restaurantBranch}
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <label>Images</label>
 
-                <div className="custom-file">
+                <div className="custom-file mt-2">
                   <input
                     style={{
                       backgroundColor: 'transparent',
@@ -251,20 +252,20 @@ const UpdateProduct = () => {
                     }}
                     type="file"
                     name="product_images"
-                    className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black"
+                    className="form-control mt-2"
                     id="customFile"
                     multiple
                     onChange={onImagesChange}
                   />
 
-                  <label className="custom-file-label " htmlFor="customFile">
+                  <label className="custom-file-label mt-2" htmlFor="customFile">
                     Choose Images
                   </label>
                 </div>
 
                 {imagesPreview.length > 0 && (
                   <span
-                    className="mr-2"
+                    className="m-3"
                     onClick={clearImagesHandler}
                     style={{ cursor: 'pointer' }}
                   >
@@ -273,7 +274,7 @@ const UpdateProduct = () => {
                 )}
                 {imagesPreview.map((image) => (
                   <img
-                    className="mt-3 mr-2 ms-2 rounded"
+                    className="image-preview mt-2"
                     key={image}
                     src={image}
                     alt="Image Preview"
@@ -287,7 +288,7 @@ const UpdateProduct = () => {
                   id="login_button"
                   type="submit"
                   // className="btn btn-block py-3"
-                  className="btn my-3 px-4 btn border border-danger rounded bg-white  text-black px-5 "
+                  className="btn my-3 px-4 btn rounded px-5 "
                 >
                   UPDATE
                 </button>

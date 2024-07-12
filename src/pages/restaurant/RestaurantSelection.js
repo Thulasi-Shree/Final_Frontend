@@ -195,7 +195,7 @@ const RestaurantSelection = () => {
                           color: selectedDate === date ? 'black' : 'white',
                           border:
                             selectedDate === date
-                              ? '2px solid red'
+                              ? '2px solid orange'
                               : '1px solid #ccc'
                         }}
                       >

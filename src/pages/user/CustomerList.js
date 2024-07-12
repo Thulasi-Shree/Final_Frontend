@@ -140,7 +140,7 @@ const CustomerList = () => {
                 actions: (
                   <div>
                     <Button
-                      className="btn my-1 px-4 btn border border-danger rounded bg-white text-black"
+                      className="btn my-1 px-4 btn border border-warning rounded bg-white text-black"
                       onClick={() => handleDelete(user._id)}
                     >
                       <FontAwesomeIcon icon={faTrash} />
@@ -150,19 +150,22 @@ const CustomerList = () => {
               })
             )}
           />
-          <div className="pagination-1">
-            <Pagination
-              activePage={currentPage}
-              itemsCountPerPage={resPerPage}
-              totalItemsCount={productsCount}
-              onChange={handlePageChange}
-              nextPageText="Next"
-              firstPageText="First"
-              lastPageText="Last"
-              itemClass="page-item"
-              linkClass="page-link"
-            />
-          </div>
+          {/* <div className="pagination"> */}
+          <Pagination
+      className="pagination123"
+      activePage={currentPage}
+      containerClassName="pagination123"
+      itemsCountPerPage={resPerPage}
+      totalItemsCount={productsCount}
+      onChange={handlePageChange}
+      nextPageText="Next"
+      firstPageText="First"
+      lastPageText="Last"
+      itemClass="page-item123"
+      linkClass="page-link123"
+    />
+            
+          {/* </div> */}
         </div>
 
         <Modal show={showEditModal} onHide={handleCloseEditModal}>
