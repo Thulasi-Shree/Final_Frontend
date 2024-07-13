@@ -15,21 +15,7 @@
 .back{
   background-color: white !important;
 }
-
-  h1,h2,h3,h4,h5,h6,p,ul,li,button,label,div{
-    font-family: "Recursive", sans-serif !important;
-    font-optical-sizing: auto  !important;
-    font-weight: 500  !important;
-    font-style: normal  !important;
-    font-variation-settings:
-      "slnt" 0,
-      "CASL" 0,
-      "CRSV" 0.5,
-      "MONO" 0 !important;
-  /* font-family: "Abel", sans-serif;
-  font-weight: 500;
-  font-style: normal; */
-  }
+/*  */
   .Font{
   font-family: "Roboto Condensed", sans-serif;
   font-optical-sizing: auto;

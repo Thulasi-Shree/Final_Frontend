@@ -529,7 +529,7 @@ const ShippingInfo1 = () => {
     if (
       (billingVerified === true && deliveryVerified === true) ||
       (orderType === 'Pickup' && billingVerified === true)
-    ) {
+    ) { alert('Address verified')
       navigate('/order/confirm');
     }
   }, [billingVerified, deliveryVerified, orderType, navigate]);
@@ -630,7 +630,7 @@ const ShippingInfo1 = () => {
             <button
                type="submit"
                id="checkout_btn"
-               className="btn back my-4"
+               className="btn my-4"
             >
               Continue
             </button>

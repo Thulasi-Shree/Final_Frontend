@@ -59,12 +59,12 @@ label{
 }
 
 .radio-label:hover .radio-custom {
-  background-color: #f8c5c5; /* Adjust the background color on hover as needed */
+  background-color: white; /* Adjust the background color on hover as needed */
 }
 
 .radio-label input:checked + .radio-custom {
   background-color: white; /* Adjust the background color for checked state */
-  border-color: #f7c7c7; /* Adjust the border color for checked state */
+  border-color: transparent; /* Adjust the border color for checked state */
 }
 /* Add this CSS to your existing stylesheet or create a new one */
 
@@ -102,7 +102,7 @@ label{
 }
 
 .radio-label:hover .radio-custom {
-  background-color: #fedfdf; /* Adjust the background color on hover as needed */
+  background-color: transparent; /* Adjust the background color on hover as needed */
 }
 
 .radio-label input:checked + .radio-custom {
@@ -121,7 +121,7 @@ label{
     color: white;
 }
 #CardShipText{
-  color: #f8e5c7 !important;
+  color: transparent !important;
   font-weight: 500;
   background-color:transparent;
 }

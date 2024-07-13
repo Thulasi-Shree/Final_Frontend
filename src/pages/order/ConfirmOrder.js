@@ -144,7 +144,7 @@ const ConfirmOrder = () => {
         >
           <div className=" order-confirm " style={{ textAlign: 'left' }}>
             <h4 className="mb-3 my-2" id="CardText">
-              Delivery Info
+              Order Info
             </h4>
             <div className="container text-center">
               <div className="row">
@@ -248,7 +248,7 @@ const ConfirmOrder = () => {
                     {/* </Card> */}
                     <div className="col-lg-12 col-sm-12 col-md-6 col-lg-6">
                       <Card
-                        className=" p-2 borderUp h-100 "
+                        className=" p-5 borderUp h-100 "
                         style={{
                           color: 'black',
                           backgroundColor: 'transparent',

@@ -410,10 +410,10 @@ const Home = () => {
         </div>
 
       ) : (
-        <div className="container-fluid">
+        <div className="container-fluid mt-4">
           <Col md={12} lg={12} xs={12} sm={12}>
-            <div className="product-page row bg-white">
-              <aside className="sidebar col-md-3 col-lg-3 col-xl-2 col-12 fixed-sidebar">
+            <div className="row bg-white">
+              <aside className="sidebar col-md-3 col-xl-2 col fixed-sidebar">
                 <Card style={{ fontSize: '1rem' }}>
                   <Card.Body>
                     <Card.Header className="delivery-card-header" style={{ fontSize: '1.2rem' }}>
@@ -434,7 +434,7 @@ const Home = () => {
                   </Card.Body>
                 </Card>
               </aside>
-              <div className="main-content col-12 col-lg-5 col-xl-7 col-md-5" style={{ height: '90vh', overflow: 'auto' }}>
+              <div className="main-content col col-xl-10 col-md-9" style={{ height: '90vh', overflow: 'auto' }}>
                 <MenuList
                   menus={menus}
                   handleViewDetails={handleViewDetails}
