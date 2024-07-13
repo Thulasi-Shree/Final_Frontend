@@ -45,7 +45,7 @@ const Home = () => {
   const [screenSize, setScreenSize] = useState('large');
 
   const handleResize = () => {
-    if (window.innerWidth <= 947) {
+    if (window.innerWidth <= 992) {
       setScreenSize('small');
     } else {
       setScreenSize('large');
