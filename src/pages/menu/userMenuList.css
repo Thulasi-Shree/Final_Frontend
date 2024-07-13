@@ -401,3 +401,13 @@
 }
 
 
+.fixed-aside {
+  position: sticky;
+  top: 0;
+  right: 0;
+  height: 90vh; /* Adjust as needed */
+  /* width: 25%; Adjust as needed */
+  /* margin: 10px;
+  margin-top: 85px; */
+  overflow-y: auto; /* Ensure content is scrollable if it exceeds the height */
+}

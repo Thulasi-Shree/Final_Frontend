@@ -30,6 +30,7 @@ const Home = () => {
       return acc;
     }, {})
   );
+  const [quantities, setQuantities] = useState({});
   const [productsCount, setProductsCount] = useState(0);
   const [resPerPage, setResPerPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -67,9 +68,9 @@ const Home = () => {
       }
     };
 
-    window.addEventListener('storage', handleStorage());
-    return () => window.removeEventListener('storage', handleStorage());
-  }, []);
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, [items.length]);
 
   const handleAddToCart = (menuItem) => {
     // Check if menuItem is defined and has an _id property
@@ -258,9 +259,9 @@ const Home = () => {
       // toast.error('Cannot proceed to checkout with an empty cart.');
     }
   };
-  const returnBack = () => {
-    getProducts();
-  };
+  // const returnBack = () => {
+  //   getProducts();
+  // };
 
   useEffect(() => {
     if (storedCartItems.length > 0) {
@@ -309,7 +310,7 @@ const Home = () => {
         <div className='bg-white'>
           <div className=" bg-white">
             <button
-              className="btn my-2 text-center bg-white p-3 mx-3  mt-4"
+              className=" my-2 text-center bg-white p-3 mx-3  mt-4"
               onClick={handleShow}
               style={{
                 position: 'sticky',
@@ -319,7 +320,7 @@ const Home = () => {
               }}
             >
               <FontAwesomeIcon
-                className="filter-icon-fa  mx-auto"
+                className=" btn filter-icon-fa  mx-auto"
                 icon={faFilter}
                 style={{
                   position: 'sticky',
@@ -449,7 +450,7 @@ const Home = () => {
                   selectedMenuItem={selectedMenuItem}
                 />
               </div>
-              <aside className="col-md-4 col-lg-4 col-xl-3 col-12" style={{ height: "90vh" }}>
+              {/* <aside className="col-md-4 col-lg-4 col-xl-3 col-12" style={{ height: "90vh" }}>
                 <Card className='p-3 delivery-card' style={{ fontSize: '1rem' }}>
                   <Card.Header className='delivery-card-header' style={{ fontSize: '1.2rem' }}>
                     <p className='delivery-card-title' style={{ fontSize: '1.2rem' }}>Delivery Information</p>
@@ -469,7 +470,7 @@ const Home = () => {
                     />
                   </div>
                 </Card>
-              </aside>
+              </aside> */}
             </div>
           </Col>
         </div>

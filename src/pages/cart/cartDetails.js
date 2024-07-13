@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faShoppingCart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './cartDetails.css';
 
-export default function Cart() {
+export default function Cart(handleAdd, handleMinus) {
   const [quantities, setQuantities] = useState({});
   const [cartItems, setCartItems] = useState([]);
 
@@ -17,61 +17,61 @@ export default function Cart() {
     }, {});
     setQuantities(initialQuantities);
     setCartItems(storedCartItems);
-  }, [quantities]);
+  }, []);
 
   const updateLocalStorage = (updatedCartItems) => {
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     setCartItems(updatedCartItems);
   };
 
-  const handleAdd = (menuItem) => {
-    if (menuItem.isAvailable === false) return;
+  // const handleAdd = (menuItem) => {
+  //   if (menuItem.isAvailable === false) return;
 
-    const updatedQuantities = {
-      ...quantities,
-      [menuItem._id]: (quantities[menuItem._id] || 0) + 1
-    };
-    setQuantities(updatedQuantities);
+  //   const updatedQuantities = {
+  //     ...quantities,
+  //     [menuItem._id]: (quantities[menuItem._id] || 0) + 1
+  //   };
+  //   setQuantities(updatedQuantities);
 
-    const updatedCartItems = cartItems.map((cartItem) => {
-      if (cartItem._id === menuItem._id) {
-        return { ...cartItem, quantity: (cartItem.quantity || 0) + 1 };
-      }
-      return cartItem;
-    });
-    updateLocalStorage(updatedCartItems);
-  };
+  //   const updatedCartItems = cartItems.map((cartItem) => {
+  //     if (cartItem._id === menuItem._id) {
+  //       return { ...cartItem, quantity: (cartItem.quantity || 0) + 1 };
+  //     }
+  //     return cartItem;
+  //   });
+  //   updateLocalStorage(updatedCartItems);
+  // };
 
-  const handleMinus = (item) => {
-    if (item.isAvailable === false) return;
+  // const handleMinus = (item) => {
+  //   if (item.isAvailable === false) return;
 
-    const updatedQuantities = {
-      ...quantities,
-      [item._id]: Math.max((quantities[item._id] || 0) - 1, 0)
-    };
+  //   const updatedQuantities = {
+  //     ...quantities,
+  //     [item._id]: Math.max((quantities[item._id] || 0) - 1, 0)
+  //   };
 
-    setQuantities(updatedQuantities);
+  //   setQuantities(updatedQuantities);
 
-    let updatedCartItems;
+  //   let updatedCartItems;
 
-    if (updatedQuantities[item._id] === 0) {
-      updatedCartItems = cartItems.filter(
-        (cartItem) => cartItem._id !== item._id
-      );
-    } else {
-      updatedCartItems = cartItems.map((cartItem) => {
-        if (cartItem._id === item._id) {
-          return {
-            ...cartItem,
-            quantity: Math.max((cartItem.quantity || 0) - 1, 0)
-          };
-        }
-        return cartItem;
-      });
-    }
+  //   if (updatedQuantities[item._id] === 0) {
+  //     updatedCartItems = cartItems.filter(
+  //       (cartItem) => cartItem._id !== item._id
+  //     );
+  //   } else {
+  //     updatedCartItems = cartItems.map((cartItem) => {
+  //       if (cartItem._id === item._id) {
+  //         return {
+  //           ...cartItem,
+  //           quantity: Math.max((cartItem.quantity || 0) - 1, 0)
+  //         };
+  //       }
+  //       return cartItem;
+  //     });
+  //   }
 
-    updateLocalStorage(updatedCartItems);
-  };
+  //   updateLocalStorage(updatedCartItems);
+  // };
 
   const handleAddToCartClick = (menuItem) => {
     const updatedQuantities = {

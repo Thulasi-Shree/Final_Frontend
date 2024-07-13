@@ -95,10 +95,10 @@ const Header = () => {
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
             onClick={handleNavbarToggle}
-            style={{ border: '2px solid #dbc3ed' }}
+            style={{ border: '2px solid orange' }}
           >
             {' '}
-            <FontAwesomeIcon icon={faBars} style={{ color: '#8D4527' }} />
+            <FontAwesomeIcon icon={faBars} style={{ color: 'orange' }} />
           </Navbar.Toggle>
       
           <Navbar.Collapse id="responsive-navbar-nav">
