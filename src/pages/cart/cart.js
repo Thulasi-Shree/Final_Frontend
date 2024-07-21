@@ -163,8 +163,8 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-4 mt-4 mt-lg-0">
-                      <div className="stockCounter d-inline">
+                    <div className="col-4 mt-4 mt-lg-0" style={{ fontSize: '13px' }}>
+                      <div className="stockCounter d-inline" style={{ fontSize: '13px' }}>
                         <span
                           className="icon-container"
                           onClick={() => handleAdd(item)}

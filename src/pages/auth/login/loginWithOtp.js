@@ -6,16 +6,22 @@ import axios from 'axios';
 import './login.scss';
 import CryptoJS from 'crypto-js';
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const LoginWithOtp = () => {
   const emailOrPhone = JSON.parse(localStorage.getItem('emailOrPhone'));
   const navigate = useNavigate();
   const [email, setEmail] = useState(emailOrPhone);
   const [otp, setOtp] = useState('');
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [loading, setLoading] = useState(false);
   const validator = useRef(
     new SimpleReactValidator({ className: 'text-danger' })
   );
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     if (validator.current.allValid()) {
@@ -42,7 +48,10 @@ const LoginWithOtp = () => {
           navigate('/');
         }
       } catch (error) {
-        alert('Login failed. Please try again.');
+        // alert('Login failed. Please try again.');
+        {alert.message && (
+          <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+        )}
         setLoading(false);
       }
     } else {

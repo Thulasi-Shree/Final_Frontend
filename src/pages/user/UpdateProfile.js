@@ -4,6 +4,7 @@ import MetaData from 'layout/MetaData';
 import { Link } from 'react-router-dom';
 import './UpdateProfile.css';
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 export default function UpdateProfile() {
   const userId = JSON.parse(localStorage.getItem('user'));
   const [name, setName] = useState('');
@@ -11,6 +12,7 @@ export default function UpdateProfile() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [avatarPreview, setAvatarPreview] = useState('');
   const id = userId._id;
   const onChangeAvatar = (e) => {
@@ -24,6 +26,10 @@ export default function UpdateProfile() {
 
     reader.readAsDataURL(e.target.files[0]);
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -43,13 +49,17 @@ export default function UpdateProfile() {
       });
 
       if (response.data.success) {
-        alert('Profile updated successfully');
+        // alert('Profile updated successfully');
+        setAlert({ message: 'Profile updated successfully', type: 'success' });
+
       }
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.error
         : 'Internal Server Error';
-      alert(errorMessage);
+      // alert(errorMessage);
+      setAlert({ message: errorMessage, type: 'error' });
+
     }
   };
   useEffect(() => {
@@ -69,7 +79,13 @@ export default function UpdateProfile() {
     <div className=" bg-white py-5">
       <MetaData title="update" />
       <div className="col-11 custom-table col-lg-4 mx-auto Cardimg123">
+      {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <Card className='Cardimg123'>
+        {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form
           id="CardText"
           onSubmit={submitHandler}

@@ -7,11 +7,13 @@ import { faCheck, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import CategoryList from './dietaryPreferenceCategoryList';
 import CategoryList1 from './MealTypeCategoryList';
 import './CreateMenu.css';
+import CustomAlert from 'components/utilities/Alert';
 
 export default function CreateMenu() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [dietaryPreferenceCategory, setDietaryPreferenceCategory] =
     useState('');
   const [mealTypeCategory, setMealTypeCategory] = useState('');
@@ -85,7 +87,8 @@ export default function CreateMenu() {
       fetchMealCategories1();
 
       // Handle success, e.g., show a success message
-      alert('Meal Category Added Successfully!');
+      // alert('Meal Category Added Successfully!');
+      setAlert({ message: 'Category Added Successfully!', type: 'success' });
 
       // Optionally, perform any other actions after successful category addition
 
@@ -93,7 +96,8 @@ export default function CreateMenu() {
       setAddMealCategoryModalOpen(false);
     } catch (error) {
       // Handle errors, e.g., show an error message
-      alert(error.message || 'An error occurred');
+      // alert(error.message || 'An error occurred');
+      setAlert({ message: error.message || 'An error occurred', type: 'error' });
     }
   };
 
@@ -109,7 +113,8 @@ export default function CreateMenu() {
       });
 
       // Handle success, e.g., show a success message
-      alert('Category Added Successfully!');
+      // alert('Category Added Successfully!');
+      setAlert({ message: 'Category Added Successfully!', type: 'success' });
 
       // Optionally, perform any other actions after successful category addition
       fetchDietaryCategories();
@@ -117,7 +122,8 @@ export default function CreateMenu() {
       setAddCategoryModalOpen(false);
     } catch (error) {
       // Handle errors, e.g., show an error message
-      alert(error.message || 'An error occurred');
+      // alert(error.message || 'An error occurred');
+      setAlert({ message: error.message || 'An error occurred', type: 'error' });
     }
   };
   const fetchCategories = () => {
@@ -157,12 +163,14 @@ export default function CreateMenu() {
       fetchCategories();
       fetchDietaryCategories();
       // Handle success, e.g., show a success message
-      alert('Category Deleted Successfully!');
+      // alert('Category Deleted Successfully!');
+      setAlert({ message: 'Category Deleted Successfully!', type: 'success' });
 
       // Fetch updated categories after deleting a category
     } catch (error) {
       // Handle errors, e.g., show an error message
-      alert(error.message || 'An error occurred');
+      // alert(error.message || 'An error occurred');
+      setAlert({ message: error.message || 'An error occurred', type: 'error' });
     }
   };
   const handleDeleteCategory1 = async (categoryId) => {
@@ -170,12 +178,16 @@ export default function CreateMenu() {
       // Make an Axios DELETE request to remove the category
       await axios.delete(`/api/meal-types/${categoryId}`);
       // Handle success, e.g., show a success message
-      alert('Category Deleted Successfully!');
+      // alert('Category Deleted Successfully!');
+      setAlert({ message: 'Category Deleted Successfully!', type: 'success' });
+
 
       // Fetch updated categories after deleting a category
     } catch (error) {
       // Handle errors, e.g., show an error message
-      alert(error.message || 'An error occurred');
+      // alert(error.message || 'An error occurred');
+      setAlert({ message: error.message || 'An error occurred', type: 'error' });
+
     }
   };
   const submitHandler = async (e) => {
@@ -204,16 +216,24 @@ export default function CreateMenu() {
 
       await axios.post('/api/admin/product/new', formData);
 
-      alert('Product Created Successfully!');
+      // alert('Product Created Successfully!');
+      setAlert({ message: 'Product Created Successfully!', type: 'success' });
+
 
       // navigate('/admin/products');
     } catch (error) {
-      console.error('Error creating product:', error);
+      // console.error('Error creating product:', error);
+      setAlert({ message: "Error creating product", type: 'error' });
+
       setError('Error creating product. Please try again.');
     } finally {
       setLoading(false);
     }
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -223,7 +243,9 @@ export default function CreateMenu() {
       setRestaurantBranch(restaurantBranch);
     }
     if (error) {
-      alert('error');
+      // alert('error');
+      setAlert({ message: "An error occured!", type: 'error' });
+
     }
   }, [error]);
   useEffect(() => {
@@ -256,6 +278,9 @@ export default function CreateMenu() {
     <div className=" bg-white py-1 text-white">
       <div className="container-fluid bg-white text-black my-5">
         <Card className='Cardimg123 bg-white' >
+        {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
           <div className="my-5 text-black bg-white" >
             <form
               onSubmit={submitHandler}

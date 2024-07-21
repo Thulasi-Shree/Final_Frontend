@@ -14,6 +14,7 @@ import { getDistance } from 'geolib';
 import BillingAddress from './BillingAddress';
 import CryptoJS from 'crypto-js';
 import './ShippingInfo.css';
+import CustomAlert from 'components/utilities/Alert';
 
 const ShippingInfo1 = () => {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ const ShippingInfo1 = () => {
   const [otpVerified, setOtpVerified] = useState(false);
   const [locationApi, setLocationApi] = useState(null);
   const [deliveryKm, setDeliveryKm] = useState('');
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [locationApi1, setLocationApi1] = useState(null);
   const [name, setFirstName] = useState(isLoggedIn ? user.name : '');
   const [lastName, setLastName] = useState(isLoggedIn ? user.lastName : '');
@@ -77,6 +79,9 @@ const ShippingInfo1 = () => {
   const handleTimeChange = (newTime) => {
     setTime(newTime);
     // console.log(time);
+  };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
   };
 
   // Function to handle user name change
@@ -165,14 +170,20 @@ const ShippingInfo1 = () => {
 
       if (response.data.success) {
         // console.log('OTP verified successfully');
-        alert('OTP verified successfully');
+        // alert('OTP verified successfully');
+        setAlert({ message: 'OTP verified successfully! ', type: 'success' });
+
         localStorage.setItem('emailOrMobile', JSON.stringify(emailOrMobile));
         setOtpVerified(true);
       } else {
-        alert(`OTP verification failed!`);
+        // alert(`OTP verification failed!`);
+        setAlert({ message: 'OTP verification failed!', type: 'success' });
+
       }
     } catch (error) {
-      alert(`OTP verification failed!`);
+      // alert(`OTP verification failed!`);
+      setAlert({ message: `OTP verification failed!`, type: 'error' });
+
     }
   };
   const handleEmailOrMobileChange = (e) => {
@@ -195,11 +206,15 @@ const ShippingInfo1 = () => {
         mobile: isPhone ? emailOrMobile : undefined
       });
 
-      alert('OTP sent successfully!');
+      // alert('OTP sent successfully!');
+      setAlert({ message: 'OTP sent successfully!', type: 'success' });
+
       setIsOtpSent(true);
     } catch (error) {
       // console.error('Error sending OTP:', error);
-      alert(`Error sending OTP!`);
+      // alert(`Error sending OTP!`);
+      setAlert({ message: `Error sending OTP!`, type: 'error' });
+
     }
   };
   const [sameAsDelivery, setSameAsDelivery] = useState(false);
@@ -266,7 +281,9 @@ const ShippingInfo1 = () => {
       setBillingCoordinates(billingCoordinates);
     } catch (error) {
       // console.error('Error getting billing coordinates:', error.message);
-      alert('Enter the correct address!');
+      // alert('Enter the correct address!');
+      setAlert({ message: 'Enter the correct address!', type: 'error' });
+
       // Handle errors for billing address coordinates
     }
   };
@@ -308,7 +325,9 @@ const ShippingInfo1 = () => {
       setBillingCoordinates(billingCoordinates);
     } catch (error) {
       setBillingVerified(false);
-      alert('Please enter the address correctly');
+      // alert('Please enter the address correctly');
+      setAlert({ message: 'Please enter the address correctly', type: 'error' });
+
       // Handle the error accordingly, you might want to set an error state
     }
   };
@@ -356,17 +375,22 @@ const ShippingInfo1 = () => {
       setDistanceResult(distanceInKm);
   
       if (distanceInKm <= deliveryKm) {
-        alert(`Order Available for your location!`);
+        // alert(`Order Available for your location!`);
+        setAlert({ message: `Order Available for your location!`, type: 'success' });
+
         setDeliveryVerified(true);
       } else {
         setDeliveryVerified(false);
-        alert(`Delivery address is too far. Maximum delivery distance is ${deliveryKm} km.`);
+        // alert(`Delivery address is too far. Maximum delivery distance is ${deliveryKm} km.`);
+        setAlert({ message: `Delivery address is too far. Maximum delivery distance is ${deliveryKm} km.`, type: 'success' });
+
       }
   
       setCoordinates(deliveryCoordinates);
     } catch (error) {
       setDeliveryVerified(false);
-      alert('Please enter the address correctly');
+      // alert('Please enter the address correctly');
+      setAlert({ message: 'Please enter the address correctly', type: 'error' });
     }
   };
 
@@ -400,7 +424,8 @@ const ShippingInfo1 = () => {
     } catch (error) {
       // Handle other errors
       console.error('Error submitting form:', error);
-      alert('Error submitting form. Please try again later.');
+      // alert('Error submitting form. Please try again later.');
+      setAlert({ message: 'Error submitting form. Please try again later.', type: 'error' });
     }
   };
    useEffect(() => {
@@ -413,7 +438,8 @@ const ShippingInfo1 = () => {
         setTimeSlots(timeSlotsData);
       } catch (error) {
         // console.error('Error fetching time slots:', error.message);
-        alert('Error fetching time slots');
+        // alert('Error fetching time slots');
+        setAlert({ message: 'Error fetching time slots', type: 'error' });
       }
     };
     const fetchdata = async () => {
@@ -422,7 +448,8 @@ const ShippingInfo1 = () => {
         setDeliveryKm(response.data.data[0].deliveryKm);
       } catch (error) {
         console.error('Error fetching restaurant details:', error);
-        alert('Error fetching delivery & tax charges');
+        // alert('Error fetching delivery & tax charges');
+        setAlert({ message: 'Error fetching delivery & tax charges', type: 'error' });
       }
     };
 
@@ -440,8 +467,9 @@ const ShippingInfo1 = () => {
         setLocationApi(decryptedLocationApi);
       })
       .catch(error => {
-        console.error('Error fetching API key:', error);
-        alert('Error fetching API key');
+        // console.error('Error fetching API key:', error);
+        // alert('Error fetching API key');
+        setAlert({ message:'Error fetching API key' , type: 'error' });
       });
 
     axios.get('/api/locationApikey')
@@ -452,7 +480,9 @@ const ShippingInfo1 = () => {
       })
       .catch(error => {
         console.error('Error fetching API key:', error);
-        alert('Error fetching API key');
+        // alert('Error fetching API key');
+        setAlert({ message: 'Error fetching API key', type:"error" });
+
       });
   }, []);
 
@@ -529,7 +559,9 @@ const ShippingInfo1 = () => {
     if (
       (billingVerified === true && deliveryVerified === true) ||
       (orderType === 'Pickup' && billingVerified === true)
-    ) { alert('Address verified')
+    ) { 
+      setAlert({ message: "Address verified", type: "success"});
+      // alert('Address verified')
       navigate('/order/confirm');
     }
   }, [billingVerified, deliveryVerified, orderType, navigate]);
@@ -537,6 +569,9 @@ const ShippingInfo1 = () => {
   return (
     <div id="ShippingInfo" className="py-5 bg-white">
       <div className="container col-11 mx-auto bg-white col-lg-6 py-3 custom-table my-4" id="CardBackIMg">
+      {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form className="checkout-form bg-white" onSubmit={handleSubmit}>
           {!isLoggedIn && (
             <PersonalDetails

@@ -284,6 +284,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './SignUpForm.css';
 import CryptoJS from 'crypto-js';
 import { Card } from 'react-bootstrap';
+import CustomAlert from '../../../components/utilities/Alert';
 
 const SignUpForm = () => {
   const defaultAvatarImage =
@@ -297,6 +298,7 @@ const SignUpForm = () => {
     avatar: defaultAvatarImage,
     phone: ''
   });
+  const [alert, setAlert] = useState({ message: '', type: '' });
 const navigate = useNavigate();
   useEffect(() => {
     return () => {
@@ -332,13 +334,17 @@ const navigate = useNavigate();
         ...formData,
         password: encryptedPassword
       });
-      navigate('/email/Confirmation')
-      alert('Verification email sent! Please check your inbox to login.');
+      // navigate('/email/Confirmation')
+      // alert('Verification email sent! Please check your inbox to login.');
+      setAlert({ message: 'Verification email sent! Please check your inbox to log in. Note: Your registration will be removed after 5 minutes if the email is not verified.', type: 'success' });
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      // alert(`${error.response.data.message}`);
+      setAlert({ message: error.response.data.message, type: 'error' });
     }
   };
-
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
   const defaultAvatarStyle = {
     display: formData.avatar === defaultAvatarImage ? 'block' : 'none',
     maxWidth: '100px'
@@ -355,9 +361,13 @@ const navigate = useNavigate();
 
   return (
     <div className="container-fluid py-5 bg-white" >
+      
       <Card className="Cardimg123 col-lg-5 mx-auto">
+      {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form onSubmit={handleSubmit}>
-          <div className="col-11 col-md-8 col-lg-12 mx-auto custom-table mx-3 mt-4 bg-white">
+          <div className="col-11 col-md-8 col-lg-12 mx-auto  mx-3 mt-4 bg-white">
             <div className="col-md-12 col-12 px-4">
               <h1 className="text-center mt-3 signup-form-container fs-1" id="CardText">
                 Sign up
@@ -540,7 +550,7 @@ const navigate = useNavigate();
               </div>
               <p className="float-center my-4" style={{ fontSize: '17px' }}>
                 If you have an account?{' '}
-                <Link to="/login" id="CardText" style={{ fontSize: '17px' }} className="signup-form-container">
+                <Link to="/login" id="CardText" style={{ fontSize: '17px', color: 'orange' }} className="signup-form-container">
                   {/* <button className="btn rounded "> */}
                     Login
                   {/* </button> */}

@@ -64,7 +64,7 @@ export default function Cart1() {
               <div id="order_summary" className='col-11  pt-2  '>
                 {/* <hr /> */}
 
-                <p style={{ color: 'black', backgroundColor: 'transparent', fontSize: '19px', fontWeight:'500'}}>
+                <p style={{ color: 'black', backgroundColor: 'transparent', fontSize: '13px', fontWeight:'500'}}>
                   Items total:{' '}
                   <span className="order-summary-values" style={{color:'black',backgroundColor:'transparent',fontWeight:'500'}}>
                     ${Number(cartItemsTotal ).toFixed(2)}

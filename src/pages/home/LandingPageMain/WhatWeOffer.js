@@ -33,18 +33,18 @@ const WhatWeOffer = () => {
             <div className="offerContent">
                 <h2 className="pt-4 ">What We Offer?</h2>
                 <div className="row p-4 justify-content-center align-items-center">
-                    <div className='p-3 col-12 col-sm-6 col-xl-3 align-items-center' >
+                    <div className='p-3 col-12 col-sm-6 col-xl-3 align-items-center' style={{font: '16px'}}>
                         <Card className="p-4 offerItem" style={{ height: '250px',
                 width: 'auto',}}>
                             <Card.Title>Fresh Ingredients</Card.Title>
-                            <Card.Body>We use only the freshest ingredients to ensure the highest quality in every dish.</Card.Body>
+                            <p>We use only the freshest ingredients to ensure the highest quality in every dish.</p>
                         </Card>
                     </div>
                     <div className='p-3 col-12 col-sm-6 col-xl-3 align-items-center' >
                         <Card className="p-4 offerItem" style={{height: '250px',
                 width: 'auto',}}>
                             <Card.Title>Authentic Recipes</Card.Title>
-                            <Card.Body>Our recipes are passed down through generations, bringing authentic flavors to your table..</Card.Body>
+                            <p>Our recipes are passed down through generations, bringing authentic flavors to your table..</p>
                         </Card>
                     </div>
 
@@ -52,14 +52,14 @@ const WhatWeOffer = () => {
                         <Card className="p-4 offerItem" style={{height: '250px',
                 width: 'auto',}}>
                             <Card.Title>Excellent Service</Card.Title>
-                            <Card.Body>We use only the freshest ingredients to ensure the highest quality in every dish.</Card.Body>
+                            <p>We use only the freshest ingredients to ensure the highest quality in every dish.</p>
                         </Card>
                     </div>
                     <div className='p-3 col-12 col-sm-6 col-xl-3 align-items-center'>
                         <Card className="p-4 offerItem" style={{height: '250px',
                 width: 'auto',}}>
                             <Card.Title>Quality</Card.Title>
-                            <Card.Body>We use only the freshest ingredients to ensure the highest quality in every dish.</Card.Body>
+                            <p>We use only the freshest ingredients to ensure the highest quality in every dish.</p>
                         </Card>
                     </div>
 

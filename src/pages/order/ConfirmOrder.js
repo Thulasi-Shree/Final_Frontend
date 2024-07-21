@@ -12,12 +12,15 @@ import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './ConfirmOrder.css';
 import Cart1 from 'pages/cart/cart1';
+import CustomAlert from 'components/utilities/Alert';
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [restaurantBranch, setRestaurantBranch] = useState(null);
   const [isPickup, setIsPickup] = useState(true);
+  const [loading, setLoading] = useState(true);
   const orderType = JSON.parse(localStorage.getItem('orderType'));
   // const [orderType, setOrderType] = useState(orderType1)
 
@@ -47,9 +50,15 @@ const ConfirmOrder = () => {
       setTax(response.data.data[0].taxAmount);
     } catch (error) {
       // console.error('Error fetching restaurant details:', error.message);
-      alert('Error fetching delivery & tax charges');
+      // alert('Error fetching delivery & tax charges');
+      setAlert({ message: 'Error fetching delivery & tax charges', type: 'error' });
+
     }
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
   const shippingPrice = isPickup
     ? 0
     : (Number(minDeliveryCharge) + Number(distanceResponse * deliveryChargePerKm)).toFixed(2);
@@ -80,15 +89,17 @@ const ConfirmOrder = () => {
       );
     } catch (error) {
       // console.error('Error fetching restaurant details:', error.message);
-      alert('Error fetching restaurant details');
+      // alert('Error fetching restaurant details');
+      setAlert({ message: 'Error fetching restaurant details', type: 'error' });
+
     }
   };
   useEffect(() => {
     fetchRestaurantBranch();
     fetchdata()
-    // setOrderType(mappedData.orderType)
+    setLoading(false);
     console.log(orderType)
-  }, [restaurantId]);
+  }, [restaurantId, localData]);
   // Map shipping information
   const mapData = () => {
     return {
@@ -134,7 +145,9 @@ const ConfirmOrder = () => {
     //   navigate('/select');
     // }
   }, []);
-
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="ConfirmOrderMainImg bg-white">
       <div className="py-5">
@@ -148,6 +161,9 @@ const ConfirmOrder = () => {
             </h4>
             <div className="container text-center">
               <div className="row">
+              {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                   <Card className="p-2 borderUp" id="CardText">
                     <p id="CardText">

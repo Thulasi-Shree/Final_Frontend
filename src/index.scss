@@ -6,19 +6,7 @@
   color: rgb(9, 8, 8) !important;
   filter:drop-shadow(6px 5px 6px orange);
 }
-// .my-global-button {
-//   background-color: #809aef !important;
-//   color: #fff !important;
-//   padding: 10px 20px;
-//   border: none !important;
-//   border-radius: 30px !important;
-//   cursor: pointer;
-//   width: auto !important;
-//   padding-right: 20px !important;
-//   padding-left: 20px !important;
-//   text-align: center !important;
-//   font-size: 1.1rem !important;
-// }
+
 @media (max-width: 576px) {
 //   .my-global-button {
 //     font-size: 1rem !important;
@@ -79,3 +67,89 @@ body{
   border-color: orange; /* Match the border color to the background */
 }
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80% !important; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+html {
+  font-size: 16px; /* 1rem = 16px */
+}
+
+/* Responsive font sizing */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: calc(1rem ) !important;
+  line-height: 1.6 !important;
+}
+
+h1 {
+  font-size: calc(2rem) !important;
+}
+
+h2 {
+  font-size: calc(1.75rem ) !important;
+}
+
+h3 {
+  font-size: calc(1.5rem) !important;
+}
+
+h4 {
+  font-size: calc(1.25rem ) !important;
+}
+
+h5 {
+  font-size: calc(1rem ) !important;
+}
+
+h6 {
+  font-size: calc(0.875rem ) !important;
+}
+
+p {
+  font-size: calc(1rem) !important;
+  line-height: 1.5 !important;
+}
+
+button {
+  font-size: 14px !important; /* 1rem = 16px */
+  font-weight:500 !important; 
+}

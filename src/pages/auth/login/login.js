@@ -8,6 +8,7 @@ import SimpleReactValidator from 'simple-react-validator';
 import './login.scss';
 import CryptoJS from 'crypto-js'; // Importing CryptoJS library
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -15,10 +16,15 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [alert, setAlert] = useState({ message: '', type: '' });
+
   const validator = useRef(
     new SimpleReactValidator({ className: 'text-danger' })
   );
   const isAuthenticated = localStorage.getItem('isloggedIn') === 'true';
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -57,7 +63,9 @@ const LoginPage = () => {
   
   useEffect(() => {
     if (error) {
-      alert(error);
+      // alert(error);
+      setAlert({ message: error, type: 'error' });
+
       setError(null);
     }
     if (isAuthenticated) {
@@ -70,6 +78,9 @@ const LoginPage = () => {
     <div className="container-fluid bg-white">
       <div className="signup-form-container col-lg-7 col-xl-6  mx-auto pt-5 bg-white">
         <Card className='Cardimg123 bg-white'>
+        {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form onSubmit={handleLogin}>
           <div className="row mx-auto p-3">
             <div className="col-md-12 ">

@@ -74,7 +74,7 @@ const Header = () => {
       ) : ( */}
         <Container>
                  
-      <div className='mx-3'>
+      {/* <div className='mx-3'>
         {pathname1 !== '/' && (
           <Navbar.Brand>
             <Nav.Link as={Link} to="#" onClick={() => navigate(-1)}>
@@ -82,7 +82,7 @@ const Header = () => {
             </Nav.Link>
           </Navbar.Brand>
         )}
-      </div>
+      </div> */}
           <Navbar.Brand className="col-md-1 ">
             <Nav.Link as={Link} to="/">
               <img
@@ -272,7 +272,7 @@ const Header = () => {
                     {!isLoggedIn ? (
                       <Nav.Link
                        
-                        className="btn border rounded mx-auto"
+                        className="btn border rounded p-2 mx-auto"
                         onClick={handleLogout}
                       >
                         Logout
@@ -282,7 +282,7 @@ const Header = () => {
                         <Stack direction="horizontal" gap={3} />
                         <Nav.Link
                         
-                          className="btn border rounded mx-auto"
+                          className="btn border rounded p-2 mx-auto"
                           as={Link}
                           to="/login"
                         >
@@ -313,7 +313,7 @@ const Header = () => {
                     <Stack direction="horizontal" gap={3} />
                     {isLoggedIn ? (
                       <Nav.Link
-                        className="btn border rounded mx-auto"
+                        className="btn border rounded p-2 mx-auto"
                         onClick={handleLogout}
                       >
                         Logout
@@ -328,7 +328,7 @@ const Header = () => {
                             display: 'inline-block'
 
                           }}
-                          className="btn border rounded  mx-auto mt-lg-n1"
+                          className="btn border rounded p-2 mx-auto mt-lg-n1"
                           as={Link}
                           to="/login"
                         >

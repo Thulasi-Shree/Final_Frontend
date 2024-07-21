@@ -5,12 +5,14 @@ import { useEffect, useState, useRef } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import './login.scss';
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const SendLoginOtp = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const isAuthenticated = localStorage.getItem('isloggedIn') === 'true';
   const validator = useRef(
     new SimpleReactValidator({ className: 'text-danger' })
@@ -26,6 +28,10 @@ const SendLoginOtp = () => {
     }
   }, [error, isAuthenticated, navigate]);
 
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     if (validator.current.allValid()) {
@@ -33,7 +39,9 @@ const SendLoginOtp = () => {
       try {
         await axios.post('/api/login/otp', { email });
         localStorage.setItem('emailOrPhone', JSON.stringify(email));
-        alert('OTP sent!');
+        // alert('OTP sent!');
+        setAlert({ message: 'OTP sent!', type: 'success' });
+
         navigate('/loginWithOtp');
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to send OTP');
@@ -49,6 +57,9 @@ const SendLoginOtp = () => {
   return (
     <div id="ForgetPMainImg" className="py-4 bg-white box-shadow">
       <Card className="container col-10 mx-auto col-md-5 Cardimg123 mt-5 mb-4 box-shadow signup-form-container">
+      {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form onSubmit={handleLogin}>
           <div className="row custom-table mx-3 my-5" id="CardBackIMg1">
             <div className="col-11 mx-auto">

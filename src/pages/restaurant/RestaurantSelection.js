@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import CustomAlert from 'components/utilities/Alert';
 
 const RestaurantSelection = () => {
   const [restaurantId, setRestaurantId] = useState('');
@@ -17,6 +18,7 @@ const RestaurantSelection = () => {
   const [fullAddress, setFullAddress] = useState('');
   const [branch, setBranch] = useState('');
   const [restaurant, setRestaurant] = useState([]);
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const navigate = useNavigate();
   const generateDates = (numDays) => {
     const dates = [];
@@ -66,6 +68,9 @@ const RestaurantSelection = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const handleContinue = () => {
     if (restaurantId && selectedDate && selectedTimeSlot) {
@@ -84,7 +89,8 @@ const RestaurantSelection = () => {
       navigate(`/home`);
     } else {
       // Show an error toast message
-      alert('Please select restaurant, time and delivery date.');
+      // alert('Please select restaurant, time and delivery date.');
+      setAlert({ message: 'Please select restaurant, time and delivery date.', type: 'error' });
     }
   };
 
@@ -99,11 +105,12 @@ const RestaurantSelection = () => {
         localStorage.setItem('restaurantLatitude', latitude);
         localStorage.setItem('restaurantLongitude', longitude);
         // const timeSlotsData = Array.isArray(response.data) ? response.data : [];
-        console.log(restaurant);
+        // console.log(restaurant);
         setRestaurant(restaurant);
       } catch (error) {
         // console.error('Error fetching time slots:', error.message);
-        alert('Error fetching time slots');
+        // alert('Error fetching time slots');
+        setAlert({ message: 'Error fetching Restaurants', type: 'error' });
       }
     };
 
@@ -118,7 +125,8 @@ const RestaurantSelection = () => {
         setTimeSlots(timeSlotsData);
       } catch (error) {
         // console.error('Error fetching time slots:', error.message);
-        alert('Error fetching time slots');
+        // alert('Error fetching time slots');
+        setAlert({ message: 'Error fetching time slots', type: 'error' });
       }
     };
 
@@ -137,6 +145,9 @@ const RestaurantSelection = () => {
             sm={12}
           >
             <Card className=" mx-auto mt-lg-5 mt-md-2 py-3 CardImg114" id="CardBackIMg122">
+            {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
               <Card.Body>
                 <Card.Title className='my-3' id="CardTextLog">
                   <h5>Select Restaurant</h5>

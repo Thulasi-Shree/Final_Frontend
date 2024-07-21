@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './contactUs.css';
+import CustomAlert from 'components/utilities/Alert';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,11 @@ const ContactUs = () => {
     subject: '',
     message: ''
   });
+  const [alert, setAlert] = useState({ message: '', type: '' });
+
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,7 +29,9 @@ const ContactUs = () => {
       const response = await axios.post('api/send-email', formData);
       console.log(response);
 
-      alert('Email sent successfully');
+      // alert('Email sent successfully');
+      setAlert({ message:'Email sent successfully!' , type: 'success' });
+
       setFormData({
         fullName: '',
         email: '',
@@ -32,7 +40,9 @@ const ContactUs = () => {
       });
     } catch (error) {
       // console.error('Error sending email:', error);
-      alert('Error sending email');
+      // alert('Error sending email');
+      setAlert({ message: 'Error sending email!', type: 'error' });
+
       // Handle the error (show error message or redirect)
     }
   };
@@ -60,6 +70,9 @@ const ContactUs = () => {
       >
         <div className="modal-dialog" id="CardText1">
           <div className="modal-content bg-white CardImg114">
+          {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
             <div className="modal-header">
               <h5 className="modal-title " id="exampleModalLabel">
                 Contact Us

@@ -22,7 +22,7 @@ margin: 2px;
   display: inline-block;
   margin: 0 0px;
   cursor: pointer;
-  font-size: 14px;
+  /* font-size: 14px; */
   padding: 8px;
   border-radius: 4px;
   color: white;
@@ -31,7 +31,7 @@ margin: 2px;
 
 .pagination li a{
   color: #afafaf;
-  font-size:18px;
+  /* font-size:18px; */
 }
 
 .pagination li.active {

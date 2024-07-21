@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import ReusableTable from '../../components/ReusableTable';
 import './index.css';
+import CustomAlert from 'components/utilities/Alert';
 
 const MenuList = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const MenuList = () => {
   const { restaurantId } = user;
   const { role } = user;
   const [menuData, setMenuData] = useState([]);
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [selectedBranch, setSelectedBranch] = useState(restaurantId || 'all');
   // const { id: productId } = useParams();
   const handleBranchChange = (e) => {
@@ -55,6 +57,9 @@ const MenuList = () => {
     navigate(`/admin/updateMenu/${menuId}`);
     // console.log(`Edit menu item with ID ${menuId}`);
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const handleDelete = async (menuId) => {
     try {
@@ -62,13 +67,17 @@ const MenuList = () => {
       await axios.delete(`/api/admin/product/${menuId}`);
       fetchOrders();
       // Handle success, e.g., navigate to another page or show a success message
-      alert('Product Deleted Successfully!');
+      // alert('Product Deleted Successfully!');
+      setAlert({ message: 'Product Deleted Successfully!', type: 'success' });
+
 
       // Optionally, navigate to another page after successful deletion
       // history.push('/some-other-page');
     } catch (error) {
       // Handle errors, e.g., show an error message
-      alert(error.message || 'An error occurred');
+      // alert(error.message || 'An error occurred');
+      setAlert({ message: error.message || 'An error occurred', type: 'error' });
+
     }
   };
 
@@ -118,7 +127,9 @@ const MenuList = () => {
               </div>
               {/* Remove the Submit button as it's no longer needed */}
             </div>
-
+            {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
             <ReusableTable
               headers={headers}
               data={menuData}

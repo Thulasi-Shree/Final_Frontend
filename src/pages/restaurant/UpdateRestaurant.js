@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const EditRestaurant = () => {
   const { id: restaurantId } = useParams();
+  const [alert, setAlert] = useState({ message: '', type: '' });
 
   const [formData, setFormData] = useState({
     restaurantName: '',
@@ -23,6 +25,9 @@ const EditRestaurant = () => {
     cuisineTypeCategory: '',
     openingHours: ''
   });
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   useEffect(() => {
     // Fetch existing restaurant data using the ID
@@ -81,11 +86,15 @@ const EditRestaurant = () => {
       await axios.put(`/api/restaurant/edit/${restaurantId}`, formData);
       console.log('Restaurant updated successfully!');
 
-      alert('Restaurant updated successfully!');
+      // alert('Restaurant updated successfully!');
+      setAlert({ message: 'Restaurant updated successfully! ', type: 'success' });
+
     } catch (error) {
       console.error('Error updating restaurant:', error);
 
-      alert('Error updating restaurant. Please try again.');
+      // alert('Error updating restaurant. Please try again.');
+      setAlert({ message: 'Error updating restaurant. Please try again.', type: 'error' });
+
     }
   };
 
@@ -96,6 +105,9 @@ const EditRestaurant = () => {
         <form onSubmit={handleSubmit} className="address-container">
           <Card className="p-3 Cardimg123">
           <h4 className="py-3">Edit Restaurant</h4>
+          {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
             <div className="mb-4">
               <label>
                 Restaurant Name:

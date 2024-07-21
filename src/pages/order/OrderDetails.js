@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
-import './UserOrderList.css';
+// import './UserOrderList.css';
 
 const OrderDetails = () => {
   const [orderDetails, setOrderDetails] = useState(null);
@@ -30,7 +30,7 @@ const OrderDetails = () => {
   useEffect(() => {
     // Fetch order details when the component mounts
     fetchOrderDetails();
-  }, [id]); // Re-fetch data when id changes
+  }, [id, ]); // Re-fetch data when id changes
 
   // Helper function to determine if delivery info should be shown
   const shouldShowDeliveryInfo = () => {
@@ -41,7 +41,7 @@ const OrderDetails = () => {
   return (
     <div className="container-fluid bg-white py-5" id="ProfileMainImg">
       <div className="row container-fluild Cardimg123 bg-white custom-table mx-auto" id="CardBackIMg">
-        <div className="col-12 col-lg-10 mx-auto p-5" >
+        <div className="col-12 col-lg-10 mx-auto p-2" >
           <div className="row d-flex justify-content-around">
           <h4 className="my-4">
                 <b>Order Info</b>

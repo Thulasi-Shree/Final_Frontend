@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
 import '../user/Profile.css';
+import CustomAlert from 'components/utilities/Alert';
 
 const UpdateProduct = () => {
   const [name, setName] = useState('');
@@ -10,6 +11,7 @@ const UpdateProduct = () => {
   const [description, setDescription] = useState('');
   const [dietaryPreferenceCategory, setDietaryPreferenceCategory] =
     useState('');
+    const [alert, setAlert] = useState({ message: '', type: '' });
   const [mealTypeCategory, setMealTypeCategory] = useState('');
   const [restaurantId, setRestaurantId] = useState('');
   const [restaurantBranch, setRestaurantBranch] = useState('');
@@ -77,11 +79,15 @@ const UpdateProduct = () => {
       // Use axios to send the form data
       await axios.put(`/api/admin/product/${productId}`, formData);
 
-      alert('Product Updated Successfully!');
+      // alert('Product Updated Successfully!');
+      setAlert({ message: 'Product Updated Successfully!', type: 'success' });
+
 
       setImages([]);
     } catch (error) {
-      alert(error.message || 'An error occurred');
+      // alert(error.message || 'An error occurred');
+      setAlert({ message: error.message || 'An error occurred', type: 'error' });
+
     }
   };
 
@@ -90,6 +96,10 @@ const UpdateProduct = () => {
     setImagesPreview([]);
     setImagesCleared(true);
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
 
   useEffect(() => {
     const getProductDetails = async () => {
@@ -125,6 +135,9 @@ const UpdateProduct = () => {
             className="col-lg-8  mx-auto col-xs-12 col-md-10 my-5"
           >
             <Card className='Cardimg123'>
+            {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
             <form
               onSubmit={submitHandler}
               className="shadow-lg p-4"

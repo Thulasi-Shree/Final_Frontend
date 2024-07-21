@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ReusableTable from '../../components/ReusableTable';
 import './index.css';
+import CustomAlert from 'components/utilities/Alert';
 
 const RestaurantTable = () => {
   const headers = [
@@ -15,10 +16,16 @@ const RestaurantTable = () => {
   const navigate = useNavigate();
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [alert, setAlert] = useState({ message: '', type: '' });
+
 
   const handleAdd = () => {
     navigate('/admin/create/restaurant');
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
 
   const onEdit = (id) => {
     // console.log(`Edit restaurant with ID ${id}`);
@@ -49,14 +56,16 @@ const RestaurantTable = () => {
       await axios.delete(`/api/restaurant/delete/${menuId}`);
 
       // Handle success, e.g., navigate to another page or show a success message
-      alert('Product Deleted Successfully!');
+      // alert('Product Deleted Successfully!');
+      setAlert({ message: 'Product Deleted Successfully!', type: 'success' });
       fetchData();
 
       // Optionally, navigate to another page after successful deletion
       // history.push('/some-other-page');
     } catch (error) {
       // Handle errors, e.g., show an error message
-      alert(error.message || 'An error occurred');
+      // alert(error.message || 'An error occurred');
+      setAlert({ message: error.message || 'An error occurred', type: 'error' });
     }
   };
 
@@ -68,6 +77,9 @@ const RestaurantTable = () => {
     <div className="bg-white text-black pt-4" style={{ minHeight: '58vh' }}>
       <div className="container-fluid" id="CardText">
         <div className="row">
+        {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
           <h1 className=" mt-3" style={{ fontWeight: 'bold' }}>
             Restaurants
           </h1>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const CreateRestaurant = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,8 @@ const CreateRestaurant = () => {
     cuisineTypeCategory: '',
     openingHours: ''
   });
+  const [alert, setAlert] = useState({ message: '', type: '' });
+
   const resetFormData = () => {
     setFormData({
       restaurantName: '',
@@ -58,6 +61,10 @@ const CreateRestaurant = () => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,11 +72,15 @@ const CreateRestaurant = () => {
     try {
       await axios.post('/api/restaurant/create', formData);
       console.log('Restaurant created successfully!');
-      alert('Restaurant created Successfully!');
+      // alert('Restaurant created Successfully!');
+      setAlert({ message: 'Restaurant created Successfully!', type: 'success' });
+
       resetFormData();
     } catch (error) {
       console.error('Error creating restaurant:', error);
-      alert('Error creating restaurant. Please ensure the provided data is unique and try again.');
+      setAlert({ message:'Error creating restaurant. Please ensure the provided data is unique and try again.' , type: 'error' });
+
+      // alert('Error creating restaurant. Please ensure the provided data is unique and try again.');
     }
   };
 
@@ -77,6 +88,9 @@ const CreateRestaurant = () => {
     <div className="bg-white text-black py-4">
       <Card className="col-md-5 container py-4 my-5 Cardimg123">
         <h4 className='text-black'>Create a New Restaurant</h4>
+        {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form onSubmit={handleSubmit} className="address-container">
           {/* Add input fields for each restaurant property */}
           <div className="mb-3">

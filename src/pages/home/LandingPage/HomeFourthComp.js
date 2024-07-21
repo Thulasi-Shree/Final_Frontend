@@ -12,17 +12,17 @@ const HomeFourthComp = () => {
       <Container>
         <Row className="text-center justify-content-center">
           <Col lg={10} md={10} xs={12}>
-            <h1 className="mb-2" style={{ fontSize: 'calc(1.1rem + 1vw)',  lineHeight: '1.1' }}>
+            <h3 className="mb-2" style={{ fontSize: 'calc(1.1rem + 1vw)',  lineHeight: '1.1' }}>
               Sign up to receive news and offers from us!
-            </h1>
+            </h3>
             <Col style={{background: 'rgb(249, 233, 233)'}} lg={12} xs={12} sm={12}>
          <div className=" bg-white mx-auto">
             <ContactUs />
            </div>
          </Col>
-            <h5 className="mt-2 ">
+            <p className="mt-2 ">
               * We promise not to spam your inbox in any way
-            </h5>
+            </p>
           </Col>
         </Row>
       </Container>

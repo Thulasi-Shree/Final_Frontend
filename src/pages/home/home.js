@@ -3,11 +3,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import RestaurantSelection from '../../pages/restaurant/RestaurantSelection';
 import ProductModal from './HomeModel';
+import CustomAlert from 'components/utilities/Alert';
 
 const HomePage = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [alert, setAlert] = useState({ message: '', type: '' });
+
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const fetchData = async () => {
     try {
@@ -24,9 +30,12 @@ const HomePage = () => {
         // Handle 400 Bad Request error
         // console.error('Bad Request:', error.response.data);
         // Optionally, you can display a toast message here
-        alert(`Bad Request: ${error.response.data}`);
+        // alert(`Bad Request: ${error.response.data}`);
+        setAlert({ message: "Error fetching data", type: 'error' });
+
       } else {
-        setError('Error fetching data');
+        // setError('Error fetching data');
+        setAlert({ message: "Error fetching data", type: 'error' });
         // Display a toast message or log the error to the console
         // console.error('Error fetching data:', error);
       }
@@ -44,13 +53,17 @@ const HomePage = () => {
   }
 
   if (error) {
-    alert('Error!');
+    // alert('Error!');
+    setAlert({ message: "An error occured!", type: 'error' });
     return null;
   }
   return (
     <div>
       <ProductModal />
       <div className="">
+      {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <RestaurantSelection />
       </div>
     </div>

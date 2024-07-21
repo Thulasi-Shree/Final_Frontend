@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 /* eslint-disable global-require */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */

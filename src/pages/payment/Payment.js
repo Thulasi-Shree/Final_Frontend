@@ -10,6 +10,7 @@ import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './Payment.css';
+import CustomAlert from 'components/utilities/Alert';
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -54,6 +55,11 @@ const Payment = () => {
     }
   };
 
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
+
   const submitHandler = async (e) => {
     e.preventDefault();
     document.querySelector('#pay_btn').disabled = true;
@@ -75,7 +81,8 @@ const Payment = () => {
       });
 
       if (result.error) {
-        alert(result.error.message);
+        // alert(result.error.message);
+        setAlert({ message: result.error.message, type: 'error' });
         document.querySelector('#pay_btn').disabled = false;
       } else if (result.paymentIntent.status === 'succeeded') {
         localStorage.setItem('payment', JSON.stringify(result));
@@ -141,10 +148,14 @@ const Payment = () => {
           localStorage.removeItem('cartItems');
         } catch (orderError) {
           console.error('Error creating order:', orderError.message);
-          alert('Order creation failed, please contact support!');
+          // alert('Order creation failed, please contact support!');
+          setAlert({ message: 'Order creation failed, please contact support!', type: 'error' });
+
         }
       } else {
-        alert('Payment failed, Please try again!');
+        // alert('Payment failed, Please try again!');
+        setAlert({ message: 'Payment failed, Please try again!', type: 'success' });
+
       }
     } catch (paymentError) {
       console.error('Error processing payment:', paymentError.message);
@@ -157,20 +168,20 @@ const Payment = () => {
 
   return (
     <div className="bg-white p-5" >
-      <div className="col-11 CardImg114 bg-white col-lg-6 mx-auto py-3">
+      <div className="col-12 CardImg114 bg-white col-lg-6 mx-auto ">
         <Form
           onSubmit={submitHandler}
           className="shadow-lg  custom-table"
           id="CardBackIMg1"
         >
-          <div className="m-5 p-3">
-            <h4 className="mb-4 " id="CardText">
-              Card Info
-            </h4>
+          <div className="my-2 p-2">
+            <h5 className="mb-4 text-center" id="CardText">
+              CARD INFO
+            </h5>
             <div className="form-group my-3">
-              <label htmlFor="card_num_field" id="CardText">
+              <h6 htmlFor="card_num_field" id="CardText">
                 Card Number
-              </label>
+              </h6>
               <CardNumberElement
                 type="text"
                 style={{ backgroundColor: '#d4ffe8', color: 'black' }}
@@ -180,9 +191,9 @@ const Payment = () => {
             </div>
 
             <div className="form-group my-3">
-              <label htmlFor="card_exp_field" id="CardText">
+              <h6 htmlFor="card_exp_field" id="CardText">
                 Card Expiry
-              </label>
+              </h6>
               <CardExpiryElement
                 style={{ backgroundColor: '#d4ffe8', color: 'black' }}
                 type="text"
@@ -192,7 +203,7 @@ const Payment = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="card_cvc_field">Card CVC</label>
+              <h6 htmlFor="card_cvc_field">Card CVC</h6>
               <CardCvcElement
                 style={{ backgroundColor: '#d4ffe8', color: 'black' }}
                 type="password"
@@ -216,7 +227,11 @@ const Payment = () => {
             </div>
           </div>
         </Form>
+        
       </div>
+      {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
     </div>
   );
 };

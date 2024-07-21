@@ -7,15 +7,21 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../login/login.scss';
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(null);
+  const [alert, setAlert] = useState({ message: '', type: '' });
+
   const validator = useRef(
     new SimpleReactValidator({ className: 'text-danger' })
   );
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,14 +44,18 @@ const ForgotPasswordPage = () => {
         );
 
         setMessage(response.data.message);
-        alert(response.data.message);
+        // alert(response.data.message);
+        setAlert({ message: response.data.message, type: 'success' });
+
         setEmail('');
       } catch (error) {
         setError(error.response ? error.response.data : 'An error occurred');
         const errorMessage = error.response
           ? error.response.data.message
           : 'An error occurred';
-        alert(errorMessage);
+        // alert(errorMessage);
+        setAlert({ message: errorMessage, type: 'error' });
+
       } finally {
         setLoading(false);
       }
@@ -64,6 +74,9 @@ const ForgotPasswordPage = () => {
       <div className='row '>
         <div className='col-lg-5 col-xs-12 col-md-9 mx-auto my-5'>
         <Card className='Cardimg123'>
+        {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
           <form onSubmit={handleSubmit}>
             <div className=" my-5 bg-white p-4">
               <div className="">

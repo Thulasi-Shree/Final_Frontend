@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const CreateAdmin = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const CreateAdmin = () => {
   });
   const [restaurantBranches, setRestaurantBranches] = useState([]);
   const [restaurantIds, setRestaurantIds] = useState([]);
+  const [alert, setAlert] = useState({ message: '', type: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,16 +38,22 @@ const CreateAdmin = () => {
         name === 'restaurantBranch' ? selectedId : prevFormData.restaurantId
     }));
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post('/api/register', formData);
-      alert('Registration successful!');
+      // alert('Registration successful!');
+      setAlert({ message: 'Registration successful!', type: 'success' });
     } catch (error) {
       console.error('error', error.response.data.message);
-      alert(`${error.response.data.message}`);
+      // alert(`${error.response.data.message}`);
+      setAlert({ message: error.response.data.message, type: 'error' });
+
     }
   };
   useEffect(() => {
@@ -72,6 +80,9 @@ const CreateAdmin = () => {
       <Card
         className="address-container container  p-4 col-md-8 col-lg-6 col-xl-4 Cardimg123"
       >
+         {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form onSubmit={handleSubmit} className='text-black'>
           <div>
             <h2 className='text-black'>Create Admin</h2>

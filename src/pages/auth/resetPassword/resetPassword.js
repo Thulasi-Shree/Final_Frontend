@@ -6,9 +6,12 @@ import axios from 'axios';
 import CryptoJS from 'crypto-js';
 import '../login/login.scss';
 import { Card } from 'react-bootstrap';
+import CustomAlert from 'components/utilities/Alert';
 
 const ResetPassword = () => {
   const [password, setPassword] = useState('');
+  const [alert, setAlert] = useState({ message: '', type: '' });
+
   const [confirmPassword, setConfirmPassword] = useState('');
   const validator = useRef(
     new SimpleReactValidator({ className: 'text-danger' })
@@ -38,13 +41,18 @@ const ResetPassword = () => {
   //     validator.current.showMessages();
   //   }
   // };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate password and confirm password fields
     if (!validator.current.allValid()) {
-      alert('Password Reset failed!');
+      // alert('Password Reset failed!');
+      setAlert({ message: 'Password Reset failed!'});
+
       validator.current.showMessages();
       return;
     }
@@ -61,7 +69,9 @@ const ResetPassword = () => {
 
     // Check if password and confirmPassword match
     if (password !== confirmPassword) {
-      alert('Password and Confirm Password do not match');
+      // alert('Password and Confirm Password do not match');
+      setAlert({ message: 'Password and Confirm Password do not match! ' });
+
       return;
     }
 
@@ -70,12 +80,16 @@ const ResetPassword = () => {
         password: encryptedPassword,
         confirmPassword: encryptedConfirmPassword
       });
-      console.log('Password reset success:', response.data);
-      alert('Reset success');
+      // console.log('Password reset success:', response.data);
+      // alert('Reset success');
+      setAlert({ message: 'Reset success ', type: 'success' });
+
       navigate('/login');
     } catch (error) {
       console.error('Password reset failed:', error);
-      alert(error.response.data.message);
+      // alert(error.response.data.message);
+      setAlert({ message: error.response.data.message, type: 'error' });
+
     }
   };
 
@@ -83,6 +97,9 @@ const ResetPassword = () => {
     <div  className="py-4 bg-white text-black">
       <div className="container-fluid mx-auto col-md-5 mt-5 mb-4 ">
         <Card className='Cardimg123'>
+        {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
         <form onSubmit={handleSubmit}>
           <div className="row  custom-table mx-3 my-5" id="CardBackIMg1">
             <div className="col-md-12">
@@ -136,7 +153,7 @@ const ResetPassword = () => {
             <div className="mb-3 d-flex justify-content-center">
               <button
                 type="submit"
-                className="btn my-3 px-4 btn border border-danger rounded bg-white w-100 text-black"
+                className="btn my-3 px-4 btn border rounded  w-100 "
                 style={{ borderRadius: '30px' }}
               >
                 Submit

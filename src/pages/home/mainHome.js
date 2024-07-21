@@ -11,6 +11,7 @@ import MenuList from '../menu/userMenuList';
 import FilterPanel from '../menu/FilterPanel';
 // import './home.css';
 import Cart from 'pages/cart/cartDetails';
+import CustomAlert from 'components/utilities/Alert';
 
 const Home = () => {
   const branch = localStorage.getItem('branch');
@@ -31,6 +32,7 @@ const Home = () => {
     }, {})
   );
   const [quantities, setQuantities] = useState({});
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [productsCount, setProductsCount] = useState(0);
   const [resPerPage, setResPerPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -98,6 +100,9 @@ const Home = () => {
     if (items) {
       setItems(items.length);
     }
+  };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
   };
 
   const handleViewDetails = (selectedMenu) => {
@@ -240,7 +245,9 @@ const Home = () => {
       }
     } catch (error) {
       // console.error('Error deleting item:', error.message);
-      alert('Error deleting item');
+      // alert('Error deleting item');
+      setAlert({ message: 'Error deleting item!', type: 'error' });
+
     }
   };
   const checkoutHandler = () => {
@@ -292,7 +299,10 @@ const Home = () => {
       .then((response) => setDietaryCategories(response.data.data))
       .catch((error) =>
         // console.error('Error fetching dietary categories:', error)
-        alert('Error fetching dietary categories')
+        // alert('Error fetching dietary categories')
+        setAlert({ message: 'Error fetching dietary categories', type: 'error' })
+
+        
       );
 
     axios
@@ -300,7 +310,9 @@ const Home = () => {
       .then((response) => setMealCategories(response.data.data))
       .catch((error) =>
         // console.error('Error fetching meal categories:', error)
-        alert('Error fetching meal categories')
+        // alert('Error fetching meal categories')
+        setAlert({ message: 'Error fetching meal categories', type: 'error' })
+        
       );
   }, []);
 
@@ -310,7 +322,7 @@ const Home = () => {
         <div className='bg-white'>
           <div className=" bg-white">
             <button
-              className=" my-2 text-center bg-white p-3 mx-3  mt-4"
+              className=" my-2 text-center bg-transparent mx-3  mt-4"
               onClick={handleShow}
               style={{
                 position: 'sticky',
@@ -346,6 +358,9 @@ const Home = () => {
                   </Col>
                 )}
                 <Col xs={12} sm={12} md={showFilterPanel ? 9 : 9} lg={showFilterPanel ? 9 : 12} className="mb-5 mx-auto">
+                {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
                   <MenuList
                     menus={menus}
                     handleViewDetails={handleViewDetails}

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import './cart.css';
+import CustomAlert from 'components/utilities/Alert';
 
 const Cart = () => {
   const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -110,7 +111,9 @@ const Cart = () => {
       }
     } catch (error) {
       // console.error('Error deleting item:', error.message);
-      alert('Error deleting item');
+      // alert('Error deleting item');
+      setAlert({ message: 'Error deleting item', type: 'error' });
+
     }
   };
   const handlegoback = () =>{
@@ -129,9 +132,15 @@ const Cart = () => {
       localStorage.setItem('cartItemsTotal', JSON.stringify(cartItemsTotal));
       navigate('/shippingInfo');
     } else {
-      alert('Cannot proceed to checkout with an empty cart.');
+      // alert('Cannot proceed to checkout with an empty cart.');
+      setAlert({ message: 'Cannot proceed to checkout with an empty cart.', type: 'error' });
+
     }
   };
+  const handleCloseAlert = () => {
+    setAlert({ message: '', type: '' });
+  };
+
 
   useEffect(() => {
     if (storedCartItems.length > 0) {
@@ -157,6 +166,9 @@ const Cart = () => {
           className="container-fluid CardDetail112 mx-auto  col-12 col-lg-5 pt-5"
         >
           <Card id="CardText" className="px-4 py-2 mb-3 col-12 mx-auto">
+          {alert.message && (
+        <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
+      )}
             <Card.Body>
               <div className="delivery-info">
                 <p style={{ fontSize: '16px' }} id="CardText">
@@ -197,9 +209,9 @@ const Cart = () => {
                       <span
                         className="pointer col-5"
                         // onClick={() => handleViewDetails(item)}
-                        style={{ fontSize: '1.0rem' }}
+                        // style={{ fontSize: '1.0rem' }}
                       >
-                        <h5 id="CardText">{item.name}</h5>
+                        <p id="CardText">{item.name}</p>
                       </span>
                       <div className="col-7 d-flex mb-2">
                         {/* <p className="col-12" id="card_item_price">
@@ -208,7 +220,7 @@ const Cart = () => {
                         <p className="col-6" id="card_item_total">
                           <p>
                             <span className="text-black">
-                              <p style={{ fontSize: '16px' }} id="CardText">
+                              <p style={{ fontSize: '13px' }} id="CardText">
                                 {' '}
                                 ${item.price * item.quantity}
                               </p>
@@ -231,7 +243,7 @@ const Cart = () => {
                               className="icon-border"
                             />
                           </span>
-                          <span className=" quantity ">{item.quantity} </span>
+                          <span className=" quantity "  style={{ fontSize: '16px' }}>{item.quantity} </span>
                           <span
                             className="icon-container"
                             onClick={() => handleAdd(item)}
