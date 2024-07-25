@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import { useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import SimpleReactValidator from 'simple-react-validator';
@@ -19,28 +18,6 @@ const ResetPassword = () => {
   const navigate = useNavigate();
   const { token } = useParams();
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   if (validator.current.allValid()) {
-  //     try {
-  //       const response = await axios.put(`/api/password/reset/${token}`, {
-  //         password,
-  //         confirmPassword
-  //       });
-  //       console.log('Password reset success:', response.data);
-  //       alert('Reset success');
-  //       navigate('/login');
-  //     } catch (error) {
-  //       console.error('Password reset failed:', error);
-
-  //       alert(error.response.data.message);
-  //     }
-  //   } else {
-  //     alert('Password Reset failed!');
-  //     validator.current.showMessages();
-  //   }
-  // };
   const handleCloseAlert = () => {
     setAlert({ message: '', type: '' });
   };

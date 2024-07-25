@@ -104,7 +104,7 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
        
             <Nav
-              style={{ fontSize: '17px', fontWeight: '600', color: '#2a206b'}}
+              style={{ fontSize: '17px', fontWeight: '500', color: '#2a206b'}}
               className="col-md-7 col-lg-11 col-xl-10 mx-auto "
             >
               {isloggedIn === 'true' ? (

@@ -80,6 +80,8 @@ const TimeSlotManager = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [restaurants, setRestaurants] = useState([]);
+  const [restaurantName, setRestaurantName] = useState('');
+
 
   // Fetch all restaurants
   const fetchRestaurants = async () => {
@@ -109,9 +111,8 @@ const TimeSlotManager = () => {
     fetchTimeSlots();
   }, []);
 
-  // Add a new time slot
   const addTimeSlot = async () => {
-    if (!newTimeSlot || !restaurantId || !restaurantBranch) {
+    if (!newTimeSlot || !restaurantId || !restaurantBranch || !restaurantName) {
       setError('Please fill in all fields');
       return;
     }
@@ -123,16 +124,19 @@ const TimeSlotManager = () => {
         newTimeSlot,
         restaurantId,
         restaurantBranch,
+        restaurantName,  // Include restaurantName in the request
       });
       setTimeSlots([...timeSlots, response.data.timeSlot]);
       setNewTimeSlot('');
       setRestaurantId('');
       setRestaurantBranch('');
+      setRestaurantName('');  // Reset restaurantName
     } catch (error) {
       setError('Error adding time slot');
     }
     setLoading(false);
   };
+
 
   // Update a time slot by ID
   const updateTimeSlot = async (id) => {
@@ -169,13 +173,13 @@ const TimeSlotManager = () => {
     }
     setLoading(false);
   };
-
-  // Handle restaurant selection
   const handleRestaurantChange = (e) => {
     const selectedRestaurant = restaurants.find((r) => r._id === e.target.value);
-    setRestaurantId(selectedRestaurant._id);
+    setRestaurantId(selectedRestaurant.restaurantId);
     setRestaurantBranch(selectedRestaurant.restaurantBranch);
+    setRestaurantName(selectedRestaurant.restaurantName); // Assuming restaurantName exists in restaurant data
   };
+
 
   return (
     <Container className='m-5 bg-white mx-auto Cardimg123'>
@@ -210,35 +214,6 @@ const TimeSlotManager = () => {
         </Button>
       </Section>
 
-      <Section>
-        <h2>Time Slots</h2>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <Table> 
-            <thead>
-              <tr>
-                <TableHeader>Time Slot</TableHeader>
-                <TableHeader>Branch Name</TableHeader>
-                <TableHeader>Actions</TableHeader>
-              </tr>
-            </thead>
-            <tbody>
-              {timeSlots.map((slot) => (
-                <tr key={slot._id}>
-                  <TableCell>{slot.slot}</TableCell>
-                  <TableCell>{slot.restaurantName}</TableCell>
-                  <TableCell>
-                    <Button className='border border-warning rounded m-2' onClick={() => deleteTimeSlot(slot._id)}>Delete</Button>
-                    <Button className='border border-warning rounded' onClick={() => setSelectedTimeSlot(slot)}>Update</Button>
-                  </TableCell>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </Section>
-
       {selectedTimeSlot && (
         <Section>
           <h2>Update Time Slot</h2>
@@ -253,6 +228,46 @@ const TimeSlotManager = () => {
           </Button>
         </Section>
       )}
+
+      <Section>
+        <h2>Time Slots</h2>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <Table>
+            <thead>
+              <tr>
+                <TableHeader>Time Slot</TableHeader>
+                <TableHeader>Branch Name</TableHeader>
+                <TableHeader>Actions</TableHeader>
+              </tr>
+            </thead>
+            <tbody>
+              {timeSlots.map((slot) => (
+                <tr key={slot._id}>
+                  <TableCell>{slot.slot}</TableCell>
+                  <TableCell>{slot.restaurantBranch}</TableCell>
+                  <TableCell>
+                    <Button className='border border-warning rounded m-2' onClick={() => deleteTimeSlot(slot._id)}>Delete</Button>
+                    <Button
+                      className='border border-warning rounded'
+                      onClick={() => {
+                        setSelectedTimeSlot(slot);
+                        window.scrollTo({
+                          top: 0,
+                          behavior: "smooth"
+                        });
+                      }}
+                    >
+                      Update
+                    </Button>
+                  </TableCell>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </Section>
     </Container>
   );
 };

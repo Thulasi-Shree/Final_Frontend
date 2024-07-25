@@ -386,7 +386,7 @@ function App() {
               <Route path="/api/password/reset/:token" element={<ResetPassword />} />
               <Route path="/location" element={<LocationComponent />} />
               <Route path="/userOrderList" element={<ProtectedRoute><OrdersTable1 /></ProtectedRoute>} />
-              <Route path="/order/confirm" element={<PrivateRoute><ConfirmOrder /></PrivateRoute>} />
+              <Route path="/order/confirm" element={<ConfirmOrder />} />
               <Route path="/order/success" element={<OrderSuccess />} />
               <Route path="/order/:id" element={<ProtectedRoute><OrderDetails /></ProtectedRoute>} />
               <Route path="/myProfile/:id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />

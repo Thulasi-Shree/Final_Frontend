@@ -18,7 +18,7 @@ height: 45px;
 border-bottom: 2px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) inset;
 border-top: 0px !important;
-border-color: #b8e09b !important;
+/* border-color: #b8e09b !important; */
 }
 th{
   background-color: transparent !important;

@@ -61,7 +61,7 @@ const SendLoginOtp = () => {
         <CustomAlert message={alert.message} type={alert.type} onClose={handleCloseAlert} />
       )}
         <form onSubmit={handleLogin}>
-          <div className="row custom-table mx-3 my-5" id="CardBackIMg1">
+          <div className="row mx-3 my-5" >
             <div className="col-11 mx-auto">
               <h4 className="text-center font-regular-29" id="CardText">
                 Send OTP
