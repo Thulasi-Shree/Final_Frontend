@@ -154,6 +154,7 @@ export default function UpdateProfile() {
               required
               name="email"
               value={email}
+              disabled
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -172,6 +173,7 @@ export default function UpdateProfile() {
               id="phone_field"
               className="form-control"
               required
+              disabled
               name="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
