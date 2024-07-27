@@ -23,9 +23,18 @@ const ConfirmOrder = () => {
   const [loading, setLoading] = useState(true);
   const orderType = JSON.parse(localStorage.getItem('orderType'));
   // const [orderType, setOrderType] = useState(orderType1)
-
-  // Get data from session storage
-  const localData = JSON.parse(localStorage.getItem('shippingInfo'));
+  const getLocalStorageData = (key, defaultValue = {}) => {
+    try {
+      const rawData = localStorage.getItem(key);
+      return rawData ? JSON.parse(rawData) : defaultValue;
+    } catch (error) {
+      console.error(`Error parsing JSON for key ${key}:`, error);
+      return defaultValue;
+    }
+  };
+  
+  const localData = getLocalStorageData('shippingInfo', {});
+  const user = getLocalStorageData('user', {});
   const emailOrMobile = JSON.parse(localStorage.getItem('emailOrMobile'));
   const orderInstruction = JSON.parse(localStorage.getItem('orderNotes'));
   // const name = JSON.parse(localStorage.getItem('name'));
@@ -103,7 +112,7 @@ const ConfirmOrder = () => {
   // Map shipping information
   const mapData = () => {
     return {
-      userName: localData.name,
+      userName: `${user.name} ${user.lastName}`,
       city: billingAddress.city,
       orderType: orderType,
       selectedTimeSlot: `${time}`,
@@ -167,16 +176,16 @@ const ConfirmOrder = () => {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                   <Card className="p-2 borderUp" id="CardText">
                     <p id="CardText">
-                      <b>Name:</b> {localData.name} {localData.lastName}
+                      <b>Name:</b> {user.name} {user.lastName}
                       {/* Replace with actual name data */}
                     </p>
                     {isLoggedIn && (
                       <>
                         <p id="CardText">
-                          <b>Email:</b> {localData.email}
+                          <b>Email:</b> {user.email}
                         </p>
                         <p id="CardText">
-                          <b>Phone:</b> {localData.mobileNumber}
+                          <b>Phone:</b> {localData.mobileNumber || user.phone}
                         </p>
                       </>
                     )}

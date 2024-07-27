@@ -14,6 +14,7 @@ const MenuList = () => {
   const { restaurantId } = user;
   const { role } = user;
   const [menuData, setMenuData] = useState([]);
+  const [restaurant, setRestaurant] = useState([]);
   const [alert, setAlert] = useState({ message: '', type: '' });
   const [selectedBranch, setSelectedBranch] = useState(restaurantId || 'all');
   // const { id: productId } = useParams();
@@ -60,6 +61,19 @@ const MenuList = () => {
   const handleCloseAlert = () => {
     setAlert({ message: '', type: '' });
   };
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const response = await axios.get('/api/restaurant/get');
+        const restaurant = response.data.data;
+        setRestaurant(restaurant);
+      } catch (error) {
+        console.error('Error fetching time slots:', error.message);
+      }
+    };
+
+    fetchRestaurants();
+  }, []);
 
   const handleDelete = async (menuId) => {
     try {
@@ -118,9 +132,15 @@ const MenuList = () => {
                       onChange={handleBranchChange}
                     >
                       <option value="all">All</option>
-                      <option value="1000010">Branch-A</option>
-                      <option value="1000011">Branch-B</option>
-                      <option value="1000012">Branch-C</option>
+                      {restaurant &&
+                    restaurant.map((restaurant) => (
+                      <option
+                        key={restaurant._id}
+                        value={restaurant.restaurantId}
+                      >
+                        {restaurant.restaurantBranch} 
+                      </option>
+                    ))}
                     </select>
                   </div>
                 )}
